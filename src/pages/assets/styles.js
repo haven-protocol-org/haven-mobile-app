@@ -37,6 +37,6 @@ export const Balance = styled.Text`
 export const Wrapper = styled.View`
   height: auto;
   width: 100%;
-  background: palegreen;
+  background: #36393f;
   padding: 8px;
 `;

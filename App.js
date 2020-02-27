@@ -81,11 +81,15 @@ class App extends Component {
         <StatusBar barStyle="light-content" />
 
         <Tab.Navigator
+          options={{
+            tabBar: "palegreen"
+          }}
           tabBarOptions={{
             activeTintColor: "#ffffff",
-            inactiveTintColor: "#8A8D90",
-            activeBackgroundColor: "#2B2E32",
-            inactiveBackgroundColor: "#2B2E32"
+            inactiveTintColor: "#8A8D90"
+
+            // activeBackgroundColor: "#2B2E32",
+            // inactiveBackgroundColor: "#2B2E32"
           }}
         >
           <Tab.Screen name="Assets" component={AssetStack} />
