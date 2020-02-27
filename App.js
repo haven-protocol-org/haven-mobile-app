@@ -1,6 +1,6 @@
 // Library Imports
 import React, { Component } from "react";
-import { StatusBar } from "react-native";
+import { StatusBar, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -12,6 +12,8 @@ import Details from "./src/pages/details";
 import Exchange from "./src/pages/exchange";
 import Transfer from "./src/pages/transfer";
 import Settings from "./src/pages/settings";
+
+import TabIcon from "./src/components/tab_icon/index.js";
 
 // Relative Imports
 
@@ -81,6 +83,12 @@ class App extends Component {
         <StatusBar barStyle="light-content" />
 
         <Tab.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              // You can return any component that you like here!
+              return <TabIcon focused={focused} route={route} />;
+            }
+          })}
           tabBarOptions={{
             activeTintColor: "#ffffff",
             inactiveTintColor: "#8A8D90",
