@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { View, Text, TouchableOpacity } from "react-native";
+import { foreground } from "../../constants/styles.js";
 
 export const Container = styled.View`
   flex: 1;
-  background: papayawhip;
+  background: ${foreground};
 
   display: flex;
   align-items: center;
@@ -12,6 +13,7 @@ export const Container = styled.View`
 
 export const Label = styled.Text`
   font-size: 20px;
+  color: white;
 `;
 
 export const Button = styled.TouchableOpacity`
@@ -37,6 +39,6 @@ export const Balance = styled.Text`
 export const Wrapper = styled.View`
   height: auto;
   width: 100%;
-  background: #36393f;
+  background: ${foreground};
   padding: 8px;
 `;
