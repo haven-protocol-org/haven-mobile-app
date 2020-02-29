@@ -37,8 +37,10 @@ class Exchange extends Component {
           selectedIndex={selectedIndex}
           onChange={this.changeTabs}
         />
+        <Border />
         <Input value={value} onChange={this.changeInput} />
-        <Input value={value} onChange={this.changeInput} />
+        <Input value={value} onChange={this.changeInput} border="none" />
+        <Border />
       </Container>
     );
   }

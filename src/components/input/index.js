@@ -5,7 +5,7 @@ import { TextInput } from "react-native";
 // Relative Imports
 import { Container, Field, Label, Border } from "./styles";
 
-const Input = ({ value, onChangeText, placeholder }) => {
+const Input = ({ value, onChangeText, placeholder, border }) => {
   return (
     <>
       <Container>
@@ -16,7 +16,7 @@ const Input = ({ value, onChangeText, placeholder }) => {
           value={value}
         />
       </Container>
-      <Border />
+      {border !== "none" ? <Border /> : null}
     </>
   );
 };

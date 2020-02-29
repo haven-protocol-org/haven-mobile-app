@@ -21,3 +21,9 @@ export const Button = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
 `;
+
+export const Border = styled.View`
+  height: 1px;
+  width: 100%;
+  background: ${props => props.theme.body.border};
+`;
