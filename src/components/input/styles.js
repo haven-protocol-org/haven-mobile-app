@@ -7,10 +7,17 @@ export const Container = styled.View`
   padding: 4px 12px;
 `;
 
-export const Field = styled.TextInput`
+export const Field = styled.TextInput.attrs({
+  placeholderTextColor: "palegreen"
+})`
   height: 26px;
   width: 100%;
+  font-size: 16px;
   color: ${props => props.theme.type.primary};
+
+  &::placeholder {
+    color: red;
+  }
 `;
 
 export const Label = styled.Text`

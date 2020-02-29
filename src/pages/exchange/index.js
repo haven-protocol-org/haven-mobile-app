@@ -11,8 +11,9 @@ class Exchange extends Component {
   state = {
     values: ["Basic", "Advanced"],
     selectedIndex: 0,
-    value: "hello",
-    placeholder: "Enter text"
+    amount: "",
+    placeholder: "Enter text",
+    value: ""
   };
 
   changeTabs = event => {
@@ -28,7 +29,7 @@ class Exchange extends Component {
   };
 
   render() {
-    const { values, selectedIndex, value } = this.state;
+    const { values, selectedIndex, value, text, amount } = this.state;
 
     return (
       <Container>
@@ -38,7 +39,11 @@ class Exchange extends Component {
           onChange={this.changeTabs}
         />
         <Border />
-        <Input value={value} onChange={this.changeInput} />
+        <Input
+          value={amount}
+          onChangeText={amount => this.setState({ amount })}
+          placeholder="Select"
+        />
         <Input value={value} onChange={this.changeInput} border="none" />
         <Border />
       </Container>

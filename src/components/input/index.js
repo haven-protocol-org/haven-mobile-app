@@ -16,7 +16,7 @@ const Input = ({ value, onChangeText, placeholder, border }) => {
           value={value}
         />
       </Container>
-      {border !== "none" ? <Border /> : null}
+      {border === "none" ? null : <Border />}
     </>
   );
 };
