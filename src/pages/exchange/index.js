@@ -1,15 +1,18 @@
 // Library Imports
 import React, { Component } from "react";
 import { TextInput, SegmentedControlIOS, View, Text } from "react-native";
-import SegmentedController from "../../components/segment_controller/index.js";
+import SegmentedController from "../../components/segment_controller";
+import Input from "../../components/input";
 
 // Relative Imports
-import { Container, Label, Button } from "./styles";
+import { Container, Label, Button, Border } from "./styles";
 
 class Exchange extends Component {
   state = {
     values: ["Basic", "Advanced"],
-    selectedIndex: 0
+    selectedIndex: 0,
+    value: "hello",
+    placeholder: "Enter text"
   };
 
   changeTabs = event => {
@@ -18,8 +21,14 @@ class Exchange extends Component {
     });
   };
 
+  changeInput = event => {
+    this.setState({
+      value: value
+    });
+  };
+
   render() {
-    const { values, selectedIndex } = this.state;
+    const { values, selectedIndex, value } = this.state;
 
     return (
       <Container>
@@ -28,6 +37,8 @@ class Exchange extends Component {
           selectedIndex={selectedIndex}
           onChange={this.changeTabs}
         />
+        <Input value={value} onChange={this.changeInput} />
+        <Input value={value} onChange={this.changeInput} />
       </Container>
     );
   }
