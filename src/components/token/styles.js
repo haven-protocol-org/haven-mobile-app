@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 
 export const Container = styled.TouchableOpacity`
   height: auto;
-  width: auto;
+  width: 100%;
   padding: 20px;
   background: #2b2e32;
   margin: 8px;
@@ -11,6 +11,8 @@ export const Container = styled.TouchableOpacity`
   margin-right: 8px;
   border-radius: 4px;
   flex-direction: column;
+  background: ${props => props.theme.body.foreground};
+  border: ${props => props.theme.body.border};
 `;
 
 export const Title = styled.Text`
@@ -26,12 +28,12 @@ export const Label = styled.Text`
   color: #8a8d90;
   letter-spacing: 0;
   line-height: 21px;
+  margin-top: 4px;
 `;
 
 export const Row = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   width: 100%;
 `;

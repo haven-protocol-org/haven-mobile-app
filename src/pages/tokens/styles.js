@@ -16,6 +16,8 @@ export const Label = styled.Text`
 `;
 
 export const Wrapper = styled.ScrollView`
-  flex: 1;
-  background: red;
+  height: auto;
+  width: 100%;
+  background: ${props => props.theme.body.background};
+  padding-right: 16px;
 `;
