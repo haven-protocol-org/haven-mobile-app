@@ -14,3 +14,8 @@ export const Label = styled.Text`
   font-size: 20px
   color: white;
 `;
+
+export const Wrapper = styled.ScrollView`
+  flex: 1;
+  background: red;
+`;
