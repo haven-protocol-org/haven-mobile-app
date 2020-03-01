@@ -11,6 +11,8 @@ import Details from "../pages/details";
 import Exchange from "../pages/exchange";
 import Transfer from "../pages/transfer";
 import Settings from "../pages/settings";
+import Tokens from "../pages/tokens";
+
 const headerOptions = {
   headerStyle: {
     backgroundColor: "#2B2E32"
@@ -51,6 +53,7 @@ class TabNavgation extends Component {
       return (
         <Stack.Navigator screenOptions={headerOptions}>
           <Stack.Screen name="Exchange" component={Exchange} />
+          <Stack.Screen name="Tokens" component={Tokens} />
         </Stack.Navigator>
       );
     };

@@ -28,6 +28,10 @@ class Exchange extends Component {
     });
   };
 
+  selectToken = () => {
+    this.props.navigation.navigate("Tokens");
+  };
+
   render() {
     const { values, selectedIndex, value, text, amount } = this.state;
 
@@ -40,11 +44,27 @@ class Exchange extends Component {
         />
         <Border />
         <Input
+          label="From Asset"
+          type="cell"
+          onPress={this.selectToken}
           value={amount}
+          placeholder="Select Asset"
           onChangeText={amount => this.setState({ amount })}
-          placeholder="Select"
         />
-        <Input value={value} onChange={this.changeInput} border="none" />
+        <Input
+          label="To Asset"
+          placeholder="Select Asset"
+          value={value}
+          onChange={this.changeInput}
+        />
+        <Input
+          label="Amount"
+          type="input"
+          placeholder="Enter Amount"
+          value={value}
+          onChange={this.changeInput}
+          border="none"
+        />
         <Border />
       </Container>
     );

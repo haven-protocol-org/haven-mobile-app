@@ -3,18 +3,35 @@ import React, { Component } from "react";
 import { TextInput } from "react-native";
 
 // Relative Imports
-import { Container, Field, Label, Border } from "./styles";
+import { Container, Field, Label, Border, Cell, Name } from "./styles";
+// this.props.navigation.navigate("Tokens")
+const Input = ({
+  type,
+  value,
+  onChangeText,
+  placeholder,
+  border,
+  label,
+  link,
 
-const Input = ({ value, onChangeText, placeholder, border }) => {
+  onPress
+}) => {
   return (
     <>
       <Container>
-        <Label>Label</Label>
-        <Field
-          placeholder={placeholder}
-          onChangeText={onChangeText}
-          value={value}
-        />
+        <Label>{label}</Label>
+        {type === "input" && (
+          <Field
+            placeholder={placeholder}
+            onChangeText={onChangeText}
+            value={value}
+          />
+        )}
+        {type === "cell" && (
+          <Cell onPress={onPress}>
+            <Name>Name</Name>
+          </Cell>
+        )}
       </Container>
       {border === "none" ? null : <Border />}
     </>
