@@ -3,8 +3,6 @@ import { dark } from "../../constants/themes.js";
 
 const placeholder = `${props => props.theme.type.primary}`;
 
-console.log("placeholder", placeholder);
-
 export const Container = styled.View`
   height: auto;
   width: 100%;

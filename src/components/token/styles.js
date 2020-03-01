@@ -9,7 +9,7 @@ export const Container = styled.TouchableOpacity`
   margin: 8px;
   margin-left: 8px;
   margin-right: 8px;
-  border-radius: 4px;
+  border-radius: 8px;
   flex-direction: column;
   background: ${props => props.theme.body.foreground};
   border: ${props => props.theme.body.border};

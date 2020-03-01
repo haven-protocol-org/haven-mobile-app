@@ -16,7 +16,6 @@ const Input = ({
   chooseToken,
   onPress
 }) => {
-  console.log("VALUE", value);
   return (
     <>
       <Container>
