@@ -11,11 +11,12 @@ class Tokens extends Component {
   renderTokens = () => {
     return assets.map(asset => {
       const { token, ticker, price, change } = asset;
+
       return (
         <Token
           key={ticker}
           token={token}
-          ticker={ticker}
+          ticker={"x" + ticker}
           price={price}
           change={change}
         />

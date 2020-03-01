@@ -6,7 +6,11 @@ import { Container, Title, Row, Label } from "./styles";
 
 const Token = ({ onPress, token, ticker, price, change }) => {
   return (
-    <Container onPress={onPress}>
+    <Container
+      onPress={() => {
+        console.log(ticker);
+      }}
+    >
       <Row>
         <Title>{token}</Title>
         <Title>{ticker}</Title>

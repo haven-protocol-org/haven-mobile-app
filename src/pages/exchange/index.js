@@ -11,9 +11,12 @@ class Exchange extends Component {
   state = {
     values: ["Basic", "Advanced"],
     selectedIndex: 0,
-    amount: "",
+    fromAmount: "",
     placeholder: "Enter text",
-    value: ""
+    value: "",
+    fromAsset: "Select From Asset",
+    toAsset: "Select To Asset",
+    token: ""
   };
 
   changeTabs = event => {
@@ -32,8 +35,19 @@ class Exchange extends Component {
     this.props.navigation.navigate("Tokens");
   };
 
+  chooseToken = () => {};
+
   render() {
-    const { values, selectedIndex, value, text, amount } = this.state;
+    const {
+      values,
+      selectedIndex,
+      value,
+      text,
+      amount,
+      fromAsset,
+      toAsset,
+      fromAmount
+    } = this.state;
 
     return (
       <Container>
@@ -42,30 +56,83 @@ class Exchange extends Component {
           selectedIndex={selectedIndex}
           onChange={this.changeTabs}
         />
-        <Border />
-        <Input
-          label="From Asset"
-          type="cell"
-          onPress={this.selectToken}
-          value={amount}
-          placeholder="Select Asset"
-          onChangeText={amount => this.setState({ amount })}
-        />
-        <Input
-          label="To Asset"
-          placeholder="Select Asset"
-          value={value}
-          onChange={this.changeInput}
-        />
-        <Input
-          label="Amount"
-          type="input"
-          placeholder="Enter Amount"
-          value={value}
-          onChange={this.changeInput}
-          border="none"
-        />
-        <Border />
+        {selectedIndex == 0 ? (
+          <>
+            <Border />
+            <Input
+              label="From Asset"
+              type="cell"
+              onPress={this.selectToken}
+              chooseToken={this.chooseToken}
+              value={fromAsset}
+              placeholder="Select Asset"
+              onChangeText={fromAsset => this.setState({ fromAsset })}
+            />
+            <Input
+              label="To Asset"
+              type="cell"
+              onPress={this.selectToken}
+              value={toAsset}
+              placeholder="Select Asset"
+              onChangeText={amount => this.setState({ toAsset })}
+            />
+            <Input
+              label="Amount"
+              type="input"
+              placeholder="Enter Amount"
+              value={fromAmount}
+              onChange={this.changeInput}
+              onChangeText={fromAmount => this.setState({ fromAmount })}
+            />
+            <Border />
+          </>
+        ) : (
+          <>
+            <Border />
+            <Input
+              label="From Asset"
+              type="cell"
+              onPress={this.selectToken}
+              chooseToken={this.chooseToken}
+              value={fromAsset}
+              placeholder="Select Asset"
+              onChangeText={fromAsset => this.setState({ fromAsset })}
+            />
+            <Input
+              label="To Asset"
+              type="cell"
+              onPress={this.selectToken}
+              value={toAsset}
+              placeholder="Select Asset"
+              onChangeText={amount => this.setState({ toAsset })}
+            />
+            <Input
+              label="Amount"
+              type="input"
+              placeholder="Enter Amount"
+              value={fromAmount}
+              onChange={this.changeInput}
+              onChangeText={fromAmount => this.setState({ fromAmount })}
+            />
+            <Input
+              label="To Address"
+              type="input"
+              placeholder="Enter Amount"
+              value={fromAmount}
+              onChange={this.changeInput}
+              onChangeText={fromAmount => this.setState({ fromAmount })}
+            />
+            <Input
+              label="Payment ID"
+              type="input"
+              placeholder="Enter Amount"
+              value={fromAmount}
+              onChange={this.changeInput}
+              onChangeText={fromAmount => this.setState({ fromAmount })}
+            />
+            <Border />
+          </>
+        )}
       </Container>
     );
   }

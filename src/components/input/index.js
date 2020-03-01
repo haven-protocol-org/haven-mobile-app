@@ -13,9 +13,10 @@ const Input = ({
   border,
   label,
   link,
-
+  chooseToken,
   onPress
 }) => {
+  console.log("VALUE", value);
   return (
     <>
       <Container>
@@ -25,11 +26,13 @@ const Input = ({
             placeholder={placeholder}
             onChangeText={onChangeText}
             value={value}
+            returnKeyType="done"
+            keyboardType="decimal-pad"
           />
         )}
         {type === "cell" && (
           <Cell onPress={onPress}>
-            <Name>Name</Name>
+            <Name>{value.length > 1 ? value : placeholder}</Name>
           </Cell>
         )}
       </Container>
