@@ -7,7 +7,7 @@ export const Container = styled.View`
   background: ${foreground};
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 `;
 
 export const Label = styled.Text`

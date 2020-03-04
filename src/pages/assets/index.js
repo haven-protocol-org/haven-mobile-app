@@ -8,6 +8,8 @@ import Asset from "../../components/asset/index.js";
 import { Balance, Secondary } from "../../constants/type.js";
 import Token from "../../components/token";
 import assets from "../../constants/assets.js";
+import SectionHeader from "../../components/section-header";
+import PageWrapper from "../../components/page-wrapper/index.js";
 
 class Assets extends Component {
   state = {
@@ -42,7 +44,14 @@ class Assets extends Component {
               <Secondary>{this.state.balanceLabel}</Secondary>
             </Button>
           </Balances>
-          <Wrapper>{this.renderTokens()}</Wrapper>
+
+          <PageWrapper>
+            <SectionHeader
+              title="Available Assets"
+              subtitle="Assets available within your Vault"
+            />
+            {this.renderTokens()}
+          </PageWrapper>
         </Container>
       </ScrollView>
     );
