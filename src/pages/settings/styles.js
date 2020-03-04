@@ -10,7 +10,9 @@ export const Container = styled.View`
   justify-content: flex-start;
 `;
 
-export const Label = styled.Text`
-  font-size: 20px
-    color: white;
+export const Form = styled.View`
+  height: auto;
+  width: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
 `;

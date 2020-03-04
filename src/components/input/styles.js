@@ -25,6 +25,14 @@ export const Cell = styled.TouchableOpacity`
   padding-bottom: 8px;
 `;
 
+export const Toggle = styled.View`
+  padding-bottom: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 export const Name = styled.Text`
   font-size: 16px;
   color: ${props => props.theme.type.primary};

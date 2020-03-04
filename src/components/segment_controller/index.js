@@ -9,17 +9,17 @@ const SegmentedController = ({ values, selectedIndex, onChange }) => {
   return (
     <Container>
       <SegmentedControlIOS
-        tintColor={"yellow"}
         style={{
           borderWidth: 0.5,
           height: 32,
-          tintColor: "green",
-          borderColor: `${props => props.theme.body.border}`,
+          tintColor: "#000000",
+          borderColor: "white",
           color: "yellow"
         }}
         values={values}
         selectedIndex={selectedIndex}
         onChange={onChange}
+        tintColor={"#D6573D"}
       />
     </Container>
   );

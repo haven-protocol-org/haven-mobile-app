@@ -1,10 +1,10 @@
 // Library Imports
 import React, { Component } from "react";
-import { TextInput } from "react-native";
+import { TextInput, Switch } from "react-native";
 
 // Relative Imports
-import { Container, Field, Label, Border, Cell, Name } from "./styles";
-// this.props.navigation.navigate("Tokens")
+import { Container, Field, Label, Toggle, Border, Cell, Name } from "./styles";
+
 const Input = ({
   type,
   value,
@@ -14,7 +14,9 @@ const Input = ({
   label,
   link,
   chooseToken,
-  onPress
+  onPress,
+  secureTextEntry,
+  toggle
 }) => {
   return (
     <>
@@ -27,12 +29,19 @@ const Input = ({
             value={value}
             returnKeyType="done"
             keyboardType="decimal-pad"
+            secureTextEntry={secureTextEntry}
           />
         )}
         {type === "cell" && (
           <Cell onPress={onPress}>
             <Name>{value.length > 1 ? value : placeholder}</Name>
           </Cell>
+        )}
+        {type === "toggle" && (
+          <Toggle>
+            <Name>{value}</Name>
+            <Switch value={toggle} onValueChange={onPress} />
+          </Toggle>
         )}
       </Container>
       {border === "none" ? null : <Border />}
