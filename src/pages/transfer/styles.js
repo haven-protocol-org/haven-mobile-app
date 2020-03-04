@@ -6,11 +6,24 @@ export const Container = styled.View`
   flex: 1;
   background: ${foreground};
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+`;
+
+export const Label = styled.Text`
+  font-size: 20px;
+  color: #fff;
+`;
+
+export const Button = styled.TouchableOpacity`
+  display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-export const Label = styled.Text`
-  font-size: 20px
-  color: white;
+export const Border = styled.View`
+  height: 1px;
+  width: 100%;
+  background: ${props => props.theme.body.border};
 `;
