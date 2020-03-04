@@ -5,15 +5,9 @@ import { foreground } from "../../constants/styles.js";
 export const Container = styled.View`
   flex: 1;
   background: ${foreground};
-
   display: flex;
   align-items: center;
   justify-content: flex-start;
-`;
-
-export const Label = styled.Text`
-  font-size: 20px;
-  color: white;
 `;
 
 export const Button = styled.TouchableOpacity`
@@ -30,15 +24,9 @@ export const Balances = styled.View`
   justify-content: center;
 `;
 
-export const Balance = styled.Text`
-  font-size: 40px;
-  font-weight: bold;
-  color: #fff;
-`;
-
 export const Wrapper = styled.View`
   height: auto;
   width: 100%;
-  background: ${foreground};
+  background: ${props => props.theme.body.background};
   padding: 8px;
 `;

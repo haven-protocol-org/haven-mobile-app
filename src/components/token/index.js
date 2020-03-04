@@ -2,22 +2,19 @@
 import React from "react";
 
 // Relative Imports
-import { Container, Title, Row, Label } from "./styles";
+import { Container, Row } from "./styles";
+import { Primary, Secondary } from "../../constants/type.js";
 
 const Token = ({ onPress, token, ticker, price, change }) => {
   return (
-    <Container
-      onPress={() => {
-        console.log(ticker);
-      }}
-    >
+    <Container onPress={onPress}>
       <Row>
-        <Title>{token}</Title>
-        <Title>{ticker}</Title>
+        <Primary>{token}</Primary>
+        <Primary>{ticker}</Primary>
       </Row>
       <Row>
-        <Label>{price}</Label>
-        <Label>{change}</Label>
+        <Secondary>{price}</Secondary>
+        <Secondary>{change}</Secondary>
       </Row>
     </Container>
   );
