@@ -1,19 +1,12 @@
 import styled from "styled-components";
-import { View, Text } from "react-native";
-import { foreground } from "../../constants/styles.js";
 
 export const Container = styled.View`
   flex: 1;
-  background: ${foreground};
+  background: ${props => props.theme.body.foreground};
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-`;
-
-export const Label = styled.Text`
-  font-size: 20px;
-  color: #fff;
 `;
 
 export const Button = styled.TouchableOpacity`
@@ -23,7 +16,7 @@ export const Button = styled.TouchableOpacity`
 `;
 
 export const Border = styled.View`
-  height: 1px;
+  height: 0.5px;
   width: 100%;
   background: ${props => props.theme.body.border};
 `;

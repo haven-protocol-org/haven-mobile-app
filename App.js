@@ -8,7 +8,7 @@ import TabNavgation from "./src/navigation/tabNavigation.js";
 
 class App extends Component {
   state = {
-    theme: dark
+    theme: light
   };
 
   render() {

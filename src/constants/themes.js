@@ -36,8 +36,8 @@ export const light = {
   value: "Light Theme",
   body: {
     navigation: "#26282C",
-    background: "#F7F7FB",
-    foreground: "#F4F5F9",
+    background: "#fafafa",
+    foreground: "#F2F3F9",
     border: "#D9E2ED",
     active_menu: "#7289da"
   },

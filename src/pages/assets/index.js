@@ -3,13 +3,14 @@ import React, { Component } from "react";
 import { ScrollView } from "react-native";
 
 // Relative Imports
-import { Container, Button, Balances, Wrapper } from "./styles";
+import { Container, Button, Wrapper, Border } from "./styles";
 import Asset from "../../components/asset/index.js";
 import { Balance, Secondary } from "../../constants/type.js";
 import Token from "../../components/token";
 import assets from "../../constants/assets.js";
 import SectionHeader from "../../components/section-header";
-import PageWrapper from "../../components/page-wrapper/index.js";
+import PageWrapper from "../../components/page-wrapper";
+import Balances from "../../components/balances";
 
 class Assets extends Component {
   state = {
@@ -38,12 +39,10 @@ class Assets extends Component {
     return (
       <ScrollView>
         <Container>
-          <Balances>
-            <Button>
-              <Balance>{this.state.totalBalance}</Balance>
-              <Secondary>{this.state.balanceLabel}</Secondary>
-            </Button>
-          </Balances>
+          <Balances
+            totalBalance={this.state.totalBalance}
+            balanceLabel={this.state.balanceLabel}
+          />
 
           <PageWrapper>
             <SectionHeader

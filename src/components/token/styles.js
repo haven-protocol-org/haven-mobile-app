@@ -13,6 +13,7 @@ export const Container = styled.TouchableOpacity`
   flex-direction: column;
   background: ${props => props.theme.body.foreground};
   border: ${props => props.theme.body.border};
+  border-radius: 4px;
 `;
 
 export const Row = styled.View`

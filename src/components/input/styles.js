@@ -48,7 +48,7 @@ export const Label = styled.Text`
 
 export const Border = styled.View`
   width: 100%;
-  background: ${dark.body.border}
+  background: ${props => props.theme.body.border};
   height: 1px;
   margin-left: 12px;
 `;
