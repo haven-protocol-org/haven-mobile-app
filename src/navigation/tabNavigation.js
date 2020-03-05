@@ -17,7 +17,7 @@ const headerOptions = {
   headerStyle: {
     backgroundColor: "#2B2E32"
   },
-  headerTintColor: "#fff",
+  headerTintColor: "#ffffff",
   headerTitleStyle: {
     fontWeight: "bold"
   }
@@ -69,7 +69,17 @@ class TabNavgation extends Component {
 
     const SettingsStack = () => {
       return (
-        <Stack.Navigator screenOptions={headerOptions}>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: "#2B2E32"
+            },
+            headerTintColor: "#ffffff",
+            headerTitleStyle: {
+              fontWeight: "bold"
+            }
+          }}
+        >
           <Stack.Screen name="Settings" component={Settings} />
         </Stack.Navigator>
       );
@@ -85,13 +95,10 @@ class TabNavgation extends Component {
         tabBarOptions={{
           activeTintColor: "#ffffff",
           inactiveTintColor: "#8A8D90",
-          activeBackgroundColor: "#2B2E32",
-          inactiveBackgroundColor: "#2B2E32",
-
+          activeBackgroundColor: `${props => props.theme.body.background}`,
+          inactiveBackgroundColor: `${props => props.theme.body.background}`,
           style: {
-            backgroundColor: "#2B2E32",
-            activeTintColor: "orange",
-            activeBackgroundColor: "pink"
+            backgroundColor: "#2B2E32"
           }
         }}
       >

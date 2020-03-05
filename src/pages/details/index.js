@@ -1,14 +1,15 @@
 // Library Imports
 import React, { Component } from "react";
+import Charts from "../../components/charts/index.js";
 
 // Relative Imports
-import { Container, Label } from "./styles";
+import { Container } from "./styles";
 
 class Details extends Component {
   render() {
     return (
       <Container>
-        <Label>Details</Label>
+        <Charts />
       </Container>
     );
   }
