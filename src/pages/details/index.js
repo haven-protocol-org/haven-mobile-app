@@ -8,9 +8,10 @@ import { Container } from "./styles";
 
 class Details extends Component {
   render() {
+    const { ticker } = this.props.route.params;
     return (
       <Container>
-        <Charts />
+        <Charts token={"x" + ticker} />
         <SectionHeader
           title="Transaction History"
           subtitle="Overview of your transaction history"
