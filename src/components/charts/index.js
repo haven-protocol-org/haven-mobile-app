@@ -5,10 +5,10 @@ import { Balance, Secondary } from "../../constants/type.js";
 // Relative Imports
 import { Container } from "./styles";
 
-const Charts = () => {
+const Charts = ({ token }) => {
   return (
     <Container>
-      <Balance>Chart</Balance>
+      <Balance>{token} Chart </Balance>
     </Container>
   );
 };
