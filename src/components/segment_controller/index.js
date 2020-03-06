@@ -12,8 +12,9 @@ const SegmentedController = ({ values, selectedIndex, onChange }) => {
         style={{
           borderWidth: 0.5,
           height: 32,
-          borderColor: "white",
-          color: "yellow"
+          borderColor: "#3A4048",
+          color: "yellow",
+          tintColor: "#fff"
         }}
         values={values}
         selectedIndex={selectedIndex}

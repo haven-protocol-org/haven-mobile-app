@@ -35,7 +35,9 @@ class Exchange extends Component {
     this.props.navigation.navigate("Tokens");
   };
 
-  chooseToken = () => {};
+  chooseToken = () => {
+    console.log("ticker");
+  };
 
   render() {
     const {
