@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { View, Text, TouchableOpacity } from "react-native";
 
 export const Container = styled.TouchableOpacity`
   height: auto;

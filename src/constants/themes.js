@@ -29,6 +29,9 @@ export const dark = {
     success: "#2D8872",
     error: "#F04747",
     warning: "#FFC246"
+  },
+  styles: {
+    radius: ["2px", "4px", "8px", "12px"]
   }
 };
 

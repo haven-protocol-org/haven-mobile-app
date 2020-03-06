@@ -3,9 +3,10 @@ import React, { Component } from "react";
 import { TextInput, SegmentedControlIOS, View, Text } from "react-native";
 import SegmentedController from "../../components/segment_controller";
 import Input from "../../components/input";
+import Button from "../../components/button/index.js";
 
 // Relative Imports
-import { Container, Label, Button, Border } from "./styles";
+import { Container, Label, Border } from "./styles";
 
 class Transfer extends Component {
   state = {
@@ -85,6 +86,7 @@ class Transfer extends Component {
               onChangeText={fromAmount => this.setState({ fromAmount })}
             />
             <Border />
+            <Button text="Transfer" />
           </>
         ) : (
           <>
@@ -98,7 +100,7 @@ class Transfer extends Component {
               placeholder="Select Asset"
               onChangeText={fromAsset => this.setState({ fromAsset })}
             />
-
+            <Button text="Copy Address" />
             <Border />
           </>
         )}

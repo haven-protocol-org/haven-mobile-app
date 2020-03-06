@@ -9,12 +9,6 @@ export const Container = styled.View`
   justify-content: flex-start;
 `;
 
-export const Button = styled.TouchableOpacity`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
 export const Border = styled.View`
   height: 0.5px;
   width: 100%;
