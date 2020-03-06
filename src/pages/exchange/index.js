@@ -4,9 +4,10 @@ import { TextInput, SegmentedControlIOS, View, Text } from "react-native";
 import SegmentedController from "../../components/segment_controller";
 import Input from "../../components/input";
 import Button from "../../components/button/index.js";
+import Border from "../../components/border/index.js";
 
 // Relative Imports
-import { Container, Label, Border } from "./styles";
+import { Container, Label } from "./styles";
 
 class Exchange extends Component {
   state = {
@@ -82,13 +83,12 @@ class Exchange extends Component {
             <Input
               label="Amount"
               type="input"
+              border="none"
               placeholder="Enter Amount"
               value={fromAmount}
               onChange={this.changeInput}
               onChangeText={fromAmount => this.setState({ fromAmount })}
             />
-
-            <Border />
           </>
         ) : (
           <>
@@ -129,12 +129,12 @@ class Exchange extends Component {
             <Input
               label="Payment ID"
               type="input"
+              border="none"
               placeholder="Enter Amount"
               value={fromAmount}
               onChange={this.changeInput}
               onChangeText={fromAmount => this.setState({ fromAmount })}
             />
-            <Border />
           </>
         )}
         <Button text="Exchange" />

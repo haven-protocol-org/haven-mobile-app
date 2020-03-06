@@ -3,14 +3,19 @@ import React from "react";
 
 // Relative Imports
 import { Container, Label, Wrapper } from "./styles";
+import Border from "../border";
 
 const Button = ({ text }) => {
   return (
-    <Container>
-      <Wrapper>
-        <Label>{text}</Label>
-      </Wrapper>
-    </Container>
+    <>
+      <Border />
+      <Container>
+        <Wrapper>
+          <Label>{text}</Label>
+        </Wrapper>
+      </Container>
+      <Border />
+    </>
   );
 };
 

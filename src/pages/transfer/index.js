@@ -3,10 +3,11 @@ import React, { Component } from "react";
 import { TextInput, SegmentedControlIOS, View, Text } from "react-native";
 import SegmentedController from "../../components/segment_controller";
 import Input from "../../components/input";
-import Button from "../../components/button/index.js";
+import Button from "../../components/button";
+import Border from "../../components/border";
 
 // Relative Imports
-import { Container, Label, Border } from "./styles";
+import { Container, Label } from "./styles";
 
 class Transfer extends Component {
   state = {
@@ -80,12 +81,13 @@ class Transfer extends Component {
             <Input
               label="Amount"
               type="input"
+              border="none"
               placeholder="Enter Amount"
               value={fromAmount}
               onChange={this.changeInput}
               onChangeText={fromAmount => this.setState({ fromAmount })}
             />
-            <Border />
+
             <Button text="Transfer" />
           </>
         ) : (
@@ -94,6 +96,7 @@ class Transfer extends Component {
             <Input
               label="Haven  Address"
               type="cell"
+              border="none"
               onPress={this.selectToken}
               chooseToken={this.chooseToken}
               value={"hvxyAPCJe.....g51dzd7KV6G"}
@@ -101,7 +104,6 @@ class Transfer extends Component {
               onChangeText={fromAsset => this.setState({ fromAsset })}
             />
             <Button text="Copy Address" />
-            <Border />
           </>
         )}
       </Container>
