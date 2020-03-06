@@ -5,9 +5,9 @@ import React from "react";
 import { Container, State, Status, Column, Row } from "./styles";
 import { Primary, Secondary } from "../../constants/type.js";
 
-const Transaction = () => {
+const Transaction = ({ onPress }) => {
   return (
-    <Container>
+    <Container onPress={onPress}>
       <Row>
         <Column>
           <Primary>123.45</Primary>

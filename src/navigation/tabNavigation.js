@@ -1,6 +1,6 @@
 // Library Imports
 import React, { Component } from "react";
-import { View } from "react-native";
+import { View, WebView } from "react-native";
 import TabIcon from "../components/tab_icon";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -12,6 +12,7 @@ import Exchange from "../pages/exchange";
 import Transfer from "../pages/transfer";
 import Settings from "../pages/settings";
 import Tokens from "../pages/tokens";
+import Explorer from "../pages/explorer";
 
 const headerOptions = {
   headerStyle: {
@@ -45,6 +46,7 @@ class TabNavgation extends Component {
         <Stack.Navigator screenOptions={headerOptions}>
           <Stack.Screen name="Assets" component={Assets} />
           <Stack.Screen name="Details" component={Details} />
+          <Stack.Screen name="Explorer" component={Explorer} />
         </Stack.Navigator>
       );
     };
@@ -63,6 +65,15 @@ class TabNavgation extends Component {
         <Stack.Navigator screenOptions={headerOptions}>
           <Stack.Screen name="Transfer" component={Transfer} />
           <Stack.Screen name="Details" component={Details} />
+        </Stack.Navigator>
+      );
+    };
+
+    const DetailStack = () => {
+      return (
+        <Stack.Navigator screenOptions={headerOptions}>
+          <Stack.Screen name="Details" component={Details} />
+          <Stack.Screen name="Explorer" component={Explorer} />
         </Stack.Navigator>
       );
     };

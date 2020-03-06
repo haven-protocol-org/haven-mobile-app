@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
   height: auto;
   width: auto;
   background: ${props => props.theme.body.background};

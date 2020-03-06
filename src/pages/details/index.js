@@ -1,6 +1,6 @@
 // Library Imports
 import React, { Component } from "react";
-import { ScrollView } from "react-native";
+import { ScrollView, WebView } from "react-native";
 import Charts from "../../components/charts/index.js";
 import SectionHeader from "../../components/section-header/index.js";
 import Transaction from "../../components/transactions/index.js";
@@ -11,6 +11,10 @@ import BalanceStatistic from "../../components/balance-statistics/index.js";
 import { Container } from "./styles";
 
 class Details extends Component {
+  showPage = () => {
+    this.props.navigation.navigate("Explorer");
+  };
+
   render() {
     const { ticker } = this.props.route.params;
     return (
@@ -25,7 +29,7 @@ class Details extends Component {
               title="Transaction History"
               subtitle="Overview of your transaction history"
             />
-            <Transaction />
+            <Transaction onPress={this.showPage} />
             <Transaction />
             <Transaction />
           </PageWrapper>
