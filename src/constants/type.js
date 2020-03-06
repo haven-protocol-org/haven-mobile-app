@@ -14,6 +14,7 @@ export const Secondary = styled.Text`
   letter-spacing: 0;
   line-height: 21px;
   margin-top: 4px;
+  text-align: ${props => (props.right ? "right" : "left")};
 `;
 
 export const Balance = styled.Text`
