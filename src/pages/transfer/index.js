@@ -1,10 +1,11 @@
 // Library Imports
 import React, { Component } from "react";
-import { TextInput, SegmentedControlIOS, View, Text } from "react-native";
+import { TextInput, View, Text } from "react-native";
 import SegmentedController from "../../components/segment_controller";
 import Input from "../../components/input";
 import Button from "../../components/button";
 import Border from "../../components/border";
+import Code from "../../components/qr-code";
 
 // Relative Imports
 import { Container, Label } from "./styles";
@@ -102,11 +103,12 @@ class Transfer extends Component {
               onChangeText={fromAmount => this.setState({ fromAmount })}
             />
 
-            <Button text="Review Transfer" />
+            <Button text="Review Transfer" onPress={this.reviewTransaction} />
           </>
         ) : (
           <>
             <Border />
+            <Code />
             <Input
               label="Haven  Address"
               type="cell"
@@ -117,7 +119,7 @@ class Transfer extends Component {
               placeholder="Select Asset"
               onChangeText={fromAsset => this.setState({ fromAsset })}
             />
-            <Button text="Copy Address" onPress={this.reviewTransaction} />
+            <Button text="Copy Address" />
           </>
         )}
       </Container>

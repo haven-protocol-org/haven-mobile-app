@@ -61,18 +61,19 @@ class TabNavgation extends Component {
       );
     };
 
+    const ModalState = () => {
+      return (
+        <Stack.Navigator headerShown={false} headerBackTitle={"Close"}>
+          <Stack.Screen name="Review" component={Review} />
+        </Stack.Navigator>
+      );
+    };
+
     const TransferStack = () => {
       return (
-        <Stack.Navigator screenOptions={headerOptions}>
+        <Stack.Navigator screenOptions={headerOptions} mode="modal">
           <Stack.Screen name="Transfer" component={Transfer} />
-          <Stack.Screen
-            name="Review"
-            component={Review}
-            navigateOptions={{
-              mode: "modal",
-              headerMode: "none"
-            }}
-          />
+          <Stack.Screen name="Review" component={Review} />
         </Stack.Navigator>
       );
     };
@@ -107,7 +108,6 @@ class TabNavgation extends Component {
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
-            // You can return any component that you like here!
             return <TabIcon focused={focused} route={route} />;
           }
         })}

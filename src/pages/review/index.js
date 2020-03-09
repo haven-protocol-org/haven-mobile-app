@@ -1,11 +1,11 @@
 // Library Imports
 import React, { Component } from "react";
-import { ScrollView, WebView } from "react-native";
+import { ScrollView } from "react-native";
 import Charts from "../../components/charts/index.js";
 import SectionHeader from "../../components/section-header/index.js";
 import Transaction from "../../components/transactions/index.js";
 import PageWrapper from "../../components/page-wrapper/index.js";
-import BalanceStatistic from "../../components/balance-statistics/index.js";
+import { Primary } from "../../constants/type.js";
 
 // Relative Imports
 import { Container } from "./styles";
@@ -16,7 +16,7 @@ class Review extends Component {
       <ScrollView>
         <Container>
           <PageWrapper>
-            <BalanceStatistic />
+            <Primary>label</Primary>
           </PageWrapper>
         </Container>
       </ScrollView>

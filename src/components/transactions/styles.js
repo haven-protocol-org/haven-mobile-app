@@ -8,6 +8,7 @@ export const Container = styled.TouchableOpacity`
   border: ${props => props.theme.body.border};
   padding: 12px 0px 0px 0px;
   margin: 10px;
+  overflow: hidden;
 `;
 
 export const State = styled.View`
