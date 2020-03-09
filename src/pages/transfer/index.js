@@ -21,9 +21,9 @@ class Transfer extends Component {
     token: ""
   };
 
-  changeTabs = event => {
+  changeTabs = selectedIndex => {
     this.setState({
-      selectedIndex: event.nativeEvent.selectedSegmentIndex
+      selectedIndex: selectedIndex
     });
   };
 
@@ -60,7 +60,7 @@ class Transfer extends Component {
         <SegmentedController
           values={values}
           selectedIndex={selectedIndex}
-          onChange={this.changeTabs}
+          onPress={this.changeTabs}
         />
         {selectedIndex == 0 ? (
           <>

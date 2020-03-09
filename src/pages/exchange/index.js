@@ -21,9 +21,9 @@ class Exchange extends Component {
     token: ""
   };
 
-  changeTabs = event => {
+  changeTabs = selectedIndex => {
     this.setState({
-      selectedIndex: event.nativeEvent.selectedSegmentIndex
+      selectedIndex: selectedIndex
     });
   };
 
@@ -58,7 +58,7 @@ class Exchange extends Component {
         <SegmentedController
           values={values}
           selectedIndex={selectedIndex}
-          onChange={this.changeTabs}
+          onPress={this.changeTabs}
         />
         {selectedIndex == 0 ? (
           <>
@@ -137,7 +137,7 @@ class Exchange extends Component {
             />
           </>
         )}
-        <Button text="Exchange" />
+        <Button text="Review Exchange" />
       </Container>
     );
   }
