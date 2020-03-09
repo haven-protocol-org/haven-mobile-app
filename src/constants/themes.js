@@ -66,5 +66,8 @@ export const light = {
     success: "#34d8ac",
     error: "#F04747",
     warning: "#FFC246"
+  },
+  styles: {
+    radius: ["2px", "4px", "8px", "12px"]
   }
 };
