@@ -10,24 +10,13 @@ import BalanceStatistic from "../../components/balance-statistics/index.js";
 // Relative Imports
 import { Container } from "./styles";
 
-class Details extends Component {
+class Review extends Component {
   render() {
-    const { ticker } = this.props.route.params;
     return (
       <ScrollView>
         <Container>
-          <Charts token={"x" + ticker} />
           <PageWrapper>
             <BalanceStatistic />
-          </PageWrapper>
-          <PageWrapper>
-            <SectionHeader
-              title="Transaction History"
-              subtitle="Overview of your transaction history"
-            />
-            <Transaction />
-            <Transaction />
-            <Transaction />
           </PageWrapper>
         </Container>
       </ScrollView>
@@ -35,4 +24,4 @@ class Details extends Component {
   }
 }
 
-export default Details;
+export default Review;

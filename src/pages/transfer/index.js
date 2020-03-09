@@ -37,6 +37,10 @@ class Transfer extends Component {
     this.props.navigation.navigate("Tokens");
   };
 
+  reviewTransaction = () => {
+    this.props.navigation.navigate("Review");
+  };
+
   chooseToken = () => {};
 
   render() {
@@ -70,25 +74,35 @@ class Transfer extends Component {
               placeholder="Select Asset"
               onChangeText={fromAsset => this.setState({ fromAsset })}
             />
-            <Input
-              label="To Asset"
-              type="cell"
-              onPress={this.selectToken}
-              value={toAsset}
-              placeholder="Select Asset"
-              onChangeText={amount => this.setState({ toAsset })}
-            />
+
             <Input
               label="Amount"
               type="input"
-              border="none"
               placeholder="Enter Amount"
               value={fromAmount}
               onChange={this.changeInput}
               onChangeText={fromAmount => this.setState({ fromAmount })}
             />
+            <Input
+              label="Recipient"
+              type="input"
+              placeholder="Enter recipient"
+              value={fromAmount}
+              onChange={this.changeInput}
+              onChangeText={fromAmount => this.setState({ fromAmount })}
+            />
 
-            <Button text="Transfer" />
+            <Input
+              label="Payment ID (Opitional)"
+              type="input"
+              border="none"
+              placeholder="Enter payment id"
+              value={fromAmount}
+              onChange={this.changeInput}
+              onChangeText={fromAmount => this.setState({ fromAmount })}
+            />
+
+            <Button text="Review Transfer" />
           </>
         ) : (
           <>
@@ -103,7 +117,7 @@ class Transfer extends Component {
               placeholder="Select Asset"
               onChangeText={fromAsset => this.setState({ fromAsset })}
             />
-            <Button text="Copy Address" />
+            <Button text="Copy Address" onPress={this.reviewTransaction} />
           </>
         )}
       </Container>

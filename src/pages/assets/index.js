@@ -25,7 +25,9 @@ class Assets extends Component {
       return (
         <Token
           onPress={() =>
-            this.props.navigation.navigate("Details", { ticker: ticker })
+            this.props.navigation.navigate("Details", {
+              ticker: ticker
+            })
           }
           key={ticker}
           token={token}

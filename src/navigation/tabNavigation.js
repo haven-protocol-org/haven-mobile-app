@@ -13,6 +13,7 @@ import Transfer from "../pages/transfer";
 import Settings from "../pages/settings";
 import Tokens from "../pages/tokens";
 import Explorer from "../pages/explorer";
+import Review from "../pages/review";
 
 const headerOptions = {
   headerStyle: {
@@ -64,7 +65,14 @@ class TabNavgation extends Component {
       return (
         <Stack.Navigator screenOptions={headerOptions}>
           <Stack.Screen name="Transfer" component={Transfer} />
-          <Stack.Screen name="Details" component={Details} />
+          <Stack.Screen
+            name="Review"
+            component={Review}
+            navigateOptions={{
+              mode: "modal",
+              headerMode: "none"
+            }}
+          />
         </Stack.Navigator>
       );
     };

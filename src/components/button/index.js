@@ -5,12 +5,12 @@ import React from "react";
 import { Container, Label, Wrapper } from "./styles";
 import Border from "../border";
 
-const Button = ({ text }) => {
+const Button = ({ text, onPress }) => {
   return (
     <>
       <Border />
       <Container>
-        <Wrapper>
+        <Wrapper onPress={onPress}>
           <Label>{text}</Label>
         </Wrapper>
       </Container>
