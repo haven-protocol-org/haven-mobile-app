@@ -15,9 +15,15 @@ class Review extends Component {
     return (
       <ScrollView>
         <Container>
-          <PageWrapper>
-            <Primary>label</Primary>
-          </PageWrapper>
+
+            <Primary>labeasl</Primary>
+            <Primary>labeasl</Primary>
+            <Primary>labeasl</Primary>
+            <Primary>labeasl</Primary>
+            <Primary>labeasl</Primary>
+            <Primary>labeasl</Primary>
+            <Primary>labeasl</Primary>
+
         </Container>
       </ScrollView>
     );
