@@ -72,8 +72,21 @@ class TabNavgation extends Component {
     const TransferStack = () => {
       return (
         <Stack.Navigator screenOptions={headerOptions} mode="modal">
-          <Stack.Screen name="Transfer" component={Transfer} />
-          <Stack.Screen name="Review" component={Review} />
+          <Stack.Screen
+            name="Transfer"
+            component={Transfer}
+            options={{
+              tabBarVisible: false
+            }}
+          />
+          <Stack.Screen
+            name="Review"
+            component={Review}
+            options={{
+              title: "Review Transfer",
+              tabBarVisible: false
+            }}
+          />
         </Stack.Navigator>
       );
     };
