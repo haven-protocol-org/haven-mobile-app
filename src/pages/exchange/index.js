@@ -6,9 +6,10 @@ import Input from "../../components/input";
 import Button from "../../components/button";
 import Border from "../../components/border";
 import FormContainer from "../../components/form-container";
+import ExchangeSummary from "../../components/_summaries/exchange";
 
 // Relative Imports
-import { Container, Label } from "./styles";
+import { Container, Label, Preview, PreviewLabel } from "./styles";
 
 class Exchange extends Component {
   state = {
@@ -30,7 +31,8 @@ class Exchange extends Component {
     to_ticker: "",
     to_token: "",
     to_balance: "",
-    to_amount: ""
+    to_amount: "",
+    conversion_rate: "1 XHV : 0.2127 xUSD"
   };
 
   changeTabs = selectedIndex => {
@@ -89,14 +91,6 @@ class Exchange extends Component {
     const {
       values,
       selectedIndex,
-      value,
-      text,
-      amount,
-      fromAsset,
-      toAsset,
-      fromToken,
-      fromAmount,
-      ///
       from_value,
       from_ticker,
       from_token,
@@ -106,7 +100,8 @@ class Exchange extends Component {
       to_ticker,
       to_token,
       to_balance,
-      to_amount
+      to_amount,
+      conversion_rate
     } = this.state;
 
     return (
@@ -119,44 +114,39 @@ class Exchange extends Component {
         {selectedIndex == 0 ? (
           <Fragment>
             <Border />
-            <FormContainer>
-              <Input
-                label="From Asset"
-                type="cell"
-                onPress={this.selectFromToken}
-                chooseToken={this.chooseToken}
-                value={from_value}
-                placeholder="Select Asset"
-                onChangeText={fromAsset => this.setState({ fromAsset })}
-              />
-              <Input
-                label="From Amount"
-                type="input"
-                placeholder="Enter Amount"
-                value={from_amount}
-                onChange={this.changeInput}
-                onChangeText={from_amount => this.setState({ from_amount })}
-              />
-            </FormContainer>
 
-            <FormContainer>
-              <Input
-                label="To Asset"
-                type="cell"
-                onPress={this.selectToToken}
-                value={to_value}
-                placeholder="Select Asset"
-                onChangeText={amount => this.setState({ toAsset })}
-              />
-              <Input
-                label="To Amount"
-                type="input"
-                placeholder="Enter Amount"
-                value={to_amount}
-                onChange={this.changeInput}
-                onChangeText={to_amount => this.setState({ to_amount })}
-              />
-            </FormContainer>
+            <Input
+              label="From Asset"
+              type="cell"
+              onPress={this.selectFromToken}
+              chooseToken={this.chooseToken}
+              value={from_value}
+              placeholder="Select Asset"
+            />
+            <Input
+              label="From Amount"
+              type="input"
+              placeholder="Enter Amount"
+              value={from_amount}
+              onChange={this.changeInput}
+              onChangeText={from_amount => this.setState({ from_amount })}
+            />
+
+            <Input
+              label="To Asset"
+              type="cell"
+              onPress={this.selectToToken}
+              value={to_value}
+              placeholder="Select Asset"
+            />
+            <Input
+              label="To Amount"
+              type="input"
+              placeholder="Enter Amount"
+              value={to_amount}
+              onChange={this.changeInput}
+              onChangeText={to_amount => this.setState({ to_amount })}
+            />
           </Fragment>
         ) : (
           <Fragment>
@@ -205,7 +195,18 @@ class Exchange extends Component {
             />
           </Fragment>
         )}
-        <Button text="Review Exchange" />
+        <ExchangeSummary
+          conversion_rate={conversion_rate}
+          from_asset={from_ticker}
+          from_amount={from_amount}
+          to_asset={to_ticker}
+          to_amount={to_amount}
+        />
+        <Border />
+        <Preview>
+          <PreviewLabel>Preview Exchange</PreviewLabel>
+        </Preview>
+        <Border />
       </Container>
     );
   }

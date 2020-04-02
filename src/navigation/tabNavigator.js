@@ -59,6 +59,7 @@ class TabNavgation extends Component {
         <Stack.Navigator screenOptions={headerOptions}>
           <Stack.Screen name="Exchange" component={Exchange} />
           <Stack.Screen name="Tokens" component={Tokens} />
+          <Stack.Screen name="Review" component={Review} />
         </Stack.Navigator>
       );
     };
