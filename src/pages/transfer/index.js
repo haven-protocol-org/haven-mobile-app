@@ -1,6 +1,6 @@
 // Library Imports
-import React, { Component } from "react";
-import { TextInput, View, Text } from "react-native";
+import React, { Component, Fragment } from "react";
+import { TextInput, View, Text, useNavigation } from "react-native";
 import SegmentedController from "../../components/segment_controller";
 import Input from "../../components/input";
 import Button from "../../components/button";
@@ -35,14 +35,20 @@ class Transfer extends Component {
   };
 
   selectToken = () => {
-    this.props.navigation.navigate("Tokens");
+    navigation.navigate("Tokens", {
+      itemId: 86,
+      otherParam: "anything you want here"
+    });
   };
 
   reviewTransaction = () => {
     this.props.navigation.navigate("Review");
   };
 
-  chooseToken = () => {};
+  chooseToken = () => {
+    console.log("#####################");
+    console.log("######### PRESS ###########");
+  };
 
   render() {
     const {
@@ -55,6 +61,7 @@ class Transfer extends Component {
       toAsset,
       fromAmount
     } = this.state;
+    const navigation = useNavigation();
 
     return (
       <Container>
@@ -64,7 +71,7 @@ class Transfer extends Component {
           onPress={this.changeTabs}
         />
         {selectedIndex == 0 ? (
-          <>
+          <Fragment>
             <Border />
             <Input
               label="From Asset"
@@ -104,9 +111,9 @@ class Transfer extends Component {
             />
 
             <Button text="Review Transfer" onPress={this.reviewTransaction} />
-          </>
+          </Fragment>
         ) : (
-          <>
+          <Fragment>
             <Border />
             <Code />
             <Input
@@ -120,7 +127,7 @@ class Transfer extends Component {
               onChangeText={fromAsset => this.setState({ fromAsset })}
             />
             <Button text="Copy Address" />
-          </>
+          </Fragment>
         )}
       </Container>
     );

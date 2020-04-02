@@ -1,6 +1,6 @@
 // Library Imports
 import React, { Component } from "react";
-import { ScrollView, RefreshControl } from "react-native";
+import { ScrollView, RefreshControl, useNavigation } from "react-native";
 
 // Relative Imports
 import { Container, Label, Wrapper } from "./styles";
@@ -22,6 +22,7 @@ class Tokens extends Component {
   renderTokens = () => {
     return assets.map(asset => {
       const { token, ticker, price, change } = asset;
+      const { type, onPress } = this.props.route.params;
 
       return (
         <Token
@@ -30,6 +31,7 @@ class Tokens extends Component {
           ticker={"x" + ticker}
           price={price}
           change={change}
+          onPress={() => onPress({ token, ticker, type })}
         />
       );
     });
