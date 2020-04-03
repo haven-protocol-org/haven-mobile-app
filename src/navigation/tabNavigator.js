@@ -4,16 +4,19 @@ import { View, WebView } from "react-native";
 import TabIcon from "../components/tab_icon";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
 
 // Relative Imports
 import Assets from "../pages/assets";
 import Details from "../pages/details";
 import Exchange from "../pages/exchange";
-import Transfer from "../pages/transfer";
+import Transfer from "../pages/transfer/index.js";
+
 import Settings from "../pages/settings";
 import Tokens from "../pages/tokens";
 import Explorer from "../pages/explorer";
 import Review from "../pages/review";
+import Signup from "../pages/signup/index.js";
 
 const headerOptions = {
   headerStyle: {
@@ -72,24 +75,10 @@ class TabNavgation extends Component {
       );
     };
 
-    const TransferStack = () => {
+    const TransferStack = ({ navigation }) => {
       return (
-        <Stack.Navigator screenOptions={headerOptions} mode="modal">
-          <Stack.Screen
-            name="Transfer"
-            component={Transfer}
-            options={{
-              tabBarVisible: false
-            }}
-          />
-          <Stack.Screen
-            name="Review"
-            component={Review}
-            options={{
-              title: "Review Transfer",
-              tabBarVisible: false
-            }}
-          />
+        <Stack.Navigator screenOptions={headerOptions}>
+          <Stack.Screen name="Transfer" component={Transfer} />
         </Stack.Navigator>
       );
     };
@@ -121,27 +110,29 @@ class TabNavgation extends Component {
       );
     };
     return (
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            return <TabIcon focused={focused} route={route} />;
-          }
-        })}
-        tabBarOptions={{
-          activeTintColor: "#ffffff",
-          inactiveTintColor: "#8A8D90",
-          activeBackgroundColor: `${props => props.theme.body.background}`,
-          inactiveBackgroundColor: `${props => props.theme.body.background}`,
-          style: {
-            backgroundColor: "#2B2E32"
-          }
-        }}
-      >
-        <Tab.Screen name="Assets" component={AssetStack} />
-        <Tab.Screen name="Exchange" component={ExchangeStack} />
-        <Tab.Screen name="Transfer" component={TransferStack} />
-        <Tab.Screen name="Settings" component={SettingsStack} />
-      </Tab.Navigator>
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              return <TabIcon focused={focused} route={route} />;
+            }
+          })}
+          tabBarOptions={{
+            activeTintColor: "#ffffff",
+            inactiveTintColor: "#8A8D90",
+            activeBackgroundColor: `${props => props.theme.body.background}`,
+            inactiveBackgroundColor: `${props => props.theme.body.background}`,
+            style: {
+              backgroundColor: "#2B2E32"
+            }
+          }}
+        >
+          <Tab.Screen name="Assets" component={AssetStack} />
+          <Tab.Screen name="Exchange" component={ExchangeStack} />
+          <Tab.Screen name="Transfer" component={TransferStack} />
+          <Tab.Screen name="Settings" component={SettingsStack} />
+        </Tab.Navigator>
+      </NavigationContainer>
     );
   }
 }

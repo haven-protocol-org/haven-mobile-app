@@ -11,7 +11,7 @@ export const Container = styled.View`
 export const Wrapper = styled.TouchableOpacity`
   width: 100%;
   height: auto;
-  padding: 16px;
+  padding: 12px;
   display: flex;
   align-items: center;
   justify-content: center;

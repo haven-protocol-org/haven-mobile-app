@@ -1,6 +1,6 @@
 // Library Imports
 import React, { Component, Fragment } from "react";
-import { TextInput, View, Text, useNavigation } from "react-native";
+import { TextInput, View, Text } from "react-native";
 import SegmentedController from "../../components/segment_controller";
 import Input from "../../components/input";
 import Button from "../../components/button";
@@ -8,7 +8,7 @@ import Border from "../../components/border";
 import Code from "../../components/qr-code";
 
 // Relative Imports
-import { Container, Label } from "./styles";
+import { Container, Label, PreviewLabel, Preview } from "./styles";
 
 class Transfer extends Component {
   state = {
@@ -35,7 +35,7 @@ class Transfer extends Component {
   };
 
   selectToken = () => {
-    navigation.navigate("Tokens", {
+    this.props.navigation.navigate("Tokens", {
       itemId: 86,
       otherParam: "anything you want here"
     });
@@ -61,7 +61,6 @@ class Transfer extends Component {
       toAsset,
       fromAmount
     } = this.state;
-    const navigation = useNavigation();
 
     return (
       <Container>
@@ -70,7 +69,7 @@ class Transfer extends Component {
           selectedIndex={selectedIndex}
           onPress={this.changeTabs}
         />
-        {selectedIndex == 0 ? (
+        {this.state.selectedIndex === 0 ? (
           <Fragment>
             <Border />
             <Input
@@ -109,8 +108,11 @@ class Transfer extends Component {
               onChange={this.changeInput}
               onChangeText={fromAmount => this.setState({ fromAmount })}
             />
-
-            <Button text="Review Transfer" onPress={this.reviewTransaction} />
+            <Border />
+            <Preview onPress={this.handleReview}>
+              <PreviewLabel>Preview</PreviewLabel>
+            </Preview>
+            <Border />
           </Fragment>
         ) : (
           <Fragment>

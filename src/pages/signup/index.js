@@ -2,9 +2,9 @@
 import React from "react";
 
 // Relative Imports
-
+import { Container } from "./styles";
 const SignIn = ({ navigation }) => {
-  return;
+  return <Container />;
 };
 
 export default SignIn;

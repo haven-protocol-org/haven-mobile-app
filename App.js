@@ -15,10 +15,8 @@ class App extends Component {
   render() {
     return (
       <ThemeProvider theme={this.state.theme}>
-        <NavigationContainer>
-          <StatusBar barStyle="light-content" />
-          <TabNavgation />
-        </NavigationContainer>
+        <StatusBar barStyle="light-content" />
+        <TabNavgation />
       </ThemeProvider>
     );
   }

@@ -32,12 +32,38 @@ class Exchange extends Component {
     to_token: "",
     to_balance: "",
     to_amount: "",
-    conversion_rate: "1 XHV : 0.2127 xUSD"
+    conversion_rate: "1 XHV : 0.2127 xUSD",
+    isValid: true
   };
 
   changeTabs = selectedIndex => {
     this.setState({
       selectedIndex: selectedIndex
+    });
+  };
+
+  handleReview = () => {
+    const {
+      from_ticker,
+      from_value,
+      from_token,
+      from_amount,
+      to_ticker,
+      to_value,
+      to_token,
+      to_amount
+    } = this.state;
+
+    this.props.navigation.navigate("Review", {
+      from_ticker,
+      from_value,
+      from_token,
+      from_amount,
+      to_ticker,
+      to_value,
+      to_token,
+      to_amount,
+      type: "Exchange"
     });
   };
 
@@ -104,6 +130,16 @@ class Exchange extends Component {
       conversion_rate
     } = this.state;
 
+    // if (from_ticker && from_amount && to_ticker && to_amount) {
+    //   return this.setState({
+    //     isvalid: true
+    //   });
+    // } else {
+    //   return this.setState({
+    //     isvalid: false
+    //   });
+    // }
+
     return (
       <Container>
         <SegmentedController
@@ -114,7 +150,6 @@ class Exchange extends Component {
         {selectedIndex == 0 ? (
           <Fragment>
             <Border />
-
             <Input
               label="From Asset"
               type="cell"
@@ -154,44 +189,50 @@ class Exchange extends Component {
             <Input
               label="From Asset"
               type="cell"
-              onPress={this.selectToken}
+              onPress={this.selectFromToken}
               chooseToken={this.chooseToken}
-              value={fromAsset}
+              value={from_value}
               placeholder="Select Asset"
-              onChangeText={fromAsset => this.setState({ fromAsset })}
             />
+            <Input
+              label="From Amount"
+              type="input"
+              placeholder="Enter Amount"
+              value={from_amount}
+              onChange={this.changeInput}
+              onChangeText={from_amount => this.setState({ from_amount })}
+            />
+
             <Input
               label="To Asset"
               type="cell"
-              onPress={this.selectToken}
-              value={toAsset}
+              onPress={this.selectToToken}
+              value={to_value}
               placeholder="Select Asset"
-              onChangeText={amount => this.setState({ toAsset })}
             />
             <Input
-              label="Amount"
+              label="To Amount"
               type="input"
               placeholder="Enter Amount"
-              value={fromAmount}
+              value={to_amount}
               onChange={this.changeInput}
-              onChangeText={fromAmount => this.setState({ fromAmount })}
+              onChangeText={to_amount => this.setState({ to_amount })}
             />
             <Input
               label="To Address"
               type="input"
-              placeholder="Enter Amount"
-              value={fromAmount}
+              placeholder="Enter recipient address"
+              value={to_amount}
               onChange={this.changeInput}
-              onChangeText={fromAmount => this.setState({ fromAmount })}
+              onChangeText={to_amount => this.setState({ to_amount })}
             />
             <Input
-              label="Payment ID"
+              label="Priority"
               type="input"
-              border="none"
-              placeholder="Enter Amount"
-              value={fromAmount}
+              placeholder="Select Priority"
+              value={to_amount}
               onChange={this.changeInput}
-              onChangeText={fromAmount => this.setState({ fromAmount })}
+              onChangeText={to_amount => this.setState({ to_amount })}
             />
           </Fragment>
         )}
@@ -203,8 +244,8 @@ class Exchange extends Component {
           to_amount={to_amount}
         />
         <Border />
-        <Preview>
-          <PreviewLabel>Preview Exchange</PreviewLabel>
+        <Preview onPress={this.handleReview}>
+          <PreviewLabel>Preview</PreviewLabel>
         </Preview>
         <Border />
       </Container>
