@@ -9,14 +9,30 @@ import { dark, light } from "./src/constants/themes.js";
 
 class App extends Component {
   state = {
-    theme: dark
+    theme: dark,
+    initialRouteName: "Exchange",
+    authenticated: true,
+    barStyle: "light-content"
+  };
+
+  authenticateUser = () => {
+    this.setState({
+      authenticated: true
+    });
   };
 
   render() {
+    const { theme, initialRouteName, authenticated, barStyle } = this.state;
     return (
-      <ThemeProvider theme={this.state.theme}>
-        <StatusBar barStyle="light-content" />
-        <TabNavgation />
+      <ThemeProvider theme={theme}>
+        <StatusBar barStyle={barStyle} />
+        <NavigationContainer>
+          <TabNavgation
+            authenticated={authenticated}
+            initialRouteName={initialRouteName}
+            authenticateUser={this.authenticateUser}
+          />
+        </NavigationContainer>
       </ThemeProvider>
     );
   }

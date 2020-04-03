@@ -32,11 +32,24 @@ const Input = ({
             secureTextEntry={secureTextEntry}
           />
         )}
+        {type === "description" && (
+          <Field
+            placeholder={placeholder}
+            onChangeText={onChangeText}
+            value={value}
+            returnKeyType="done"
+            keyboardType="text
+            secureTextEntry={secureTextEntry}
+            multiline={true}
+            numberOfLines={8}
+          />
+        )}
         {type === "cell" && (
           <Cell onPress={onPress}>
             <Name>{value.length > 1 ? value : placeholder}</Name>
           </Cell>
         )}
+
         {type === "toggle" && (
           <Toggle>
             <Name>{value}</Name>

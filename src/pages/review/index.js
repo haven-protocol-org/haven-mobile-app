@@ -9,9 +9,10 @@ import { Primary } from "../../constants/type.js";
 import TransactionDetail from "../../components/transaction-details/index.js";
 import Button from "../../components/button/index.js";
 import ExchangeConfirmation from "../../components/_summaries/exchange_confirmation";
+import Border from "../../components/border/index.js";
 
 // Relative Imports
-import { Container } from "./styles";
+import { Container, Overview, Amount } from "./styles";
 
 class Review extends Component {
   state = { token: "XHV", title: "" };
@@ -34,7 +35,7 @@ class Review extends Component {
   };
 
   render() {
-    const { type } = this.props.route.params;
+    const { type, to_amount, to_ticker } = this.props.route.params;
     this.props.navigation.setOptions({
       title: this.state.title,
       headerBackTitle: ""
@@ -42,6 +43,12 @@ class Review extends Component {
     });
     return (
       <Container>
+        <Overview>
+          <Amount>
+            {to_amount} {to_ticker}
+          </Amount>
+        </Overview>
+        <Border />
         <PageWrapper>
           {type === "Exchange" && <ExchangeConfirmation />}
         </PageWrapper>

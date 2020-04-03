@@ -16,7 +16,9 @@ import Settings from "../pages/settings";
 import Tokens from "../pages/tokens";
 import Explorer from "../pages/explorer";
 import Review from "../pages/review";
-import Signup from "../pages/signup/index.js";
+
+import Signup from "../pages/_auth/signup";
+import Create from "../pages/_auth/create/index.js";
 
 const headerOptions = {
   headerStyle: {
@@ -109,30 +111,35 @@ class TabNavgation extends Component {
         </Stack.Navigator>
       );
     };
-    return (
-      <NavigationContainer>
-        <Tab.Navigator
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
-              return <TabIcon focused={focused} route={route} />;
-            }
-          })}
-          tabBarOptions={{
-            activeTintColor: "#ffffff",
-            inactiveTintColor: "#8A8D90",
-            activeBackgroundColor: `${props => props.theme.body.background}`,
-            inactiveBackgroundColor: `${props => props.theme.body.background}`,
-            style: {
-              backgroundColor: "#2B2E32"
-            }
-          }}
-        >
-          <Tab.Screen name="Assets" component={AssetStack} />
-          <Tab.Screen name="Exchange" component={ExchangeStack} />
-          <Tab.Screen name="Transfer" component={TransferStack} />
-          <Tab.Screen name="Settings" component={SettingsStack} />
-        </Tab.Navigator>
-      </NavigationContainer>
+
+    return this.props.authenticated ? (
+      <Stack.Navigator screenOptions={headerOptions}>
+        <Stack.Screen name="Signup" component={Signup} />
+        <Stack.Screen name="Create" component={Create} />
+      </Stack.Navigator>
+    ) : (
+      <Tab.Navigator
+        initialRouteName={this.props.initialRouteName}
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            return <TabIcon focused={focused} route={route} />;
+          }
+        })}
+        tabBarOptions={{
+          activeTintColor: "#ffffff",
+          inactiveTintColor: "#8A8D90",
+          activeBackgroundColor: `${props => props.theme.body.background}`,
+          inactiveBackgroundColor: `${props => props.theme.body.background}`,
+          style: {
+            backgroundColor: "#2B2E32"
+          }
+        }}
+      >
+        <Tab.Screen name="Assets" component={AssetStack} />
+        <Tab.Screen name="Exchange" component={ExchangeStack} />
+        <Tab.Screen name="Transfer" component={TransferStack} />
+        <Tab.Screen name="Settings" component={SettingsStack} />
+      </Tab.Navigator>
     );
   }
 }
