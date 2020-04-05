@@ -96,24 +96,14 @@ class TabNavgation extends Component {
 
     const SettingsStack = () => {
       return (
-        <Stack.Navigator
-          screenOptions={{
-            headerStyle: {
-              backgroundColor: "#2B2E32"
-            },
-            headerTintColor: "#ffffff",
-            headerTitleStyle: {
-              fontWeight: "bold"
-            }
-          }}
-        >
+        <Stack.Navigator screenOptions={headerOptions}>
           <Stack.Screen name="Settings" component={Settings} />
         </Stack.Navigator>
       );
     };
 
     return this.props.authenticated ? (
-      <Stack.Navigator screenOptions={headerOptions}>
+      <Stack.Navigator screenOptions={headerOptions} mode="modal">
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="Create" component={Create} />
       </Stack.Navigator>

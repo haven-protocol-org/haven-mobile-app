@@ -22,3 +22,10 @@ export const Balance = styled.Text`
   font-weight: bold;
   color: ${props => props.theme.type.primary};
 `;
+
+export const Information = styled.Text`
+  font-size: 12px;
+  color: ${props => props.theme.type.secondary};
+  letter-spacing: 0;
+  line-height: 21px;
+`;

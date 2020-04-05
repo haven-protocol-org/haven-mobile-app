@@ -1,5 +1,5 @@
 // Library Imports
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { TextInput, Switch } from "react-native";
 
 // Relative Imports
@@ -16,10 +16,11 @@ const Input = ({
   chooseToken,
   onPress,
   secureTextEntry,
-  toggle
+  toggle,
+  ...rest
 }) => {
   return (
-    <>
+    <Fragment>
       <Container>
         <Label>{label}</Label>
         {type === "input" && (
@@ -32,18 +33,7 @@ const Input = ({
             secureTextEntry={secureTextEntry}
           />
         )}
-        {type === "description" && (
-          <Field
-            placeholder={placeholder}
-            onChangeText={onChangeText}
-            value={value}
-            returnKeyType="done"
-            keyboardType="text
-            secureTextEntry={secureTextEntry}
-            multiline={true}
-            numberOfLines={8}
-          />
-        )}
+
         {type === "cell" && (
           <Cell onPress={onPress}>
             <Name>{value.length > 1 ? value : placeholder}</Name>
@@ -58,8 +48,21 @@ const Input = ({
         )}
       </Container>
       {border === "none" ? null : <Border />}
-    </>
+    </Fragment>
   );
 };
 
 export default Input;
+
+/*{type === "description" && (
+  <Field
+    placeholder={placeholder}
+    onChangeText={onChangeText}
+    value={value}
+    returnKeyType="done"
+    keyboardType="text
+    secureTextEntry={secureTextEntry}
+    multiline={true}
+    numberOfLines={8}
+  />
+)}*/
