@@ -1,12 +1,24 @@
 // Library Imports
 import React, { Component } from "react";
-
+import { TouchableOpacity, Text } from "react-native";
 // Relative Imports
-import { Container, Button, Label, Box, Inner, Row, Header } from "./styles";
+import {
+  Container,
+  Button,
+  Label,
+  Box,
+  Inner,
+  Row,
+  Header,
+  Image,
+  ImageWrapper,
+  ButtonLabel
+} from "./styles";
 import Input from "../../../components/input/index.js";
 import Description from "../../../components/description/index.js";
 import { Information } from "../../../constants/type.js";
 import Border from "../../../components/border/index.js";
+import vault from "../../../assets/illustration/vault/vault.png";
 
 class Create extends Component {
   state = {
@@ -15,12 +27,6 @@ class Create extends Component {
     generated_seed:
       "rift oxidant edited atrium hydrogen height gather leopard demonstrate lectures kangaroo kisses relic happens coexist inmate needed evaluate cigar enlist aching tribal losing meant relic"
   };
-
-  onComponentDidMount() {
-    this.props.navigation.setOptions({
-      headerBackTitle: "hi"
-    });
-  }
 
   routeToLogin = () => {
     this.props.navigation.goBack();
@@ -42,22 +48,11 @@ class Create extends Component {
         return (
           <Box>
             <Inner>
-              <Header>
-                <Label>Seed Phrase</Label>
-              </Header>
-              <Border />
-              <Input
-                label="Create Password"
-                value={this.state.password}
-                placeholder="Enter seed"
-                type="input"
-                border="none"
-              />
-              <Description
-                label="Enter Seed"
-                value={this.state.generated_seed}
-                placeholder="Enter seed"
-              />
+              <ImageWrapper>
+                <Image
+                  source={require("../../../assets/illustration/vault/vault.png")}
+                />
+              </ImageWrapper>
               <Row>
                 <Information>
                   Upon clicking "Next" your Haven Vault Seed Phrase will be
@@ -67,10 +62,10 @@ class Create extends Component {
               </Row>
               <Row>
                 <Button onPress={this.routeToLogin}>
-                  <Label>Back</Label>
+                  <ButtonLabel>Back</ButtonLabel>
                 </Button>
                 <Button onPress={this.handleCreate}>
-                  <Label>Next</Label>
+                  <ButtonLabel>Next</ButtonLabel>
                 </Button>
               </Row>
             </Inner>
@@ -79,21 +74,29 @@ class Create extends Component {
       case 2:
         return (
           <Box>
+            {this.props.navigation.setOptions({
+              title: "Vault Security"
+            })}
             <Inner>
-              <Header>
-                <Label>Seed Phrase</Label>
-              </Header>
-              <Border />
-              <Description
-                label="Enter Seed"
-                value={this.state.generated_seed}
+              <Input
+                label="Create a Password"
+                type="input"
+                value={"password"}
+                border="none"
+                placeholder="Enter seed"
+              />
+              <Input
+                label="Vault Name"
+                type="input"
+                value={"name"}
+                border="none"
                 placeholder="Enter seed"
               />
               <Row>
                 <Information>
-                  Upon clicking "Next" your Haven Vault Seed Phrase will be
-                  revealed. Have a Password Manager ready, ensure you're not on
-                  public or unsecured wifi
+                  Creating a new wallet with a name and password means you'll be
+                  able to login without entering your seed phrase. This makes
+                  your experience more secure, safe and efficient.
                 </Information>
               </Row>
               <Row>
@@ -110,7 +113,61 @@ class Create extends Component {
       case 3:
         return (
           <Box>
-            <Label>BOX THREE</Label>
+            {this.props.navigation.setOptions({
+              title: "Seed Phrase"
+            })}
+            <Inner>
+              <Description
+                label="Enter Seed"
+                value={this.state.generated_seed}
+                placeholder="Enter seed"
+              />
+              <Row>
+                <Information>
+                  Upon clicking "Next" your Haven Vault Seed Phrase will be
+                  revealed. Have a Password Manager ready, ensure you're not on
+                  public or unsecured wifi
+                </Information>
+              </Row>
+              <Row>
+                <Button onPress={this.routeToLogin}>
+                  <Label>Back</Label>
+                </Button>
+                <Button onPress={this.handleCreate}>
+                  <Label>Next</Label>
+                </Button>
+              </Row>
+            </Inner>
+          </Box>
+        );
+      case 4:
+        return (
+          <Box>
+            {this.props.navigation.setOptions({
+              title: "Validate Seed"
+            })}
+            <Inner>
+              <Description
+                label="Enter seed"
+                value={""}
+                placeholder="Enter seed"
+              />
+              <Row>
+                <Information>
+                  Upon clicking "Next" your Haven Vault Seed Phrase will be
+                  revealed. Have a Password Manager ready, ensure you're not on
+                  public or unsecured wifi
+                </Information>
+              </Row>
+              <Row>
+                <Button onPress={this.routeToLogin}>
+                  <Label>Back</Label>
+                </Button>
+                <Button onPress={this.handleCreate}>
+                  <Label>Next</Label>
+                </Button>
+              </Row>
+            </Inner>
           </Box>
         );
 
@@ -121,8 +178,14 @@ class Create extends Component {
 
   render() {
     this.props.navigation.setOptions({
-      title: "Create a Vault",
-      headerBackTitle: "Cancel"
+      headerBackTitle: "Back",
+      headerRight: () => (
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate("Security")}
+        >
+          <Text>Next</Text>
+        </TouchableOpacity>
+      )
     });
     return <Container>{this.renderBox()}</Container>;
   }

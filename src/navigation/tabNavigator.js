@@ -1,6 +1,6 @@
 // Library Imports
 import React, { Component } from "react";
-import { View, WebView } from "react-native";
+import { View, WebView, Button } from "react-native";
 import TabIcon from "../components/tab_icon";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -18,7 +18,10 @@ import Explorer from "../pages/explorer";
 import Review from "../pages/review";
 
 import Signup from "../pages/_auth/signup";
-import Create from "../pages/_auth/create/index.js";
+import Create from "../pages/_auth/create";
+import Security from "../pages/_auth/security";
+import Seed from "../pages/_auth/seed";
+import Validate from "../pages/_auth/validate";
 
 const headerOptions = {
   headerStyle: {
@@ -102,11 +105,32 @@ class TabNavgation extends Component {
       );
     };
 
+    const AuthStack = ({ navigation }) => {
+      return (
+        <Stack.Navigator screenOptions={headerOptions}>
+          <Stack.Screen name="Signup" component={Signup} />
+          <Stack.Screen name="Security" component={Security} />
+          <Stack.Screen name="Seed" component={Seed} />
+          <Stack.Screen name="Validate" component={Validate} />
+          <Stack.Screen
+            name="Create"
+            component={Create}
+            options={{
+              headerRight: () => (
+                <Button
+                  onPress={() => navigation.navigate("Security")}
+                  title="Next"
+                  color="#fff"
+                />
+              )
+            }}
+          />
+        </Stack.Navigator>
+      );
+    };
+
     return this.props.authenticated ? (
-      <Stack.Navigator screenOptions={headerOptions} mode="modal">
-        <Stack.Screen name="Signup" component={Signup} />
-        <Stack.Screen name="Create" component={Create} />
-      </Stack.Navigator>
+      <AuthStack />
     ) : (
       <Tab.Navigator
         initialRouteName={this.props.initialRouteName}
