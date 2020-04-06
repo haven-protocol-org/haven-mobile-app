@@ -3,21 +3,22 @@ import React, { Component } from "react";
 
 // Relative Imports
 import { Container, Button, Label } from "./styles";
+import Next from "../../../components/next";
 
 class Seed extends Component {
   routeUser = () => {
     this.props.navigation.navigate("Create");
   };
   render() {
+    this.props.navigation.setOptions({
+      headerBackTitleVisible: false,
+      headerRight: () => (
+        <Next onPress={() => this.props.navigation.navigate("Validate")} />
+      )
+    });
     return (
       <Container>
-        <Label>SEED</Label>
-        <Button>
-          <Label>Seed</Label>
-        </Button>
-        <Button>
-          <Label onPress={this.routeUser}>Create</Label>
-        </Button>
+        <Label>Display Seed</Label>
       </Container>
     );
   }

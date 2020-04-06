@@ -14,11 +14,11 @@ import {
   ImageWrapper,
   ButtonLabel
 } from "./styles";
-import Input from "../../../components/input/index.js";
-import Description from "../../../components/description/index.js";
+import Input from "../../../components/input";
+import Description from "../../../components/description";
 import { Information } from "../../../constants/type.js";
-import Border from "../../../components/border/index.js";
-import vault from "../../../assets/illustration/vault/vault.png";
+import Border from "../../../components/border";
+import Next from "../../../components/next";
 
 class Create extends Component {
   state = {
@@ -59,14 +59,6 @@ class Create extends Component {
                   revealed. Have a Password Manager ready, ensure you're not on
                   public or unsecured wifi
                 </Information>
-              </Row>
-              <Row>
-                <Button onPress={this.routeToLogin}>
-                  <ButtonLabel>Back</ButtonLabel>
-                </Button>
-                <Button onPress={this.handleCreate}>
-                  <ButtonLabel>Next</ButtonLabel>
-                </Button>
               </Row>
             </Inner>
           </Box>
@@ -179,12 +171,9 @@ class Create extends Component {
   render() {
     this.props.navigation.setOptions({
       headerBackTitle: "Back",
+      headerBackTitleVisible: false,
       headerRight: () => (
-        <TouchableOpacity
-          onPress={() => this.props.navigation.navigate("Security")}
-        >
-          <Text>Next</Text>
-        </TouchableOpacity>
+        <Next onPress={() => this.props.navigation.navigate("Security")} />
       )
     });
     return <Container>{this.renderBox()}</Container>;
