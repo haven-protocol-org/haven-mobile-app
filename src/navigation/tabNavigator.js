@@ -108,30 +108,16 @@ class TabNavgation extends Component {
     const AuthStack = ({ navigation }) => {
       return (
         <Stack.Navigator screenOptions={headerOptions}>
-          <Stack.Screen name="Signup" component={Signup} />
+          <Stack.Screen name="Sign Up" component={Signup} />
+          <Stack.Screen name="Create" component={Create} />
           <Stack.Screen name="Security" component={Security} />
           <Stack.Screen name="Seed" component={Seed} />
           <Stack.Screen name="Validate" component={Validate} />
-          <Stack.Screen
-            name="Create"
-            component={Create}
-            options={{
-              headerRight: () => (
-                <Button
-                  onPress={() => navigation.navigate("Security")}
-                  title="Next"
-                  color="#fff"
-                />
-              )
-            }}
-          />
         </Stack.Navigator>
       );
     };
 
-    return this.props.authenticated ? (
-      <AuthStack />
-    ) : (
+    const TabStack = (
       <Tab.Navigator
         initialRouteName={this.props.initialRouteName}
         screenOptions={({ route }) => ({
@@ -155,6 +141,8 @@ class TabNavgation extends Component {
         <Tab.Screen name="Settings" component={SettingsStack} />
       </Tab.Navigator>
     );
+
+    return this.props.authenticated ? <AuthStack /> : <TabStack />;
   }
 }
 

@@ -11,12 +11,11 @@ class Login extends Component {
   render() {
     return (
       <Container>
-        <Label>SIGN IN</Label>
         <Button>
-          <Label>Login</Label>
+          <Label>Password</Label>
         </Button>
         <Button>
-          <Label onPress={this.routeUser}>Create</Label>
+          <Label onPress={this.routeUser}>Create a Vault</Label>
         </Button>
       </Container>
     );
