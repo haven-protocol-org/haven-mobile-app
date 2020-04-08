@@ -17,7 +17,7 @@ import Tokens from "../pages/tokens";
 import Explorer from "../pages/explorer";
 import Review from "../pages/review";
 
-import Signup from "../pages/_auth/signup";
+import Login from "../pages/_auth/login";
 import Create from "../pages/_auth/create";
 import Security from "../pages/_auth/security";
 import Seed from "../pages/_auth/seed";
@@ -108,7 +108,7 @@ class TabNavgation extends Component {
     const AuthStack = ({ navigation }) => {
       return (
         <Stack.Navigator screenOptions={headerOptions}>
-          <Stack.Screen name="Sign Up" component={Signup} />
+          <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Create" component={Create} />
           <Stack.Screen name="Security" component={Security} />
           <Stack.Screen name="Seed" component={Seed} />
