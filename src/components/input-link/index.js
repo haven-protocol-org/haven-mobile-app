@@ -16,7 +16,7 @@ import {
   Row
 } from "./styles";
 
-const InputLink = ({ value, label, onPress }) => {
+const InputLink = ({ value, label, onPress, border }) => {
   return (
     <Container onPress={onPress}>
       <Label>{label}</Label>
@@ -26,6 +26,7 @@ const InputLink = ({ value, label, onPress }) => {
         </Field>
         <Icon source={require("../../assets/icon/chevron/chevron.png")} />
       </Row>
+      {border ? <Border /> : null}
     </Container>
   );
 };

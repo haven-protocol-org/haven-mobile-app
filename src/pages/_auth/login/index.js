@@ -4,12 +4,13 @@ import { connect } from "react-redux";
 import { authenticateUser } from "../../../actions";
 
 // Relative Imports
-import { Container, Button, Label, Microcopy, Footer, Link } from "./styles";
+import { Container, Button, Label, Footer, Link } from "./styles";
 import InputText from "../../../components/input-text";
 import InputLink from "../../../components/input-link";
-import { Information } from "../../../constants/type.js";
+
 import Border from "../../../components/border";
 import Next from "../../../components/next";
+import Input_Information from "../../../components/_inputs/input_information";
 
 class Login extends Component {
   state = {
@@ -24,45 +25,28 @@ class Login extends Component {
   };
 
   render() {
-    this.props.navigation.setOptions({
-      headerRight: () => (
-        <Next
-          label="Sign In"
-          onPress={() => this.props.authenticateUser(true)}
-        />
-      )
-    });
     return (
       <Fragment>
         <Border />
         <Container>
-          <InputText
-            label="Select Wallet"
-            placeholder="Enter password"
-            value={this.state.wallet}
-            border={true}
-            onChangeText={wallet => this.setState({ wallet })}
-          />
-          <InputText
-            label="Wallet Password"
-            placeholder="Enter seed"
-            value={this.state.login}
-            onChangeText={password => this.setState({ password })}
-          />
-          <Microcopy>
-            <Information>
-              Select your wallet and enter the password. If you don't see a
-              wallet, or forgot your password, then please click the Create a
-              Vault link Below
-            </Information>
-          </Microcopy>
-
           <InputLink
-            label="Select Wallet"
-            placeholder="Don't have a vault?"
-            value={"Create a vault"}
+            label="Need to Login?"
+            value={"Open a Vault"}
+            border={true}
             onPress={() => this.props.navigation.navigate("Security")}
           />
+          <InputLink
+            label="Want a vault?"
+            value={"Create a vault"}
+            border={true}
+            onPress={() => this.props.navigation.navigate("Security")}
+          />
+          <InputLink
+            label="Have a vault?"
+            value={"Restore a Vault"}
+            onPress={() => this.props.navigation.navigate("Security")}
+          />
+          <Input_Information copy="If you've already created a wallet on the Desktop or Website then click click the Restore Wallet option" />
         </Container>
         <Border />
       </Fragment>

@@ -27,6 +27,12 @@ export const Input = styled.Text`
   color: ${props => props.theme.type.primary};
 `;
 
+export const Border = styled.View`
+  background: ${props => props.theme.body.border};
+  width: 100%;
+  height: 1px;
+`;
+
 export const Field = styled.View`
   font-size: 16px;
   color: ${props => props.theme.type.primary};
@@ -36,12 +42,6 @@ export const Field = styled.View`
 export const Icon = styled.Image`
   height: 24px;
   width: 24px;
-`;
-
-export const Border = styled.View`
-  background: ${props => props.theme.body.border};
-  width: 100%;
-  height: 1px;
 `;
 
 export const Cell = styled.TouchableOpacity`
