@@ -25,6 +25,7 @@ class Validate extends Component {
   };
   render() {
     this.props.navigation.setOptions({
+      title: "Validate Seed",
       headerBackTitleVisible: false,
       headerRight: () => (
         <Next label={"Finish"} onPress={() => alert("Login Now")} />
