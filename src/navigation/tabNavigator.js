@@ -5,6 +5,7 @@ import TabIcon from "../components/tab_icon";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
+import { connect } from "react-redux";
 
 // Relative Imports
 import Assets from "../pages/assets";
@@ -45,9 +46,7 @@ const tabOptions = {
   }
 };
 
-function Asset() {}
-
-class TabNavgation extends Component {
+class TabNavigator extends Component {
   render() {
     const Tab = createBottomTabNavigator();
     const Stack = createStackNavigator();
@@ -117,7 +116,15 @@ class TabNavgation extends Component {
       );
     };
 
-    const TabStack = (
+    return this.props.authUser === "false" ? (
+      <Stack.Navigator screenOptions={headerOptions}>
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Create" component={Create} />
+        <Stack.Screen name="Security" component={Security} />
+        <Stack.Screen name="Seed" component={Seed} />
+        <Stack.Screen name="Validate" component={Validate} />
+      </Stack.Navigator>
+    ) : (
       <Tab.Navigator
         initialRouteName={this.props.initialRouteName}
         screenOptions={({ route }) => ({
@@ -141,9 +148,10 @@ class TabNavgation extends Component {
         <Tab.Screen name="Settings" component={SettingsStack} />
       </Tab.Navigator>
     );
-
-    return this.props.authenticated ? <AuthStack /> : <TabStack />;
   }
 }
+export const mapStateToProps = state => ({
+  showMenu: state.showMenu
+});
 
-export default TabNavgation;
+export default connect(mapStateToProps)(TabNavigator);

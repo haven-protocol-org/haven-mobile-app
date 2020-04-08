@@ -1,5 +1,8 @@
 // Library Imports
 import React, { Component } from "react";
+import { TouchableOpacity, Text } from "react-native";
+import { authenticateUser } from "../../actions/index.js";
+import { connect } from "react-redux";
 
 // Relative Imports
 import { Container, Form } from "./styles";
@@ -16,9 +19,16 @@ class Settings extends Component {
     });
   };
 
+  signOutUser = () => {
+    this.props.authenticateUser(false);
+  };
+
   render() {
     return (
       <Container>
+        <TouchableOpacity onPress={this.signOutUser}>
+          <Text>Sign out</Text>
+        </TouchableOpacity>
         <PageWrapper>
           <Form>
             <SectionHeader
@@ -86,4 +96,7 @@ class Settings extends Component {
   }
 }
 
-export default Settings;
+export default connect(
+  null,
+  { authenticateUser }
+)(Settings);

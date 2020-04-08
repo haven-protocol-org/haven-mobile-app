@@ -4,30 +4,25 @@ import { StatusBar, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { ThemeProvider } from "styled-components";
 
-//REDUX
-import { createStore } from "redux";
-import { Provider } from "react-redux";
-import applicationReducer from "./src/reducers/index.js";
-
 // import TabNavgation from "./src/navigation/tabNavigation.js";
-import TabNavgation from "./src/navigation/tabNavigator.js";
+import TabNavigator from "./src/navigation/tabNavigator.js";
 import { dark, light } from "./src/constants/themes.js";
 import Splash from "./src/pages/splash/index.js";
+import Application from "./Application.js";
 
-const store = createStore(applicationReducer);
+//REDUX
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+import { createStore, applyMiddleware } from "redux";
+import reducers from "./src/reducers";
+import { connect } from "react-redux";
+
+// const store = createStore(reducers, applyMiddleware(thunk));
+const store = createStore(reducers);
+
 class App extends Component {
   state = {
-    theme: dark,
-    initialRouteName: "Exchange",
-    authenticated: true,
-    barStyle: "light-content",
-    loaded: true
-  };
-
-  authenticateUser = () => {
-    this.setState({
-      authenticated: true
-    });
+    theme: dark
   };
 
   render() {
@@ -41,18 +36,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <ThemeProvider theme={theme}>
-          <StatusBar barStyle={barStyle} />
-          {loaded ? (
-            <NavigationContainer>
-              <TabNavgation
-                authenticated={authenticated}
-                initialRouteName={initialRouteName}
-                authenticateUser={this.authenticateUser}
-              />
-            </NavigationContainer>
-          ) : (
-            <Splash />
-          )}
+          <Application />
         </ThemeProvider>
       </Provider>
     );

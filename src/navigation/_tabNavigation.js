@@ -4,6 +4,7 @@ import { View, WebView } from "react-native";
 import TabIcon from "../components/tab_icon";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
+import { connect } from "react-redux";
 
 // Relative Imports
 import Assets from "../pages/assets";
@@ -117,6 +118,7 @@ class TabNavgation extends Component {
         </Stack.Navigator>
       );
     };
+
     return (
       <Tab.Navigator
         screenOptions={({ route }) => ({

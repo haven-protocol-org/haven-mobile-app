@@ -15,15 +15,15 @@ class Login extends Component {
     wallet: ""
   };
 
+  componentDidMount() {}
+
   routeUser = () => {
     this.props.navigation.navigate("Security");
   };
 
-  componentDidMount() {
-    console.log("####################");
-    console.log("LOGIN PAGE");
-    authenticateUser();
-  }
+  handleAuth = () => {
+    this.props.authenticateUser(true);
+  };
 
   render() {
     return (
@@ -50,6 +50,9 @@ class Login extends Component {
             </Information>
           </Microcopy>
           <Border />
+          <Footer onPress={this.handleAuth}>
+            <Label>Login </Label>
+          </Footer>
           <Footer onPress={this.routeUser}>
             <Label>Don't have a vault? </Label>
             <Link>Create a Vault</Link>
@@ -61,8 +64,11 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return;
-};
+export const mapStateToProps = state => ({
+  authUser: state.authUser
+});
 
-export default Login;
+export default connect(
+  mapStateToProps,
+  { authenticateUser }
+)(Login);
