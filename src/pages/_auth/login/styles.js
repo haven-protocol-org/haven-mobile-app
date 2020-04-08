@@ -26,7 +26,6 @@ export const Label = styled.Text`
 `;
 
 export const Microcopy = styled.View`
-  background: ${props => props.theme.body.foreground};
   padding: 8px 12px;
   width: 100%;
 `;

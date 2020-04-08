@@ -6,8 +6,10 @@ import { authenticateUser } from "../../../actions";
 // Relative Imports
 import { Container, Button, Label, Microcopy, Footer, Link } from "./styles";
 import InputText from "../../../components/input-text";
+import InputLink from "../../../components/input-link";
 import { Information } from "../../../constants/type.js";
-import Border from "../../../components/border/index.js";
+import Border from "../../../components/border";
+import Next from "../../../components/next";
 
 class Login extends Component {
   state = {
@@ -17,15 +19,19 @@ class Login extends Component {
 
   componentDidMount() {}
 
-  routeUser = () => {
-    this.props.navigation.navigate("Security");
-  };
-
   handleAuth = () => {
     this.props.authenticateUser(true);
   };
 
   render() {
+    this.props.navigation.setOptions({
+      headerRight: () => (
+        <Next
+          label="Sign In"
+          onPress={() => this.props.authenticateUser(true)}
+        />
+      )
+    });
     return (
       <Fragment>
         <Border />
@@ -34,6 +40,7 @@ class Login extends Component {
             label="Select Wallet"
             placeholder="Enter password"
             value={this.state.wallet}
+            border={true}
             onChangeText={wallet => this.setState({ wallet })}
           />
           <InputText
@@ -49,14 +56,13 @@ class Login extends Component {
               Vault link Below
             </Information>
           </Microcopy>
-          <Border />
-          <Footer onPress={this.handleAuth}>
-            <Label>Login </Label>
-          </Footer>
-          <Footer onPress={this.routeUser}>
-            <Label>Don't have a vault? </Label>
-            <Link>Create a Vault</Link>
-          </Footer>
+
+          <InputLink
+            label="Select Wallet"
+            placeholder="Don't have a vault?"
+            value={"Create a vault"}
+            onPress={() => this.props.navigation.navigate("Security")}
+          />
         </Container>
         <Border />
       </Fragment>

@@ -30,7 +30,7 @@ const InputText = ({
         keyboardType="decimal-pad"
         secureTextEntry={secureTextEntry}
       />
-      <Border />
+      {border ? <Border /> : null}
     </Container>
   );
 };
