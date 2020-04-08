@@ -1,5 +1,7 @@
 // Library Imports
 import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { authenticateUser } from "../../../actions";
 
 // Relative Imports
 import { Container, Button, Label, Microcopy, Footer, Link } from "./styles";
@@ -16,6 +18,13 @@ class Login extends Component {
   routeUser = () => {
     this.props.navigation.navigate("Security");
   };
+
+  componentDidMount() {
+    console.log("####################");
+    console.log("LOGIN PAGE");
+    authenticateUser();
+  }
+
   render() {
     return (
       <Fragment>
@@ -51,5 +60,9 @@ class Login extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return;
+};
 
 export default Login;
