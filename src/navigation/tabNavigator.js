@@ -18,11 +18,13 @@ import Tokens from "../pages/tokens";
 import Explorer from "../pages/explorer";
 import Review from "../pages/review";
 
+import Welcome from "../pages/_auth/welcome";
 import Login from "../pages/_auth/login";
 import Create from "../pages/_auth/create";
 import Security from "../pages/_auth/security";
 import Seed from "../pages/_auth/seed";
 import Validate from "../pages/_auth/validate";
+import Restore from "../pages/_auth/restore";
 
 const headerOptions = {
   headerStyle: {
@@ -104,22 +106,12 @@ class TabNavigator extends Component {
       );
     };
 
-    const AuthStack = ({ navigation }) => {
-      return (
-        <Stack.Navigator screenOptions={headerOptions}>
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Create" component={Create} />
-          <Stack.Screen name="Security" component={Security} />
-          <Stack.Screen name="Seed" component={Seed} />
-          <Stack.Screen name="Validate" component={Validate} />
-        </Stack.Navigator>
-      );
-    };
-
     return this.props.authUser === "false" ? (
       <Stack.Navigator screenOptions={headerOptions}>
+        <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Create" component={Create} />
+        <Stack.Screen name="Restore" component={Restore} />
         <Stack.Screen name="Security" component={Security} />
         <Stack.Screen name="Seed" component={Seed} />
         <Stack.Screen name="Validate" component={Validate} />

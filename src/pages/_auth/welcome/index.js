@@ -12,14 +12,7 @@ import Border from "../../../components/border";
 import Next from "../../../components/next";
 import Input_Information from "../../../components/_inputs/input_information";
 
-class Login extends Component {
-  state = {
-    login: "",
-    wallet: ""
-  };
-
-  componentDidMount() {}
-
+class Welcome extends Component {
   handleAuth = () => {
     this.props.authenticateUser(true);
   };
@@ -27,7 +20,6 @@ class Login extends Component {
   render() {
     return (
       <Fragment>
-        <Border />
         <Container>
           <InputLink
             label="Need to Login?"
@@ -48,7 +40,6 @@ class Login extends Component {
           />
           <Input_Information copy="To get started select an option from the list above." />
         </Container>
-        <Border />
       </Fragment>
     );
   }
@@ -61,4 +52,4 @@ export const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { authenticateUser }
-)(Login);
+)(Welcome);
