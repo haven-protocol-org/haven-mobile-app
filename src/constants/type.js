@@ -30,7 +30,8 @@ export const Information = styled.Text`
   line-height: 21px;
 `;
 
-export const Input = styled.Text`
+// Inputs and Cells
+export const Value = styled.Text`
   width: auto;
   font-size: 17px;
   line-height: 26px;
@@ -42,4 +43,15 @@ export const Label = styled.Text`
   color: ${props => props.theme.type.secondary};
   letter-spacing: 0;
   line-height: 21px;
+`;
+
+export const Field = styled.TextInput.attrs({
+  placeholderTextColor: "red"
+})`
+
+  font-size: 17px;
+  line-height: 26px;
+  /* color: ${props => props.theme.type.primary}; */
+  color: red;
+  padding-bottom: 8px;
 `;

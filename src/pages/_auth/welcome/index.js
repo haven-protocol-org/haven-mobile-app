@@ -1,6 +1,6 @@
 // Library Imports
 import React, { Component, Fragment } from "react";
-
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 // Relative Imports
 import {
   Container,
@@ -33,27 +33,29 @@ class Welcome extends Component {
           <Tagline>Finance</Tagline>
         </Column>
         <Cells>
-          <InputLink
-            label="Need to Login?"
-            value={"Open a Vault"}
-            border={true}
-            onPress={() => this.props.navigation.navigate("Login")}
-          />
-          <InputLink
-            label="Want a vault?"
-            value={"Create a vault"}
-            border={true}
-            onPress={() =>
-              this.props.navigation.navigate("Security", {
-                type: "create"
-              })
-            }
-          />
-          <InputLink
-            label="Have a vault?"
-            value={"Restore a Vault"}
-            onPress={() => this.props.navigation.navigate("Restore")}
-          />
+          <SafeAreaView>
+            <InputLink
+              label="Need to Login?"
+              value={"Open a Vault"}
+              border={true}
+              onPress={() => this.props.navigation.navigate("Login")}
+            />
+            <InputLink
+              label="Want a vault?"
+              value={"Create a vault"}
+              border={true}
+              onPress={() =>
+                this.props.navigation.navigate("Security", {
+                  type: "create"
+                })
+              }
+            />
+            <InputLink
+              label="Have a vault?"
+              value={"Restore a Vault"}
+              onPress={() => this.props.navigation.navigate("Restore")}
+            />
+          </SafeAreaView>
         </Cells>
       </Container>
     );

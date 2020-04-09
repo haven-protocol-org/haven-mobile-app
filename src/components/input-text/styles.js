@@ -20,36 +20,3 @@ export const Field = styled.TextInput.attrs({
   color: ${props => props.theme.type.primary};
   padding-bottom: 8px;
 `;
-
-export const Border = styled.View`
-  background: ${props => props.theme.body.border};
-  width: 100%;
-  height: 1px;
-`;
-
-export const Cell = styled.TouchableOpacity`
-  height: 26px;
-  width: 100%;
-  padding-bottom: 8px;
-`;
-
-export const Toggle = styled.View`
-  padding-bottom: 8px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-export const Name = styled.Text`
-  font-size: 16px;
-  color: ${props => props.theme.type.primary};
-`;
-
-export const Label = styled.Text`
-  font-size: 12px;
-  color: ${props => props.theme.type.secondary};
-  letter-spacing: 0;
-  line-height: 21px;
-  padding-bottom: 4px;
-`;

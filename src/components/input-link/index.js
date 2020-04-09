@@ -4,7 +4,7 @@ import { TextInput, Switch } from "react-native";
 
 // Relative Imports
 import { Container, Field, Row, Icon } from "./styles";
-import { Input, Label } from "../../constants/type.js";
+import { Value, Label } from "../../constants/type.js";
 import Border from "../border/index.js";
 
 const InputLink = ({ value, label, onPress, border }) => {
@@ -13,7 +13,7 @@ const InputLink = ({ value, label, onPress, border }) => {
       <Label>{label}</Label>
       <Row>
         <Field>
-          <Input>{value}</Input>
+          <Value>{value}</Value>
         </Field>
         <Icon source={require("../../assets/icon/chevron/chevron.png")} />
       </Row>
