@@ -1,9 +1,16 @@
 // Library Imports
 import React, { Component, Fragment } from "react";
-import { TextInput, Switch } from "react-native";
 
 // Relative Imports
-import { Container, Field, Label, Toggle, Border, Cell, Name } from "./styles";
+import {
+  Container,
+  Field,
+  Label,
+  Toggle,
+  Border,
+  Clipboard,
+  CopyPaste
+} from "./styles";
 
 const InputMultiline = ({
   type,
@@ -19,23 +26,35 @@ const InputMultiline = ({
   toggle,
   editable,
   scrollEnabled,
+  clipboard,
+  clipboardLabel,
   ...rest
 }) => {
   return (
-    <Container>
-      <Label>{label}</Label>
-      <Field
-        placeholder={placeholder}
-        onChangeText={onChangeText}
-        value={value}
-        returnKeyType="done"
-        secureTextEntry={secureTextEntry}
-        multiline={true}
-        scrollEnabled={scrollEnabled}
-        editable={editable}
-      />
-      <Border />
-    </Container>
+    <Fragment>
+      <Container>
+        <Label>{label}</Label>
+        <Field
+          placeholder={placeholder}
+          onChangeText={onChangeText}
+          value={value}
+          returnKeyType="done"
+          secureTextEntry={secureTextEntry}
+          multiline={true}
+          scrollEnabled={scrollEnabled}
+          editable={editable}
+        />
+        {border ? <Border /> : null}
+      </Container>
+      {clipboard && (
+        <Fragment>
+          <Border />
+          <Clipboard onPress={onPress}>
+            <CopyPaste>{clipboardLabel}</CopyPaste>
+          </Clipboard>
+        </Fragment>
+      )}
+    </Fragment>
   );
 };
 

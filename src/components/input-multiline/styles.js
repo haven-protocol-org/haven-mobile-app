@@ -28,10 +28,15 @@ export const Border = styled.View`
   height: 1px;
 `;
 
-export const Cell = styled.TouchableOpacity`
-  height: 26px;
+export const Clipboard = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.8
+})`
+  padding: 8px;
   width: 100%;
-  padding-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: ${props => props.theme.body.foreground};
 `;
 
 export const Toggle = styled.View`
@@ -42,9 +47,10 @@ export const Toggle = styled.View`
   justify-content: space-between;
 `;
 
-export const Name = styled.Text`
-  font-size: 16px;
-  color: ${props => props.theme.type.primary};
+export const CopyPaste = styled.Text`
+  font-size: 14px;
+  line-height: 20px;
+  color: ${props => props.theme.type.secondary};
 `;
 
 export const Label = styled.Text`

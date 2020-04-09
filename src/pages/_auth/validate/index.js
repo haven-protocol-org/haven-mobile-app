@@ -1,5 +1,8 @@
 // Library Imports
 import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { authenticateUser } from "../../../actions";
+import { ActivityIndicator } from "react-native";
 
 // Relative Imports
 import {
@@ -18,17 +21,35 @@ import Next from "../../../components/next";
 
 class Validate extends Component {
   state = {
-    seed: ""
+    seed: "",
+    label: "Finish"
   };
-  routeUser = () => {
-    this.props.navigation.navigate("Create");
+
+  loginUser = () => {
+    this.setState({
+      label: "Loading"
+    });
+
+    setTimeout(() => {
+      this.props.authenticateUser(true);
+    }, 2000);
   };
+
   render() {
     this.props.navigation.setOptions({
       title: "Validate Seed",
       headerBackTitleVisible: false,
       headerRight: () => (
-        <Next label={"Finish"} onPress={() => alert("Login Now")} />
+        <Next
+          label={
+            this.state.label === "Loading" ? (
+              <ActivityIndicator size="small" />
+            ) : (
+              this.state.label
+            )
+          }
+          onPress={this.loginUser}
+        />
       )
     });
     return (
@@ -58,4 +79,11 @@ class Validate extends Component {
   }
 }
 
-export default Validate;
+export const mapStateToProps = state => ({
+  authUser: state.authUser
+});
+
+export default connect(
+  mapStateToProps,
+  { authenticateUser }
+)(Validate);
