@@ -15,14 +15,16 @@ import {
   Border
 } from "./styles";
 import InputMultiline from "../../../components/input-multiline";
-import { Information } from "../../../constants/type.js";
+
+import Input_Information from "../../../components/_inputs/input_information";
 
 import Next from "../../../components/next";
 
 class Validate extends Component {
   state = {
     seed: "",
-    label: "Finish"
+    label: "Finish",
+    clipboardLabel: "Paste Seed"
   };
 
   loginUser = () => {
@@ -64,15 +66,17 @@ class Validate extends Component {
             placeholderTextColor={"#999"}
             onChangeText={seed => this.setState({ seed })}
             numberOfLines={5}
+            clipboard={true}
+            clipboardLabel={this.state.clipboardLabel}
+            onChangeText={wallet => this.setState({ wallet })}
+            onPress={this.copySeed}
           />
 
-          <Microcopy>
-            <Information>
-              Please verify your Seed Phrase this will ensure that your Seed
-              Phrase has been correctly backed up. Store your seed in a safe
-              location and do not share this with anyone
-            </Information>
-          </Microcopy>
+          <Input_Information
+            copy={
+              "Please verify your Seed Phrase this will ensure that your Seed Phrase has been correctly backed up. Store your seed in a safe location and do not share this with anyone"
+            }
+          />
         </Container>
       </Fragment>
     );

@@ -1,5 +1,8 @@
 // Library Imports
 import React, { Component, Fragment } from "react";
+import { ActivityIndicator } from "react-native";
+import { connect } from "react-redux";
+import { authenticateUser } from "../../../actions";
 
 // Relative Imports
 import { Container, Button, Label, Microcopy, Footer, Link } from "./styles";
@@ -12,22 +15,63 @@ import Input_Information from "../../../components/_inputs/input_information";
 class Security extends Component {
   state = {
     password: "",
-    wallet: ""
+    wallet: "",
+    type: "",
+    label: ""
   };
+
+  componentDidMount() {
+    const { type } = this.props.route.params;
+    if (type === "restore") {
+      this.setState({
+        label: "Finish",
+        type: "restore"
+      });
+    } else {
+      this.setState({
+        label: "Next",
+        type: "create"
+      });
+    }
+  }
+
+  handleNavigation = () => {
+    const { type } = this.state;
+    if (type === "restore") {
+      this.setState({
+        label: "loading"
+      });
+
+      setTimeout(() => {
+        this.props.authenticateUser(true);
+      }, 2000);
+    } else {
+      this.props.navigation.navigate("Seed");
+    }
+  };
+
   routeUser = () => {
     this.props.navigation.navigate("Create");
   };
+
   render() {
     this.props.navigation.setOptions({
-      title: "Create a Vault",
+      title: this.props.route.params.title,
       headerBackTitleVisible: false,
       headerRight: () => (
         <Next
-          label="Next"
-          onPress={() => this.props.navigation.navigate("Seed")}
+          label={
+            this.state.label === "loading" ? (
+              <ActivityIndicator size="small" />
+            ) : (
+              this.state.label
+            )
+          }
+          onPress={this.handleNavigation}
         />
       )
     });
+
     return (
       <Fragment>
         <Border />
@@ -53,4 +97,11 @@ class Security extends Component {
   }
 }
 
-export default Security;
+export const mapStateToProps = state => ({
+  authUser: state.authUser
+});
+
+export default connect(
+  mapStateToProps,
+  { authenticateUser }
+)(Security);

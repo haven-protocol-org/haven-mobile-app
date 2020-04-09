@@ -17,7 +17,7 @@ class Login extends Component {
   state = {
     wallet: "",
     password: "",
-    label: "Submit"
+    label: "Finish"
   };
 
   loginUser = () => {

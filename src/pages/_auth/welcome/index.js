@@ -31,7 +31,11 @@ class Welcome extends Component {
             label="Want a vault?"
             value={"Create a vault"}
             border={true}
-            onPress={() => this.props.navigation.navigate("Security")}
+            onPress={() =>
+              this.props.navigation.navigate("Security", {
+                title: "Vault Security"
+              })
+            }
           />
           <InputLink
             label="Have a vault?"
