@@ -72,20 +72,22 @@ class Security extends Component {
       )
     });
 
+    console.log("VAULT NAME", this.state.wallet);
+    console.log("VAULT PASSWORD", this.state.password);
     return (
       <Fragment>
         <Border />
         <Container>
           <InputText
-            label="Wallet Name"
-            placeholder="Enter wallet name"
+            label="Vault Name"
+            placeholder="Enter vault name"
             value={this.state.wallet}
             border={true}
             onChangeText={wallet => this.setState({ wallet })}
           />
           <InputText
-            label="Wallet Password"
-            placeholder="Enter wallet password"
+            label="Vault Password"
+            placeholder="Enter vault password"
             value={this.state.login}
             onChangeText={password => this.setState({ password })}
           />

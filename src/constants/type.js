@@ -57,9 +57,9 @@ export const Input = styled.TextInput.attrs({
 export const Description = styled.TextInput.attrs({
   placeholderTextColor: "#999"
 })`
-  font-size: 16px;
+  font-size: 17px;
   color: ${props => props.theme.type.primary};
   padding-bottom: 8px;
-  line-height: 20px;
+  line-height: 26px;
   min-height: 90px;
 `;

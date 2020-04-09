@@ -6,5 +6,4 @@ export const Container = styled.View`
   padding: 4px 12px 0px 12px;
   background: ${props => props.theme.body.foreground};
   display: flex;
-  align-items: flex-start;
 `;

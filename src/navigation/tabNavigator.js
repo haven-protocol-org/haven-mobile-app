@@ -20,7 +20,6 @@ import Review from "../pages/review";
 
 import Welcome from "../pages/_auth/welcome";
 import Login from "../pages/_auth/login";
-import Create from "../pages/_auth/create";
 import Security from "../pages/_auth/security";
 import Seed from "../pages/_auth/seed";
 import Validate from "../pages/_auth/validate";
@@ -69,42 +68,6 @@ class TabNavigator extends Component {
       }
     }
   };
-
-  // componentDidMount() {
-  //   if (this.props.currentTheme === "dark") {
-  //     this.setState({
-  //       headerOptions: {
-  //         headerStyle: {
-  //           backgroundColor: "#2B2E32"
-  //         },
-  //         headerTintColor: "#ffffff"
-  //       },
-  //       tabBarOptions: {
-  //         activeTintColor: "#ffffff",
-  //         inactiveTintColor: "#8A8D90",
-  //         style: {
-  //           backgroundColor: "#2B2E32"
-  //         }
-  //       }
-  //     });
-  //   } else if (this.props.currentTheme === "light") {
-  //     this.setState({
-  //       headerOptions: {
-  //         headerStyle: {
-  //           backgroundColor: "red"
-  //         },
-  //         headerTintColor: "#ffffff"
-  //       },
-  //       tabBarOptions: {
-  //         activeTintColor: "#ffffff",
-  //         inactiveTintColor: "#8A8D90",
-  //         style: {
-  //           backgroundColor: "#2B2E32"
-  //         }
-  //       }
-  //     });
-  //   }
-  // }
 
   render() {
     const { currentTheme } = this.props;
@@ -190,7 +153,6 @@ class TabNavigator extends Component {
       <Stack.Navigator screenOptions={header}>
         <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Create" component={Create} />
         <Stack.Screen name="Restore" component={Restore} />
         <Stack.Screen name="Security" component={Security} />
         <Stack.Screen name="Seed" component={Seed} />
