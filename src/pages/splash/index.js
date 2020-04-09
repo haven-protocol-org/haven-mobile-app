@@ -10,7 +10,7 @@ class Splash extends Component {
     return (
       <Container>
         <Box>
-          <Brand source={require("../../assets/icon/icon.png")} />
+          <Brand source={require("../../assets/icon/icon/icon.png")} />
         </Box>
       </Container>
     );

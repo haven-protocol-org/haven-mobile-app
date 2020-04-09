@@ -1,10 +1,18 @@
 // Library Imports
 import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import { authenticateUser } from "../../../actions";
 
 // Relative Imports
-import { Container, Button, Label, Footer, Link } from "./styles";
+import {
+  Container,
+  Button,
+  Label,
+  Footer,
+  Link,
+  Logo,
+  Column,
+  Tagline,
+  Cells
+} from "./styles";
 import InputText from "../../../components/input-text";
 import InputLink from "../../../components/input-link";
 
@@ -13,14 +21,18 @@ import Next from "../../../components/next";
 import Input_Information from "../../../components/_inputs/input_information";
 
 class Welcome extends Component {
-  handleAuth = () => {
-    this.props.authenticateUser(true);
-  };
-
   render() {
+    this.props.navigation.setOptions({
+      title: "Welcome"
+    });
     return (
-      <Fragment>
-        <Container>
+      <Container>
+        <Column>
+          <Logo source={require("../../../assets/icon/icon/icon.png")} />
+          <Tagline>Private Decentralized</Tagline>
+          <Tagline>Finance</Tagline>
+        </Column>
+        <Cells>
           <InputLink
             label="Need to Login?"
             value={"Open a Vault"}
@@ -42,9 +54,8 @@ class Welcome extends Component {
             value={"Restore a Vault"}
             onPress={() => this.props.navigation.navigate("Restore")}
           />
-          <Input_Information copy="To get started select an option from the list above." />
-        </Container>
-      </Fragment>
+        </Cells>
+      </Container>
     );
   }
 }
@@ -53,7 +64,4 @@ export const mapStateToProps = state => ({
   authUser: state.authUser
 });
 
-export default connect(
-  mapStateToProps,
-  { authenticateUser }
-)(Welcome);
+export default Welcome;
