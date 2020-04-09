@@ -90,6 +90,7 @@ class Security extends Component {
             placeholder="Enter vault password"
             value={this.state.login}
             onChangeText={password => this.setState({ password })}
+            secureTextEntry={true}
           />
           <Input_Information copy="A Vault Name, Password and Seed Phrase are stored on this phone and never sent to any server, providing a greater sense of security. " />
         </Container>

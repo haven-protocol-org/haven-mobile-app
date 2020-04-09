@@ -12,6 +12,7 @@ import Input_Information from "../../../components/_inputs/input_information";
 class Seed extends Component {
   state = {
     clipboardLabel: "Copy Seed Phrase",
+    setCopiedText: "",
     seed:
       "drying winter hockey ridges tender bulb popular uphill recipe adventure pastry neutral howls jerseys unlikely knee space apply jeers mirror bailed juvenile jazz lagoon juvenile"
   };
@@ -24,7 +25,6 @@ class Seed extends Component {
     this.setState({
       clipboardLabel: "Seed Copied"
     });
-
     setTimeout(() => {
       this.setState({
         clipboardLabel: "Copy Seed Phrase"

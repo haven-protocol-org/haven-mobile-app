@@ -35,6 +35,10 @@ class Validate extends Component {
     }, 2000);
   };
 
+  copySeed = () => {
+    alert("HELLO");
+  };
+
   render() {
     this.props.navigation.setOptions({
       title: "Validate Seed",
@@ -52,6 +56,8 @@ class Validate extends Component {
         />
       )
     });
+
+    console.log("VALIDATE SEED", this.state.seed);
     return (
       <Fragment>
         <Container>
@@ -61,12 +67,10 @@ class Validate extends Component {
             value={this.state.seed}
             scrollEnabled={false}
             editable={true}
-            placeholderTextColor={"#999"}
             onChangeText={seed => this.setState({ seed })}
             numberOfLines={5}
             clipboard={true}
             clipboardLabel={this.state.clipboardLabel}
-            onChangeText={wallet => this.setState({ wallet })}
             onPress={this.copySeed}
           />
 

@@ -1,8 +1,8 @@
 // Library Imports
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 
 // Relative Imports
-import { Container, Clipboard, CopyPaste } from "./styles";
+import { Container, Wrapper, CopyPaste } from "./styles";
 import Border from "../../../components/border";
 import { Label, Description } from "../../../constants/type.js";
 
@@ -33,12 +33,13 @@ const InputMultiline = ({
         />
         {border && <Border />}
       </Container>
+
       {clipboard && (
         <Fragment>
           <Border />
-          <Clipboard onPress={onPress}>
+          <Wrapper onPress={onPress}>
             <CopyPaste>{clipboardLabel}</CopyPaste>
-          </Clipboard>
+          </Wrapper>
         </Fragment>
       )}
     </Fragment>

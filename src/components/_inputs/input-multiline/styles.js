@@ -7,7 +7,7 @@ export const Container = styled.View`
   background: ${props => props.theme.body.foreground};
 `;
 
-export const Clipboard = styled.TouchableOpacity.attrs({
+export const Wrapper = styled.TouchableOpacity.attrs({
   activeOpacity: 0.8
 })`
   padding: 12px;
