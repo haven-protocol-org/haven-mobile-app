@@ -14,10 +14,8 @@ import {
   Link,
   Border
 } from "./styles";
-import InputMultiline from "../../../components/input-multiline";
-
+import InputMultiline from "../../../components/_inputs/input-multiline";
 import Input_Information from "../../../components/_inputs/input_information";
-
 import Next from "../../../components/next";
 
 class Validate extends Component {

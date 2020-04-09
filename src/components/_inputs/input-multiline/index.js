@@ -2,15 +2,9 @@
 import React, { Component, Fragment } from "react";
 
 // Relative Imports
-import {
-  Container,
-  Field,
-  Label,
-  Toggle,
-  Border,
-  Clipboard,
-  CopyPaste
-} from "./styles";
+import { Container, Field, Clipboard, CopyPaste } from "./styles";
+import Border from "../../../components/border";
+import { Label, Description } from "../../../constants/type.js";
 
 const InputMultiline = ({
   type,
@@ -34,7 +28,7 @@ const InputMultiline = ({
     <Fragment>
       <Container>
         <Label>{label}</Label>
-        <Field
+        <Description
           placeholder={placeholder}
           onChangeText={onChangeText}
           value={value}

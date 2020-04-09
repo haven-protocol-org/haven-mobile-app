@@ -22,29 +22,15 @@ export const Field = styled.TextInput.attrs({
   min-height: 90px;
 `;
 
-export const Border = styled.View`
-  background: ${props => props.theme.body.border};
-  width: 100%;
-  height: 1px;
-`;
-
 export const Clipboard = styled.TouchableOpacity.attrs({
   activeOpacity: 0.8
 })`
-  padding: 8px;
+  padding: 12px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   background: ${props => props.theme.body.foreground};
-`;
-
-export const Toggle = styled.View`
-  padding-bottom: 8px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
 `;
 
 export const CopyPaste = styled.Text`

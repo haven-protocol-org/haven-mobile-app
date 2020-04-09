@@ -45,13 +45,21 @@ export const Label = styled.Text`
   line-height: 21px;
 `;
 
-export const Field = styled.TextInput.attrs({
-  placeholderTextColor: "red"
+export const Input = styled.TextInput.attrs({
+  placeholderTextColor: "#999"
 })`
-
   font-size: 17px;
   line-height: 26px;
-  /* color: ${props => props.theme.type.primary}; */
-  color: red;
+  color: ${props => props.theme.type.primary};
   padding-bottom: 8px;
+`;
+
+export const Description = styled.TextInput.attrs({
+  placeholderTextColor: "#999"
+})`
+  font-size: 16px;
+  color: ${props => props.theme.type.primary};
+  padding-bottom: 8px;
+  line-height: 20px;
+  min-height: 90px;
 `;

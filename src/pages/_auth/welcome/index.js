@@ -13,8 +13,8 @@ import {
   Tagline,
   Cells
 } from "./styles";
-import InputText from "../../../components/input-text";
-import InputLink from "../../../components/input-link";
+import InputText from "../../../components/_inputs/input-text";
+import InputLink from "../../../components/_inputs/input-link";
 
 import Border from "../../../components/border";
 import Next from "../../../components/next";

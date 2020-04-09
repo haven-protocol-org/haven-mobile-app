@@ -7,7 +7,7 @@ import { authenticateUser } from "../../../actions";
 // Relative Imports
 import { Container, Button, Label, Microcopy, Footer, Link } from "./styles";
 import Next from "../../../components/next";
-import InputText from "../../../components/input-text";
+import InputText from "../../../components/_inputs/input-text";
 import { Information } from "../../../constants/type.js";
 import Border from "../../../components/border/index.js";
 import Input_Information from "../../../components/_inputs/input_information";

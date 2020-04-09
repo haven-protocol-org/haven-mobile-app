@@ -4,8 +4,8 @@ import { TextInput, Switch } from "react-native";
 
 // Relative Imports
 import { Container, Field, Row, Icon } from "./styles";
-import { Value, Label } from "../../constants/type.js";
-import Border from "../border/index.js";
+import { Value, Label } from "../../../constants/type.js";
+import Border from "../../../components/border";
 
 const InputLink = ({ value, label, onPress, border }) => {
   return (

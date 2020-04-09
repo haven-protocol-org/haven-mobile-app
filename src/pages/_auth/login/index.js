@@ -6,12 +6,11 @@ import { ActivityIndicator } from "react-native";
 
 // Relative Imports
 import { Container, Button, Label, Footer, Link } from "./styles";
-import InputText from "../../../components/input-text";
-import InputLink from "../../../components/input-link";
-
+import InputText from "../../../components/_inputs/input-text";
+import InputLink from "../../../components/_inputs/input-link";
+import Input_Information from "../../../components/_inputs/input_information";
 import Border from "../../../components/border";
 import Next from "../../../components/next";
-import Input_Information from "../../../components/_inputs/input_information";
 
 class Login extends Component {
   state = {

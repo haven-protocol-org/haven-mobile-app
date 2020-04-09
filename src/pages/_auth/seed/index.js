@@ -4,7 +4,7 @@ import React, { Component, Fragment } from "react";
 // Relative Imports
 import { Container, Button, Label, Microcopy, Footer, Link } from "./styles";
 import Next from "../../../components/next";
-import InputMultiline from "../../../components/input-multiline";
+import InputMultiline from "../../../components/_inputs/input-multiline";
 import { Information } from "../../../constants/type.js";
 import Border from "../../../components/border/index.js";
 import Input_Information from "../../../components/_inputs/input_information";
