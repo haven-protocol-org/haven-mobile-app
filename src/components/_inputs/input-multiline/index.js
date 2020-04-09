@@ -2,7 +2,7 @@
 import React, { Component, Fragment } from "react";
 
 // Relative Imports
-import { Container, Field, Clipboard, CopyPaste } from "./styles";
+import { Container, Clipboard, CopyPaste } from "./styles";
 import Border from "../../../components/border";
 import { Label, Description } from "../../../constants/type.js";
 
@@ -14,6 +14,7 @@ const InputMultiline = ({
   border,
   editable,
   scrollEnabled,
+  onPress,
   clipboard,
   clipboardLabel,
   ...rest
@@ -26,12 +27,11 @@ const InputMultiline = ({
           value={value}
           placeholder={placeholder}
           onChangeText={onChangeText}
-          secureTextEntry={secureTextEntry}
-          scrollEnabled={scrollEnabled}
           editable={editable}
+          multiline={true}
           {...rest}
         />
-        {border ? <Border /> : null}
+        {border && <Border />}
       </Container>
       {clipboard && (
         <Fragment>
