@@ -2,6 +2,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { authenticateUser } from "../../../actions";
+import { ActivityIndicator } from "react-native";
 
 // Relative Imports
 import { Container, Button, Label, Footer, Link } from "./styles";
@@ -14,39 +15,60 @@ import Input_Information from "../../../components/_inputs/input_information";
 
 class Login extends Component {
   state = {
-    login: "",
-    wallet: ""
+    wallet: "",
+    password: "",
+    label: "Submit"
   };
 
-  componentDidMount() {}
+  loginUser = () => {
+    this.setState({
+      label: "Loading"
+    });
+
+    setTimeout(() => {
+      this.props.authenticateUser(true);
+    }, 2000);
+  };
 
   handleAuth = () => {
     this.props.authenticateUser(true);
   };
 
   render() {
+    console.log(this.state.label);
+    this.props.navigation.setOptions({
+      headerBackTitleVisible: false,
+      headerRight: () => (
+        <Next
+          label={
+            this.state.label === "Loading" ? (
+              <ActivityIndicator size="small" />
+            ) : (
+              this.state.label
+            )
+          }
+          onPress={this.loginUser}
+        />
+      )
+    });
     return (
       <Fragment>
         <Border />
         <Container>
           <InputLink
-            label="Need to Login?"
-            value={"Open a Vault"}
+            label="Select Vault"
+            value={"Haven Wallet"}
             border={true}
             onPress={() => this.props.navigation.navigate("Login")}
           />
-          <InputLink
-            label="Want a vault?"
-            value={"Create a vault"}
-            border={true}
-            onPress={() => this.props.navigation.navigate("Create")}
+          <InputText
+            label="Vault Password"
+            value={this.state.password}
+            placeholder="Enter password"
+            onChangeText={password => this.setState({ password })}
           />
-          <InputLink
-            label="Have a vault?"
-            value={"Restore a Vault"}
-            onPress={() => this.props.navigation.navigate("Restore")}
-          />
-          <Input_Information copy="To get started select an option from the list above." />
+
+          <Input_Information copy="Select a wallet and enter the password. If you don't have a wallet go back and Create a Vault." />
         </Container>
         <Border />
       </Fragment>

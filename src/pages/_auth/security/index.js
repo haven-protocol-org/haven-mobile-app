@@ -7,6 +7,7 @@ import Next from "../../../components/next";
 import InputText from "../../../components/input-text";
 import { Information } from "../../../constants/type.js";
 import Border from "../../../components/border/index.js";
+import Input_Information from "../../../components/_inputs/input_information";
 
 class Security extends Component {
   state = {
@@ -21,7 +22,10 @@ class Security extends Component {
       title: "Create a Vault",
       headerBackTitleVisible: false,
       headerRight: () => (
-        <Next onPress={() => this.props.navigation.navigate("Seed")} />
+        <Next
+          label="Next"
+          onPress={() => this.props.navigation.navigate("Seed")}
+        />
       )
     });
     return (
@@ -32,6 +36,7 @@ class Security extends Component {
             label="Wallet Name"
             placeholder="Enter wallet name"
             value={this.state.wallet}
+            border={true}
             onChangeText={wallet => this.setState({ wallet })}
           />
           <InputText
@@ -40,13 +45,7 @@ class Security extends Component {
             value={this.state.login}
             onChangeText={password => this.setState({ password })}
           />
-          <Microcopy>
-            <Information>
-              Creating a new wallet with a name and password makes it easier to
-              login in the future because you don't have to enter your seed and
-              your wallet details are ever sent to a server.
-            </Information>
-          </Microcopy>
+          <Input_Information copy="A Vault Name, Password and Seed Phrase are stored on this phone and never sent to any server, providing a greater sense of security. " />
         </Container>
         <Border />
       </Fragment>
