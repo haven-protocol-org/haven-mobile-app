@@ -27,7 +27,7 @@ class Security extends Component {
         label: "Finish",
         type: "restore"
       });
-    } else {
+    } else if (type === "create") {
       this.setState({
         label: "Next",
         type: "create"
@@ -56,7 +56,7 @@ class Security extends Component {
 
   render() {
     this.props.navigation.setOptions({
-      title: this.props.route.params.title,
+      title: "Vault Security",
       headerBackTitleVisible: false,
       headerRight: () => (
         <Next

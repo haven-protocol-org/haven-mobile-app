@@ -35,7 +35,6 @@ class Login extends Component {
   };
 
   render() {
-    console.log(this.state.label);
     this.props.navigation.setOptions({
       headerBackTitleVisible: false,
       headerRight: () => (
@@ -56,7 +55,7 @@ class Login extends Component {
         <Border />
         <Container>
           <InputLink
-            label="Select Vault"
+            label="Selected Vault"
             value={"Haven Wallet"}
             border={true}
             onPress={() => this.props.navigation.navigate("Login")}

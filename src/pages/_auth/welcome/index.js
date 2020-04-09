@@ -33,7 +33,7 @@ class Welcome extends Component {
             border={true}
             onPress={() =>
               this.props.navigation.navigate("Security", {
-                title: "Vault Security"
+                type: "create"
               })
             }
           />
