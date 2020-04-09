@@ -3,18 +3,9 @@ import React, { Component, Fragment } from "react";
 import { TextInput, Switch } from "react-native";
 
 // Relative Imports
-import {
-  Container,
-  Field,
-  Label,
-  Toggle,
-  Border,
-  Cell,
-  Name,
-  Icon,
-  Input,
-  Row
-} from "./styles";
+import { Container, Field, Row, Icon } from "./styles";
+import { Input, Label } from "../../constants/type.js";
+import Border from "../border/index.js";
 
 const InputLink = ({ value, label, onPress, border }) => {
   return (

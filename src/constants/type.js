@@ -29,3 +29,17 @@ export const Information = styled.Text`
   letter-spacing: 0;
   line-height: 21px;
 `;
+
+export const Input = styled.Text`
+  width: auto;
+  font-size: 17px;
+  line-height: 26px;
+  color: ${props => props.theme.type.primary};
+`;
+
+export const Label = styled.Text`
+  font-size: 12px;
+  color: ${props => props.theme.type.secondary};
+  letter-spacing: 0;
+  line-height: 21px;
+`;
