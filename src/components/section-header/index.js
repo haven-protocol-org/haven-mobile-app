@@ -5,12 +5,12 @@ import React from "react";
 import { Container, Border } from "./styles";
 import { Primary, Secondary } from "../../constants/type.js";
 
-const SectionHeader = ({ title, subtitle }) => {
+const SectionHeader = ({ title, subtitle, border }) => {
   return (
     <Container>
       <Primary>{title}</Primary>
       <Secondary>{subtitle}</Secondary>
-      <Border />
+      {border && <Border />}
     </Container>
   );
 };

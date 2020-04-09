@@ -20,7 +20,7 @@ class Application extends Component {
     barStyle: "light-content",
     loaded: true,
     authenticateUser: false,
-    authUser: true
+    authUser: false
   };
 
   componentDidUpdate(prevProps) {
@@ -45,12 +45,15 @@ class Application extends Component {
       authUser
     } = this.state;
 
-    console.log("CURRENT THEME STATE", this.state.currentTheme);
-    console.log("CURRENT THEME PROPS", this.props.currentTheme);
-
     return (
       <ThemeProvider theme={this.state.currentTheme === "dark" ? dark : light}>
-        <StatusBar barStyle={barStyle} />
+        <StatusBar
+          barStyle={
+            this.state.currentTheme === "dark"
+              ? "light-content"
+              : "dark-content"
+          }
+        />
         {loaded ? (
           <NavigationContainer>
             <TabNavigator

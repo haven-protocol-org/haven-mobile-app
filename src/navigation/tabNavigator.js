@@ -26,36 +26,124 @@ import Seed from "../pages/_auth/seed";
 import Validate from "../pages/_auth/validate";
 import Restore from "../pages/_auth/restore";
 
-const headerOptions = {
-  headerStyle: {
-    backgroundColor: "#2B2E32"
-  },
-  headerTintColor: "#ffffff",
-  headerTitleStyle: {
-    fontWeight: "bold"
-  }
-};
+import { dark, light } from "../constants/themes.js";
 
-const tabOptions = {
-  tabBarOptions: {
-    activeTintColor: "#e91e63",
-    labelStyle: {
-      fontSize: 12
-    },
-    style: {
-      backgroundColor: "blue"
-    }
-  }
-};
+// const headerOptions = {
+//   headerStyle: {
+//     backgroundColor: "#2B2E32"
+//   },
+//   headerTintColor: "#ffffff",
+//   headerTitleStyle: {
+//     fontWeight: "bold"
+//   },
+//   tabBarOptions{{
+//     activeTintColor: "#ffffff",
+//     inactiveTintColor: "#8A8D90",
+//     activeBackgroundColor: `${props => props.theme.body.background}`,
+//     inactiveBackgroundColor: `${props => props.theme.body.background}`,
+//     style: {
+//       backgroundColor: "#2B2E32"
+//     }
+//   }}
+// };
+
+const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 class TabNavigator extends Component {
-  render() {
-    const Tab = createBottomTabNavigator();
-    const Stack = createStackNavigator();
+  state = {
+    headerOptions: {
+      headerStyle: {
+        backgroundColor: "#2B2E32"
+      },
+      headerTintColor: "#ffffff",
+      headerTitleStyle: {
+        fontWeight: "bold"
+      }
+    },
+    tabBarOptions: {
+      activeTintColor: "#ffffff",
+      inactiveTintColor: "#8A8D90",
+      style: {
+        backgroundColor: "#2B2E32"
+      }
+    }
+  };
 
-    const AssetStack = ({ navigation }) => {
+  // componentDidMount() {
+  //   if (this.props.currentTheme === "dark") {
+  //     this.setState({
+  //       headerOptions: {
+  //         headerStyle: {
+  //           backgroundColor: "#2B2E32"
+  //         },
+  //         headerTintColor: "#ffffff"
+  //       },
+  //       tabBarOptions: {
+  //         activeTintColor: "#ffffff",
+  //         inactiveTintColor: "#8A8D90",
+  //         style: {
+  //           backgroundColor: "#2B2E32"
+  //         }
+  //       }
+  //     });
+  //   } else if (this.props.currentTheme === "light") {
+  //     this.setState({
+  //       headerOptions: {
+  //         headerStyle: {
+  //           backgroundColor: "red"
+  //         },
+  //         headerTintColor: "#ffffff"
+  //       },
+  //       tabBarOptions: {
+  //         activeTintColor: "#ffffff",
+  //         inactiveTintColor: "#8A8D90",
+  //         style: {
+  //           backgroundColor: "#2B2E32"
+  //         }
+  //       }
+  //     });
+  //   }
+  // }
+
+  render() {
+    const { currentTheme } = this.props;
+    const header = {
+      headerStyle: {
+        backgroundColor:
+          currentTheme === "dark"
+            ? `${dark.body.foreground}`
+            : `${light.body.foreground}`
+      },
+      headerTintColor:
+        currentTheme === "dark"
+          ? `${dark.type.primary}`
+          : `${light.type.primary}`,
+      headerTitleStyle: {
+        fontWeight: "bold"
+      }
+    };
+
+    const footer = {
+      activeTintColor:
+        currentTheme === "dark"
+          ? `${dark.type.primary}`
+          : `${light.type.primary}`,
+      inactiveTintColor:
+        currentTheme === "dark"
+          ? `${dark.type.secondary}`
+          : `${light.type.secondary}`,
+      style: {
+        backgroundColor:
+          currentTheme === "dark"
+            ? `${dark.body.foreground}`
+            : `${light.body.foreground}`
+      }
+    };
+
+    const AssetStack = () => {
       return (
-        <Stack.Navigator screenOptions={headerOptions}>
+        <Stack.Navigator screenOptions={header}>
           <Stack.Screen name="Assets" component={Assets} />
           <Stack.Screen name="Details" component={Details} />
           <Stack.Screen name="Explorer" component={Explorer} />
@@ -63,9 +151,9 @@ class TabNavigator extends Component {
       );
     };
 
-    const ExchangeStack = ({ navigation }) => {
+    const ExchangeStack = () => {
       return (
-        <Stack.Navigator screenOptions={headerOptions}>
+        <Stack.Navigator screenOptions={header}>
           <Stack.Screen name="Exchange" component={Exchange} />
           <Stack.Screen name="Tokens" component={Tokens} />
           <Stack.Screen name="Review" component={Review} />
@@ -73,17 +161,9 @@ class TabNavigator extends Component {
       );
     };
 
-    const ModalState = () => {
+    const TransferStack = () => {
       return (
-        <Stack.Navigator headerShown={false} headerBackTitle={"Close"}>
-          <Stack.Screen name="Review" component={Review} />
-        </Stack.Navigator>
-      );
-    };
-
-    const TransferStack = ({ navigation }) => {
-      return (
-        <Stack.Navigator screenOptions={headerOptions}>
+        <Stack.Navigator screenOptions={header}>
           <Stack.Screen name="Transfer" component={Transfer} />
         </Stack.Navigator>
       );
@@ -91,7 +171,7 @@ class TabNavigator extends Component {
 
     const DetailStack = () => {
       return (
-        <Stack.Navigator screenOptions={headerOptions}>
+        <Stack.Navigator screenOptions={header}>
           <Stack.Screen name="Details" component={Details} />
           <Stack.Screen name="Explorer" component={Explorer} />
         </Stack.Navigator>
@@ -100,14 +180,14 @@ class TabNavigator extends Component {
 
     const SettingsStack = () => {
       return (
-        <Stack.Navigator screenOptions={headerOptions}>
+        <Stack.Navigator screenOptions={header}>
           <Stack.Screen name="Settings" component={Settings} />
         </Stack.Navigator>
       );
     };
 
     return this.props.authUser === "false" ? (
-      <Stack.Navigator screenOptions={headerOptions}>
+      <Stack.Navigator screenOptions={header}>
         <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Create" component={Create} />
@@ -124,15 +204,7 @@ class TabNavigator extends Component {
             return <TabIcon focused={focused} route={route} />;
           }
         })}
-        tabBarOptions={{
-          activeTintColor: "#ffffff",
-          inactiveTintColor: "#8A8D90",
-          activeBackgroundColor: `${props => props.theme.body.background}`,
-          inactiveBackgroundColor: `${props => props.theme.body.background}`,
-          style: {
-            backgroundColor: "#2B2E32"
-          }
-        }}
+        tabBarOptions={footer}
       >
         <Tab.Screen name="Assets" component={AssetStack} />
         <Tab.Screen name="Exchange" component={ExchangeStack} />
@@ -143,7 +215,7 @@ class TabNavigator extends Component {
   }
 }
 export const mapStateToProps = state => ({
-  showMenu: state.showMenu
+  currentTheme: state.currentTheme
 });
 
 export default connect(mapStateToProps)(TabNavigator);

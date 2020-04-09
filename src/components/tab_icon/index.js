@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 
 // Relative Imports
-import { Container, Icon } from "./styles";
+import { Icon } from "./styles";
 
 class TabIcon extends Component {
   handleIcons = () => {
@@ -34,7 +34,7 @@ class TabIcon extends Component {
   };
 
   render() {
-    return <Container>{this.handleIcons()}</Container>;
+    return this.handleIcons();
   }
 }
 

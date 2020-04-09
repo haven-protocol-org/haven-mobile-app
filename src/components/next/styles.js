@@ -6,6 +6,6 @@ export const Container = styled.TouchableOpacity`
 
 export const Label = styled.Text`
   font-size: 17px;
-  color: #fff;
+  color: ${props => props.theme.type.primary};
   font-weight: 500;
 `;

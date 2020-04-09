@@ -11,11 +11,13 @@ import { connect } from "react-redux";
 import Next from "../../components/next/index.js";
 
 // Relative Imports
-import { Container, Form } from "./styles";
+import { Container, Form, Spacer } from "./styles";
 import SectionHeader from "../../components/section-header";
 import PageWrapper from "../../components/page-wrapper";
 import Input from "../../components/input";
 import InputLink from "../../components/input-link";
+import InputText from "../../components/input-text";
+
 import Input_Information from "../../components/_inputs/input_information";
 
 class Settings extends Component {
@@ -37,6 +39,7 @@ class Settings extends Component {
 
     setTimeout(() => {
       this.props.authenticateUser(false);
+      this.props.switchTheme("dark");
     }, 2000);
   };
 
@@ -74,54 +77,65 @@ class Settings extends Component {
             value="Light"
             onPress={() => this.changeTheme("light")}
           />
-          <Input_Information copy="Choose between dark and light themes" />
 
-          <Form>
-            <SectionHeader
-              title="Private Keys"
-              subtitle="Manage your wallets private keys"
-            />
-            <Input
-              value="************************"
-              type="input"
-              secureTextEntry={true}
-              value="input"
-              label="Seed Phrase"
-              onPress={this.changeTheme}
-            />
-            <Input
-              value="************************"
-              type="input"
-              secureTextEntry={true}
-              value="input"
-              label="Public View Key"
-              onPress={this.changeTheme}
-            />
-            <Input
-              value="************************"
-              type="input"
-              secureTextEntry={true}
-              value="input"
-              label="Private View Key"
-              onPress={this.changeTheme}
-            />
-            <Input
-              value="************************"
-              type="input"
-              secureTextEntry={true}
-              value="input"
-              label="Private Spend Key"
-              onPress={this.changeTheme}
-            />
-            <Input
-              value="************************"
-              type="input"
-              secureTextEntry={true}
-              value="input"
-              label="Public View Key"
-              onPress={this.changeTheme}
-            />
-          </Form>
+          <Spacer />
+          <SectionHeader
+            title="Address"
+            subtitle="Choose between light and dark themes"
+          />
+          <InputLink label="Manage Address" value="Dark" />
+          <Spacer />
+          <SectionHeader
+            title="Private Keys"
+            subtitle="Manage your wallets private keys"
+          />
+
+          <InputText
+            value="************************"
+            type="input"
+            secureTextEntry={true}
+            value="input"
+            label="Seed Phrase"
+            onPress={this.changeTheme}
+            border="true"
+          />
+          <InputText
+            value="************************"
+            type="input"
+            secureTextEntry={true}
+            value="input"
+            label="Public View Key"
+            onPress={this.changeTheme}
+            border="true"
+          />
+          <InputText
+            value="************************"
+            type="input"
+            secureTextEntry={true}
+            value="input"
+            label="Private View Key"
+            onPress={this.changeTheme}
+            border="true"
+          />
+          <InputText
+            value="************************"
+            type="input"
+            secureTextEntry={true}
+            value="input"
+            label="Private Spend Key"
+            onPress={this.changeTheme}
+            border="true"
+          />
+          <InputText
+            value="************************"
+            type="input"
+            secureTextEntry={true}
+            value="input"
+            label="Public View Key"
+            onPress={this.changeTheme}
+          />
+          <Input_Information copy="To view your private keys please click on the cell to reveal it" />
+          <Spacer />
         </Container>
       </ScrollView>
     );
