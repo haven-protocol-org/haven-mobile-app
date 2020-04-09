@@ -14,7 +14,6 @@ const InputText = ({
   onChangeText,
   border,
   secureTextEntry,
-  toggle,
   ...rest
 }) => {
   return (
@@ -24,9 +23,9 @@ const InputText = ({
         value={value}
         placeholder={placeholder}
         onChangeText={onChangeText}
+        secureTextEntry={secureTextEntry}
         returnKeyType="done"
         keyboardType="decimal-pad"
-        secureTextEntry={secureTextEntry}
         {...rest}
       />
       {border ? <Border /> : null}
