@@ -15,9 +15,9 @@ import { Container, Form, Spacer } from "./styles";
 import SectionHeader from "../../components/section-header";
 import PageWrapper from "../../components/page-wrapper";
 import Input from "../../components/input";
-import InputLink from "../../components/input-link";
-import InputText from "../../components/input-text";
 
+import InputLink from "../../components/_inputs/input-link";
+import InputText from "../../components/_inputs/input-text";
 import Input_Information from "../../components/_inputs/input_information";
 
 class Settings extends Component {

@@ -1,7 +1,4 @@
 import styled from "styled-components";
-import { dark } from "../../constants/themes.js";
-
-const placeholder = `${props => props.theme.type.primary}`;
 
 export const Container = styled.TouchableOpacity.attrs({
   activeOpacity: 0.8

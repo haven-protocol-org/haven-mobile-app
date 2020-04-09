@@ -7,17 +7,11 @@ import Border from "../../../components/border";
 import { Label, Description } from "../../../constants/type.js";
 
 const InputMultiline = ({
-  type,
+  label,
   value,
   onChangeText,
   placeholder,
   border,
-  label,
-  link,
-  chooseToken,
-  onPress,
-  secureTextEntry,
-  toggle,
   editable,
   scrollEnabled,
   clipboard,
@@ -29,14 +23,13 @@ const InputMultiline = ({
       <Container>
         <Label>{label}</Label>
         <Description
+          value={value}
           placeholder={placeholder}
           onChangeText={onChangeText}
-          value={value}
-          returnKeyType="done"
           secureTextEntry={secureTextEntry}
-          multiline={true}
           scrollEnabled={scrollEnabled}
           editable={editable}
+          {...rest}
         />
         {border ? <Border /> : null}
       </Container>

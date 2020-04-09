@@ -15,7 +15,7 @@ const InputLink = ({ value, label, onPress, border }) => {
         <Field>
           <Value>{value}</Value>
         </Field>
-        <Icon source={require("../../assets/icon/chevron/chevron.png")} />
+        <Icon source={require("../../../assets/icon/chevron/chevron.png")} />
       </Row>
       {border ? <Border /> : null}
     </Container>
