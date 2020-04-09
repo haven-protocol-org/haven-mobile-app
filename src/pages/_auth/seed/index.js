@@ -46,7 +46,7 @@ class Seed extends Component {
     return (
       <Container>
         <InputMultiline
-          label="Wallet Name"
+          label="Vault Seed"
           placeholder="Enter wallet name"
           value={this.state.seed}
           scrollEnabled={false}
@@ -54,10 +54,9 @@ class Seed extends Component {
           border={false}
           clipboard={true}
           clipboardLabel={this.state.clipboardLabel}
-          onChangeText={wallet => this.setState({ wallet })}
           onPress={this.copySeed}
         />
-        <Input_Information copy="A Vault Name, Password and Seed Phrase are stored on this phone and never sent to any server, providing a greater sense of security. " />
+        <Input_Information copy="A Seed Phrase provides complete and total access to your funds. Do not share your Seed Phrase with anyone." />
       </Container>
     );
   }

@@ -36,6 +36,7 @@ class Login extends Component {
   render() {
     this.props.navigation.setOptions({
       headerBackTitleVisible: false,
+      title: "Open a Vault",
       headerRight: () => (
         <Next
           label={
@@ -63,6 +64,7 @@ class Login extends Component {
             label="Vault Password"
             value={this.state.password}
             placeholder="Enter password"
+            secureTextEntry={true}
             onChangeText={password => this.setState({ password })}
           />
 

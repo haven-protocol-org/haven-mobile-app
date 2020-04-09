@@ -35,8 +35,15 @@ class Validate extends Component {
     }, 2000);
   };
 
-  copySeed = () => {
-    alert("HELLO");
+  pasteSeed = () => {
+    this.setState({
+      clipboardLabel: "Seed Pasted"
+    });
+    setTimeout(() => {
+      this.setState({
+        clipboardLabel: "Paste Seed"
+      });
+    }, 2000);
   };
 
   render() {
@@ -57,13 +64,12 @@ class Validate extends Component {
       )
     });
 
-    console.log("VALIDATE SEED", this.state.seed);
     return (
       <Fragment>
         <Container>
           <InputMultiline
-            label="Seed Phrase"
-            placeholder="Enter seed name"
+            label="Validate Seed Phrase"
+            placeholder="Enter seed phrase"
             value={this.state.seed}
             scrollEnabled={false}
             editable={true}
@@ -71,7 +77,7 @@ class Validate extends Component {
             numberOfLines={5}
             clipboard={true}
             clipboardLabel={this.state.clipboardLabel}
-            onPress={this.copySeed}
+            onPress={this.pasteSeed}
           />
 
           <Input_Information

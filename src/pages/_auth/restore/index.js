@@ -63,17 +63,15 @@ class Restore extends Component {
             value={this.state.seed}
             scrollEnabled={false}
             editable={true}
-            placeholderTextColor={"#999"}
             onChangeText={seed => this.setState({ seed })}
-            numberOfLines={5}
             clipboard={true}
             clipboardLabel={this.state.clipboardLabel}
-            onChangeText={wallet => this.setState({ wallet })}
+            onChangeText={seed => this.setState({ seed })}
             onPress={this.copySeed}
           />
           <Input_Information
             copy={
-              "Please enter the Seed Phrase of the vault you wish to restore."
+              "Enter the seed phrase of the Vault you wish to restore. While your Vault details are stored only on this device, and never sent across the internet, please ensure you're not on a unsecured public wifi."
             }
           />
         </Container>

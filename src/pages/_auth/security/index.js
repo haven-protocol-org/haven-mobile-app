@@ -56,7 +56,10 @@ class Security extends Component {
 
   render() {
     this.props.navigation.setOptions({
-      title: "Vault Security",
+      title:
+        this.props.route.params.type === "create"
+          ? "Create a Vault"
+          : "Vault Security",
       headerBackTitleVisible: false,
       headerRight: () => (
         <Next
@@ -72,8 +75,6 @@ class Security extends Component {
       )
     });
 
-    console.log("VAULT NAME", this.state.wallet);
-    console.log("VAULT PASSWORD", this.state.password);
     return (
       <Fragment>
         <Border />
@@ -92,7 +93,7 @@ class Security extends Component {
             onChangeText={password => this.setState({ password })}
             secureTextEntry={true}
           />
-          <Input_Information copy="A Vault Name, Password and Seed Phrase are stored on this phone and never sent to any server, providing a greater sense of security. " />
+          <Input_Information copy="Create strong and unique password that only you know. Do not share your Password or with anyone." />
         </Container>
         <Border />
       </Fragment>
