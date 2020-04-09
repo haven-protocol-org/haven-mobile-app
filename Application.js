@@ -10,36 +10,27 @@ import { dark, light } from "./src/constants/themes.js";
 import Splash from "./src/pages/splash/index.js";
 
 //REDUX
-import { Provider } from "react-redux";
-import thunk from "redux-thunk";
-import { createStore, applyMiddleware } from "redux";
-import reducers from "./src/reducers";
 import { connect } from "react-redux";
-
-// const store = createStore(reducers, applyMiddleware(thunk));
-const store = createStore(reducers);
 
 class Application extends Component {
   state = {
-    theme: dark,
-    initialRouteName: "Assets",
+    currentTheme: "dark",
+    initialRouteName: "Settings",
     authenticated: true,
     barStyle: "light-content",
     loaded: true,
     authenticateUser: false,
-    authUser: false
+    authUser: true
   };
 
-  componentDidMount() {
-    console.log("CDM", this.props.authUser);
-  }
-
   componentDidUpdate(prevProps) {
-    // Typical usage (don't forget to compare props):
-
     if (this.props.authUser !== prevProps.authUser) {
       this.setState({
         authUser: this.props.authUser
+      });
+    } else if (this.props.currentTheme !== prevProps.currentTheme) {
+      this.setState({
+        currentTheme: this.props.currentTheme
       });
     }
   }
@@ -54,8 +45,11 @@ class Application extends Component {
       authUser
     } = this.state;
 
+    console.log("CURRENT THEME STATE", this.state.currentTheme);
+    console.log("CURRENT THEME PROPS", this.props.currentTheme);
+
     return (
-      <Fragment>
+      <ThemeProvider theme={this.state.currentTheme === "dark" ? dark : light}>
         <StatusBar barStyle={barStyle} />
         {loaded ? (
           <NavigationContainer>
@@ -68,13 +62,14 @@ class Application extends Component {
         ) : (
           <Splash />
         )}
-      </Fragment>
+      </ThemeProvider>
     );
   }
 }
 
 export const mapStateToProps = state => ({
-  authUser: state.authUser
+  authUser: state.authUser,
+  currentTheme: state.currentTheme
 });
 
 export default connect(mapStateToProps)(Application);

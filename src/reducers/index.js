@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
 import authUser from "./authUser";
+import currentTheme from "./currentTheme";
 
 const rootReducer = combineReducers({
-  authUser
+  authUser,
+  currentTheme
 });
 
 export default rootReducer;

@@ -3,7 +3,9 @@ import { dark } from "../../constants/themes.js";
 
 const placeholder = `${props => props.theme.type.primary}`;
 
-export const Container = styled.TouchableOpacity`
+export const Container = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.8
+})`
   height: auto;
   width: 100%;
   padding: 4px 12px 0px 12px;

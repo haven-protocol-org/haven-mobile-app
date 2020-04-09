@@ -6,7 +6,7 @@ import {
   ScrollView,
   ActivityIndicator
 } from "react-native";
-import { authenticateUser } from "../../actions/index.js";
+import { authenticateUser, switchTheme } from "../../actions";
 import { connect } from "react-redux";
 import Next from "../../components/next/index.js";
 
@@ -15,14 +15,19 @@ import { Container, Form } from "./styles";
 import SectionHeader from "../../components/section-header";
 import PageWrapper from "../../components/page-wrapper";
 import Input from "../../components/input";
+import InputLink from "../../components/input-link";
+import Input_Information from "../../components/_inputs/input_information";
 
 class Settings extends Component {
   state = { theme: "Dark Theme", toggle: true, label: "Sign Out" };
 
-  changeTheme = () => {
-    this.setState({
-      toggle: !this.state.toggle
-    });
+  changeTheme = theme => {
+    this.setState(
+      {
+        toggle: !this.state.toggle
+      },
+      () => this.props.switchTheme(theme)
+    );
   };
 
   logoutUser = () => {
@@ -54,68 +59,69 @@ class Settings extends Component {
     return (
       <ScrollView>
         <Container>
-          <PageWrapper>
-            <Form>
-              <SectionHeader
-                title="Theme"
-                subtitle="Choose between light and dark themes"
-              />
-              <Input
-                type="toggle"
-                value={this.state.toggle ? "Dark Theme" : "Light Theme"}
-                label="Select Theme"
-                toggle={this.state.toggle}
-                onPress={this.changeTheme}
-              />
-            </Form>
+          <SectionHeader
+            title="Theme"
+            subtitle="Choose between light and dark themes"
+          />
+          <InputLink
+            label="Dark Theme"
+            value="Dark"
+            border="true"
+            onPress={() => this.changeTheme("dark")}
+          />
+          <InputLink
+            label="Light Theme"
+            value="Light"
+            onPress={() => this.changeTheme("light")}
+          />
+          <Input_Information copy="Choose between dark and light themes" />
 
-            <Form>
-              <SectionHeader
-                title="Private Keys"
-                subtitle="Manage your wallets private keys"
-              />
-              <Input
-                value="************************"
-                type="input"
-                secureTextEntry={true}
-                value="input"
-                label="Seed Phrase"
-                onPress={this.changeTheme}
-              />
-              <Input
-                value="************************"
-                type="input"
-                secureTextEntry={true}
-                value="input"
-                label="Public View Key"
-                onPress={this.changeTheme}
-              />
-              <Input
-                value="************************"
-                type="input"
-                secureTextEntry={true}
-                value="input"
-                label="Private View Key"
-                onPress={this.changeTheme}
-              />
-              <Input
-                value="************************"
-                type="input"
-                secureTextEntry={true}
-                value="input"
-                label="Private Spend Key"
-                onPress={this.changeTheme}
-              />
-              <Input
-                value="************************"
-                type="input"
-                secureTextEntry={true}
-                value="input"
-                label="Public View Key"
-                onPress={this.changeTheme}
-              />
-            </Form>
-          </PageWrapper>
+          <Form>
+            <SectionHeader
+              title="Private Keys"
+              subtitle="Manage your wallets private keys"
+            />
+            <Input
+              value="************************"
+              type="input"
+              secureTextEntry={true}
+              value="input"
+              label="Seed Phrase"
+              onPress={this.changeTheme}
+            />
+            <Input
+              value="************************"
+              type="input"
+              secureTextEntry={true}
+              value="input"
+              label="Public View Key"
+              onPress={this.changeTheme}
+            />
+            <Input
+              value="************************"
+              type="input"
+              secureTextEntry={true}
+              value="input"
+              label="Private View Key"
+              onPress={this.changeTheme}
+            />
+            <Input
+              value="************************"
+              type="input"
+              secureTextEntry={true}
+              value="input"
+              label="Private Spend Key"
+              onPress={this.changeTheme}
+            />
+            <Input
+              value="************************"
+              type="input"
+              secureTextEntry={true}
+              value="input"
+              label="Public View Key"
+              onPress={this.changeTheme}
+            />
+          </Form>
         </Container>
       </ScrollView>
     );
@@ -123,10 +129,11 @@ class Settings extends Component {
 }
 
 export const mapStateToProps = state => ({
-  authUser: state.authUser
+  authUser: state.authUser,
+  currentTheme: state.theme
 });
 
 export default connect(
   mapStateToProps,
-  { authenticateUser }
+  { authenticateUser, switchTheme }
 )(Settings);
