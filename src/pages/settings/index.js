@@ -1,6 +1,11 @@
 // Library Imports
 import React, { Component } from "react";
-import { TouchableOpacity, Text, ScrollView } from "react-native";
+import {
+  TouchableOpacity,
+  Text,
+  ScrollView,
+  ActivityIndicator
+} from "react-native";
 import { authenticateUser } from "../../actions/index.js";
 import { connect } from "react-redux";
 import Next from "../../components/next/index.js";
@@ -12,7 +17,7 @@ import PageWrapper from "../../components/page-wrapper";
 import Input from "../../components/input";
 
 class Settings extends Component {
-  state = { theme: "Dark Theme", toggle: true };
+  state = { theme: "Dark Theme", toggle: true, label: "Sign Out" };
 
   changeTheme = () => {
     this.setState({
@@ -20,14 +25,29 @@ class Settings extends Component {
     });
   };
 
+  logoutUser = () => {
+    this.setState({
+      label: "Loading"
+    });
+
+    setTimeout(() => {
+      this.props.authenticateUser(false);
+    }, 2000);
+  };
+
   render() {
     this.props.navigation.setOptions({
-      title: "Create a Vault",
       headerBackTitleVisible: false,
       headerRight: () => (
         <Next
-          label="Sign Out"
-          onPress={() => this.props.authenticateUser(false)}
+          label={
+            this.state.label === "Loading" ? (
+              <ActivityIndicator size="small" />
+            ) : (
+              this.state.label
+            )
+          }
+          onPress={this.logoutUser}
         />
       )
     });
@@ -102,7 +122,11 @@ class Settings extends Component {
   }
 }
 
+export const mapStateToProps = state => ({
+  authUser: state.authUser
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   { authenticateUser }
 )(Settings);
