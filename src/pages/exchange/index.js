@@ -60,6 +60,14 @@ class Exchange extends Component {
         to_asset_error: !to_amount && "Enter to amount",
         to_amount_error: !to_amount && "Enter to asset"
       });
+      setTimeout(() => {
+        this.setState({
+          from_asset_error: "",
+          from_amount_error: "",
+          to_asset_error: "",
+          to_amount_error: ""
+        });
+      }, 2000);
     } else {
       this.props.navigation.navigate("Review", {
         from_ticker,
