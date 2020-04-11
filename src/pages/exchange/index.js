@@ -29,12 +29,14 @@ class Exchange extends Component {
     selectedIndex: 0,
 
     ///
+    from_asset: "",
     from_value: "",
     from_ticker: "",
     from_token: "",
     from_balance: "",
     from_amount: "",
     to_value: "",
+    to_asset: "",
     to_ticker: "",
     to_token: "",
     to_balance: "",
@@ -52,7 +54,7 @@ class Exchange extends Component {
 
   changeTabs = selectedIndex => {
     this.setState({
-      selectedIndex: selectedIndex
+      selectedIndex
     });
   };
 
@@ -66,54 +68,93 @@ class Exchange extends Component {
       to_value,
       to_token,
       to_amount,
+      from_asset,
+      to_asset,
       to_address,
       selectedIndex,
       priority
     } = this.state;
 
     const basicValid =
-      from_value && from_amount && to_value && to_amount && selectedIndex == 0;
+      from_asset && from_amount && to_asset && to_asset && selectedIndex === 0;
 
     const advancedValid =
-      from_value && from_amount && to_value && to_amount && selectedIndex == 1;
+      priority &&
+      from_asset &&
+      from_amount &&
+      to_asset &&
+      to_amount &&
+      selectedIndex === 1;
 
+    console.log(advancedValid ? "true" : "false");
     if (!basicValid) {
+      console.log("!basic  not Valid");
       this.setState({
         from_asset_error: !from_amount && "Enter from amount",
         from_amount_error: !from_amount && "Enter from asset",
         to_asset_error: !to_amount && "Enter to amount",
-        to_amount_error: !to_amount && "Enter to asset",
-        to_address_error: !to_address && "Enter to address"
+        to_amount_error: !to_amount && "Enter to asset"
       });
       setTimeout(() => {
         this.setState({
           from_asset_error: "",
           from_amount_error: "",
           to_asset_error: "",
-          to_amount_error: "",
-          to_address_error: ""
+          to_amount_error: ""
         });
       }, 2000);
-    } else if (!advancedValid) {
-      this.setState({
-        from_asset_error: !from_amount && "Enter from amount",
-        from_amount_error: !from_amount && "Enter from asset",
-        to_asset_error: !to_amount && "Enter to amount",
-        to_amount_error: !to_amount && "Enter to asset",
-        to_address_error: !to_address && "Enter to address"
-      });
-      setTimeout(() => {
-        this.setState({
-          from_asset_error: "",
-          from_amount_error: "",
-          to_asset_error: "",
-          to_amount_error: "",
-          to_address_error: ""
-        });
-      }, 2000);
-    } else if (basicValid || advancedValid) {
+    }
+    if (basicValid) {
+      console.log("basic is Valid");
       this.props.navigation.navigate("Review", {
-        transaction: this.state,
+        from_ticker,
+        from_value,
+        from_token,
+        from_amount,
+        to_ticker,
+        to_value,
+        to_token,
+        to_amount,
+        to_address,
+        selectedIndex,
+        priority,
+
+        type: "Exchange"
+      });
+    }
+    if (!advancedValid) {
+      console.log("!advanced not Valid");
+      this.setState({
+        from_asset_error: !from_amount && "Enter from amount",
+        from_amount_error: !from_amount && "Enter from asset",
+        to_asset_error: !to_amount && "Enter to amount",
+        to_amount_error: !to_amount && "Enter to asset",
+        to_address_error: !to_address && "Enter to address"
+      });
+      setTimeout(() => {
+        this.setState({
+          from_asset_error: "",
+          from_amount_error: "",
+          to_asset_error: "",
+          to_amount_error: "",
+          to_address_error: ""
+        });
+      }, 2000);
+    }
+    if (advancedValid) {
+      console.log("advanced is Valid");
+      this.props.navigation.navigate("Review", {
+        from_ticker,
+        from_value,
+        from_token,
+        from_amount,
+        to_ticker,
+        to_value,
+        to_token,
+        to_amount,
+        to_address,
+        selectedIndex,
+        priority,
         type: "Exchange"
       });
     }
@@ -151,6 +192,7 @@ class Exchange extends Component {
     if (type === "from") {
       this.setState({
         from_value: `${token}${" "}(${ticker})`,
+        from_asset: token,
         from_ticker: ticker,
         from_token: token,
         from_balance: "10.00"
@@ -159,6 +201,7 @@ class Exchange extends Component {
       this.setState({
         to_value: `${token}${" "}(${ticker})`,
         to_ticker: ticker,
+        to_asset: token,
         to_token: token,
         to_balance: "5.00"
       });
@@ -193,7 +236,9 @@ class Exchange extends Component {
       from_token,
       from_balance,
       from_amount,
+      from_asset,
       to_value,
+      to_asset,
       to_ticker,
       to_token,
       to_balance,
@@ -219,7 +264,7 @@ class Exchange extends Component {
                 placeholder={"Select Asset"}
                 onPress={this.selectFromToken}
                 chooseToken={this.chooseToken}
-                value={from_value}
+                value={from_asset}
                 border={true}
                 error={this.state.from_asset_error}
               />
@@ -257,9 +302,29 @@ class Exchange extends Component {
             <Fragment>
               <Border />
               <InputLink
+                label="From Asset"
+                placeholder={"Select Asset"}
+                onPress={this.selectFromToken}
+                chooseToken={this.chooseToken}
+                value={from_asset}
+                border={true}
+                error={this.state.from_asset_error}
+              />
+              <InputText
+                label="From Amount"
+                placeholder="Enter Amount"
+                value={from_amount}
+                onChangeText={from_amount => this.setState({ from_amount })}
+                editable={!from_value ? false : true}
+                keyboardType="numeric"
+                returnKeyType="done"
+                error={this.state.from_amount_error}
+              />
+              <Input_Information />
+              <InputLink
                 label="To Asset"
                 onPress={this.selectToToken}
-                value={to_value}
+                value={to_asset}
                 placeholder="Select Asset"
                 border={true}
                 error={this.state.to_asset_error}
@@ -274,26 +339,7 @@ class Exchange extends Component {
                 returnKeyType="done"
                 error={this.state.to_amount_error}
               />
-              <Input_Information />
-              <InputLink
-                label="From Asset"
-                placeholder={"Select Asset"}
-                onPress={this.selectFromToken}
-                chooseToken={this.chooseToken}
-                value={from_value}
-                border={true}
-                error={this.state.from_asset_error}
-              />
-              <InputText
-                label="From Amount"
-                placeholder="Enter Amount"
-                value={from_amount}
-                onChangeText={from_amount => this.setState({ from_amount })}
-                editable={!from_value ? false : true}
-                keyboardType="numeric"
-                returnKeyType="done"
-                error={this.state.from_amount_error}
-              />
+
               <Input_Information />
               <InputLink
                 label={`Transaction Priority ${this.state.priority.name}`}

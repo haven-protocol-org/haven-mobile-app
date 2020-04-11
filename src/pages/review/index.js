@@ -23,11 +23,6 @@ class Review extends Component {
     this.setState({
       title: `${type} Transaction`
     });
-    // this.props.navigation.setOptions({
-    //   title: `${"Review " + this.state.token + " Exchange"}`,
-    //   headerBackTitle: "Cancel",
-    //   tabBarVisible: this.props.route.params.tabBarVisible
-    // });
   }
 
   handleConfirmation = () => {
@@ -38,8 +33,7 @@ class Review extends Component {
     const { type, to_amount, to_ticker } = this.props.route.params;
     this.props.navigation.setOptions({
       title: this.state.title,
-      headerBackTitle: ""
-      // callback: this.props.navigation.navigate("Exchange")
+      headerBackTitleVisible: false
     });
     return (
       <Container>
