@@ -26,7 +26,7 @@ class Exchange extends Component {
     from_token: "",
     from_balance: "",
     from_amount: "",
-    to_value: "Select Asset",
+    to_value: "",
     to_ticker: "",
     to_token: "",
     to_balance: "",
@@ -152,8 +152,10 @@ class Exchange extends Component {
               placeholder="Enter Amount"
               value={from_amount}
               border={true}
-              editable={false}
               onChangeText={from_amount => this.setState({ from_amount })}
+              editable={!from_value ? false : true}
+              keyboardType="numeric"
+              returnKeyType="done"
             />
             <Input_Information />
 
@@ -169,6 +171,9 @@ class Exchange extends Component {
               placeholder="Enter Amount"
               value={to_amount}
               onChangeText={to_amount => this.setState({ to_amount })}
+              editable={!to_value ? false : true}
+              keyboardType="numeric"
+              returnKeyType="done"
             />
           </Fragment>
         ) : (
