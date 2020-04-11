@@ -19,7 +19,6 @@ class Exchange extends Component {
   state = {
     values: ["Basic", "Advanced"],
     selectedIndex: 0,
-
     ///
     from_value: "",
     from_ticker: "",
@@ -31,8 +30,7 @@ class Exchange extends Component {
     to_token: "",
     to_balance: "",
     to_amount: "",
-    conversion_rate: "1 XHV : 0.2127 xUSD",
-    isValid: true
+    conversion_rate: "1 XHV : 0.2127 xUSD"
   };
 
   changeTabs = selectedIndex => {
@@ -53,17 +51,28 @@ class Exchange extends Component {
       to_amount
     } = this.state;
 
-    this.props.navigation.navigate("Review", {
-      from_ticker,
-      from_value,
-      from_token,
-      from_amount,
-      to_ticker,
-      to_value,
-      to_token,
-      to_amount,
-      type: "Exchange"
-    });
+    const valid = from_value && from_amount && to_value && to_amount;
+
+    if (!valid) {
+      this.setState({
+        from_asset_error: !from_amount && "Enter from amount",
+        from_amount_error: !from_amount && "Enter from asset",
+        to_asset_error: !to_amount && "Enter to amount",
+        to_amount_error: !to_amount && "Enter to asset"
+      });
+    } else {
+      this.props.navigation.navigate("Review", {
+        from_ticker,
+        from_value,
+        from_token,
+        from_amount,
+        to_ticker,
+        to_value,
+        to_token,
+        to_amount,
+        type: "Exchange"
+      });
+    }
   };
 
   changeInput = event => {
@@ -146,6 +155,7 @@ class Exchange extends Component {
               chooseToken={this.chooseToken}
               value={from_value}
               border={true}
+              error={this.state.from_asset_error}
             />
             <InputText
               label="From Amount"
@@ -155,6 +165,7 @@ class Exchange extends Component {
               editable={!from_value ? false : true}
               keyboardType="numeric"
               returnKeyType="done"
+              error={this.state.from_amount_error}
             />
             <Input_Information />
 
@@ -164,6 +175,7 @@ class Exchange extends Component {
               value={to_value}
               placeholder="Select Asset"
               border={true}
+              error={this.state.to_asset_error}
             />
             <InputText
               label="To Amount"
@@ -173,6 +185,7 @@ class Exchange extends Component {
               editable={!to_value ? false : true}
               keyboardType="numeric"
               returnKeyType="done"
+              error={this.state.to_amount_error}
             />
           </Fragment>
         ) : (

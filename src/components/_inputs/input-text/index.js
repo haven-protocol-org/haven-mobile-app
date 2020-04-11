@@ -3,8 +3,8 @@ import React, { Component, Fragment } from "react";
 import { TextInput, Switch } from "react-native";
 
 // Relative Imports'
-import { Container } from "./styles";
-import { Label, Input } from "../../../constants/type.js";
+import { Container, Row } from "./styles";
+import { Label, Input, Error } from "../../../constants/type.js";
 import Border from "../../../components/border";
 
 const InputText = ({
@@ -13,12 +13,16 @@ const InputText = ({
   placeholder,
   onChangeText,
   border,
+  error,
   secureTextEntry,
   ...rest
 }) => {
   return (
     <Container>
-      <Label>{label}</Label>
+      <Row>
+        <Label>{label}</Label>
+        <Error>{error}</Error>
+      </Row>
       <Input
         value={value}
         placeholder={placeholder}

@@ -45,6 +45,13 @@ export const Label = styled.Text`
   line-height: 21px;
 `;
 
+export const Error = styled.Text`
+  font-size: 12px;
+  color: ${props => props.theme.states.error};
+  letter-spacing: 0;
+  line-height: 21px;
+`;
+
 export const Input = styled.TextInput.attrs({
   placeholderTextColor: "#999"
 })`

@@ -4,13 +4,16 @@ import { TextInput, Switch } from "react-native";
 
 // Relative Imports
 import { Container, Field, Row, Icon } from "./styles";
-import { Value, Label } from "../../../constants/type.js";
+import { Value, Label, Error } from "../../../constants/type.js";
 import Border from "../../../components/border";
 
-const InputLink = ({ value, label, onPress, border, placeholder }) => {
+const InputLink = ({ value, label, onPress, border, error, placeholder }) => {
   return (
     <Container onPress={onPress}>
-      <Label>{label}</Label>
+      <Row>
+        <Label>{label}</Label>
+        <Error>{error}</Error>
+      </Row>
       <Row>
         <Field>
           <Value>{!value ? placeholder : value}</Value>
