@@ -71,6 +71,7 @@ class Exchange extends Component {
       from_asset,
       to_asset,
       to_address,
+      conversion_rate,
       selectedIndex,
       priority
     } = this.state;
@@ -118,7 +119,8 @@ class Exchange extends Component {
         to_address,
         selectedIndex,
         priority,
-
+        from_asset,
+        to_asset,
         type: "Exchange"
       });
     }
@@ -155,6 +157,9 @@ class Exchange extends Component {
         to_address,
         selectedIndex,
         priority,
+        conversion_rate,
+        from_asset,
+        to_asset,
         type: "Exchange"
       });
     }
@@ -362,9 +367,9 @@ class Exchange extends Component {
           )}
           <ExchangeSummary
             conversion_rate={conversion_rate}
-            from_asset={from_ticker}
+            from_asset={from_asset}
             from_amount={from_amount}
-            to_asset={to_ticker}
+            to_asset={to_asset}
             to_amount={to_amount}
           />
           <Border />

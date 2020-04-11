@@ -5,33 +5,39 @@ import React from "react";
 import { Container, Key, Value, Row } from "./styles";
 
 const ExchangeConfirmation = ({
-  conversion_rate,
-  from_asset,
-  to_asset,
+  from_ticker,
+  from_value,
+  from_token,
   from_amount,
-  to_amount
+  ftom_asset,
+  to_ticker,
+  to_value,
+  to_asset,
+  to_token,
+  to_amount,
+  to_address,
+  selectedIndex,
+  priority,
+  type,
+  conversion_rate
 }) => {
   return (
     <Container>
       <Row>
         <Key>Conversion Rate</Key>
-        <Value>{!conversion_rate ? "--" : conversion_rate}</Value>
+        <Value>{conversion_rate}</Value>
       </Row>
       <Row>
         <Key>From Asset</Key>
-        <Value>
-          {!from_asset ? "--" : from_asset} {!from_amount ? "--" : from_amount}
-        </Value>
+        <Value>{from_amount}</Value>
       </Row>
       <Row>
         <Key>To Asset</Key>
-        <Value>
-          {!to_asset ? "--" : to_asset} {!to_amount ? "--" : to_amount}
-        </Value>
+        <Value>{to_asset}</Value>
       </Row>
       <Row>
-        <Key>Priority (Medium)</Key>
-        <Value>Unlocks ~2 hours</Value>
+        <Key>Priority</Key>
+        <Value>{priority}</Value>
       </Row>
       <Row>
         <Key>Fee ($0.00 USD)</Key>

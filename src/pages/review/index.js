@@ -30,7 +30,23 @@ class Review extends Component {
   };
 
   render() {
-    const { type, to_amount, to_ticker } = this.props.route.params;
+    const {
+      from_ticker,
+      from_value,
+      from_token,
+      from_amount,
+      to_ticker,
+      to_value,
+      to_token,
+      to_amount,
+      to_address,
+      selectedIndex,
+      priority,
+      type,
+      from_asset,
+      to_asset,
+      conversion_rate
+    } = this.props.route.params;
     this.props.navigation.setOptions({
       title: this.state.title,
       headerBackTitleVisible: false
@@ -44,7 +60,14 @@ class Review extends Component {
         </Overview>
         <Border />
         <PageWrapper>
-          {type === "Exchange" && <ExchangeConfirmation />}
+          {type === "Exchange" && (
+            <ExchangeConfirmation
+              from_asset={from_asset}
+              to_asset={to_asset}
+              priority={priority.message}
+              conversion_rate={conversion_rate}
+            />
+          )}
         </PageWrapper>
         <Button onPress={this.handleConfirmation} text="Confirm" />
       </Container>
