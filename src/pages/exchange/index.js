@@ -21,7 +21,7 @@ class Exchange extends Component {
     selectedIndex: 0,
 
     ///
-    from_value: "Select Asset",
+    from_value: "",
     from_ticker: "",
     from_token: "",
     from_balance: "",
@@ -152,8 +152,10 @@ class Exchange extends Component {
               placeholder="Enter Amount"
               value={from_amount}
               border={true}
+              editable={false}
               onChangeText={from_amount => this.setState({ from_amount })}
             />
+            <Input_Information />
 
             <InputLink
               label="To Asset"
