@@ -15,12 +15,11 @@ import { connect } from "react-redux";
 class Application extends Component {
   state = {
     currentTheme: "dark",
-    initialRouteName: "Settings",
+    initialRouteName: "Exchange",
     authenticated: true,
     barStyle: "light-content",
     loaded: true,
-    authenticateUser: false,
-    authUser: false
+    authUser: true
   };
 
   componentDidUpdate(prevProps) {

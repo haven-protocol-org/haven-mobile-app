@@ -7,10 +7,6 @@ import Button from "../../components/button";
 import Border from "../../components/border";
 import FormContainer from "../../components/form-container";
 import ExchangeSummary from "../../components/_summaries/exchange";
-// Refactor
-import InputLink from "../../components/_inputs/input-link";
-import InputText from "../../components/_inputs/input-text";
-import Input_Information from "../../components/_inputs/input_information";
 
 // Relative Imports
 import { Container, Label, Preview, PreviewLabel } from "./styles";
@@ -20,13 +16,12 @@ class Exchange extends Component {
     values: ["Basic", "Advanced"],
     selectedIndex: 0,
 
-    ///
-    from_value: "Select Asset",
+    from_value: "",
     from_ticker: "",
     from_token: "",
     from_balance: "",
     from_amount: "",
-    to_value: "Select Asset",
+    to_value: "",
     to_ticker: "",
     to_token: "",
     to_balance: "",
@@ -139,33 +134,36 @@ class Exchange extends Component {
         {selectedIndex == 0 ? (
           <Fragment>
             <Border />
-            <InputLink
+            <Input
               label="From Asset"
-              placeholder={"Select Asset"}
+              type="cell"
               onPress={this.selectFromToken}
               chooseToken={this.chooseToken}
               value={from_value}
-              border={true}
+              placeholder="Select Asset"
             />
-            <InputText
+            <Input
               label="From Amount"
+              type="input"
               placeholder="Enter Amount"
               value={from_amount}
-              border={true}
+              onChange={this.changeInput}
               onChangeText={from_amount => this.setState({ from_amount })}
             />
 
-            <InputLink
+            <Input
               label="To Asset"
+              type="cell"
               onPress={this.selectToToken}
               value={to_value}
               placeholder="Select Asset"
-              border={true}
             />
-            <InputText
+            <Input
               label="To Amount"
+              type="input"
               placeholder="Enter Amount"
               value={to_amount}
+              onChange={this.changeInput}
               onChangeText={to_amount => this.setState({ to_amount })}
             />
           </Fragment>

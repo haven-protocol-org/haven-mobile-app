@@ -6,6 +6,7 @@ export const Container = styled.View`
   height: auto;
   padding: 12px 16px;
   width: 100%;
+  background: ${props => props.theme.body.foreground};
 `;
 
 export const Tab = styled.View`
@@ -14,8 +15,7 @@ export const Tab = styled.View`
   overflow: hidden;
   display: flex;
   flex-direction: row;
-  border: ${props => props.theme.button.primary};
-  background: ${props => props.theme.body.background};
+  border: ${props => props.theme.input.input_border};
   border-radius: ${props => props.theme.styles.radius[1]};
 `;
 
