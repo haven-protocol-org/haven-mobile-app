@@ -9,7 +9,7 @@ const ExchangeConfirmation = ({
   from_value,
   from_token,
   from_amount,
-  ftom_asset,
+  from_asset,
   to_ticker,
   to_value,
   to_asset,
@@ -29,12 +29,22 @@ const ExchangeConfirmation = ({
       </Row>
       <Row>
         <Key>From Asset</Key>
-        <Value>{from_amount}</Value>
+        <Value>
+          {from_amount} {from_asset}
+        </Value>
       </Row>
       <Row>
         <Key>To Asset</Key>
-        <Value>{to_asset}</Value>
+        <Value>
+          {to_amount} {to_asset}
+        </Value>
       </Row>
+      {to_address && (
+        <Row>
+          <Key>Recipient Address</Key>
+          <Value>{to_address}</Value>
+        </Row>
+      )}
       <Row>
         <Key>Priority</Key>
         <Value>{priority}</Value>

@@ -87,9 +87,7 @@ class Exchange extends Component {
       to_amount &&
       selectedIndex === 1;
 
-    console.log(advancedValid ? "true" : "false");
     if (!basicValid) {
-      console.log("!basic  not Valid");
       this.setState({
         from_asset_error: !from_amount && "Enter from amount",
         from_amount_error: !from_amount && "Enter from asset",
@@ -106,12 +104,13 @@ class Exchange extends Component {
       }, 2000);
     }
     if (basicValid) {
-      console.log("basic is Valid");
+      console.log("from_asset", from_asset);
       this.props.navigation.navigate("Review", {
         from_ticker,
         from_value,
         from_token,
         from_amount,
+        from_asset,
         to_ticker,
         to_value,
         to_token,
@@ -121,11 +120,11 @@ class Exchange extends Component {
         priority,
         from_asset,
         to_asset,
+        conversion_rate,
         type: "Exchange"
       });
     }
     if (!advancedValid) {
-      console.log("!advanced not Valid");
       this.setState({
         from_asset_error: !from_amount && "Enter from amount",
         from_amount_error: !from_amount && "Enter from asset",
@@ -144,7 +143,6 @@ class Exchange extends Component {
       }, 2000);
     }
     if (advancedValid) {
-      console.log("advanced is Valid");
       this.props.navigation.navigate("Review", {
         from_ticker,
         from_value,

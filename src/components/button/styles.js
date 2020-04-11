@@ -8,7 +8,9 @@ export const Container = styled.View`
   justify-content: center;
 `;
 
-export const Wrapper = styled.TouchableOpacity`
+export const Wrapper = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.8
+})`
   width: 100%;
   height: auto;
   padding: 12px;

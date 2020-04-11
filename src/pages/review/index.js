@@ -35,6 +35,7 @@ class Review extends Component {
       from_value,
       from_token,
       from_amount,
+      from_asset,
       to_ticker,
       to_value,
       to_token,
@@ -43,7 +44,6 @@ class Review extends Component {
       selectedIndex,
       priority,
       type,
-      from_asset,
       to_asset,
       conversion_rate
     } = this.props.route.params;
@@ -63,9 +63,12 @@ class Review extends Component {
           {type === "Exchange" && (
             <ExchangeConfirmation
               from_asset={from_asset}
+              from_amount={from_amount}
               to_asset={to_asset}
+              to_amount={to_amount}
               priority={priority.message}
               conversion_rate={conversion_rate}
+              to_address={to_address}
             />
           )}
         </PageWrapper>
