@@ -9,12 +9,12 @@ export const Container = styled.View`
 `;
 
 export const Key = styled.Text`
-  font-size: 14px;
+  font-size: 13px;
   color: ${props => props.theme.type.secondary};
 `;
 
 export const Value = styled.Text`
-  font-size: 14px;
+  font-size: 13px;
   color: ${props => props.theme.type.primary};
 `;
 

@@ -20,13 +20,13 @@ const ExchangeSummary = ({
       <Row>
         <Key>From Asset</Key>
         <Value>
-          {from_asset} {from_amount}
+          {!from_asset ? "--" : from_asset} {to_amount}
         </Value>
       </Row>
       <Row>
         <Key>To Asset</Key>
         <Value>
-          {to_asset} {to_amount}
+          {!to_asset ? "--" : to_asset} {to_amount}
         </Value>
       </Row>
     </Container>
