@@ -28,11 +28,18 @@ export const Border = styled.View`
 
 export const Preview = styled.TouchableOpacity`
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
   height: 48px;
   width: 100%;
   padding-left: 12px;
+  padding-right: 12px;
+`;
+
+export const Chevron = styled.Image`
+  height: 24px;
+  width: 24px;
 `;
 
 export const PreviewLabel = styled.Text`

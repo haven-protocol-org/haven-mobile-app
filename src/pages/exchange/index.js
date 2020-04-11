@@ -13,7 +13,7 @@ import InputText from "../../components/_inputs/input-text";
 import Input_Information from "../../components/_inputs/input_information";
 
 // Relative Imports
-import { Container, Label, Preview, PreviewLabel } from "./styles";
+import { Container, Label, Preview, Chevron, PreviewLabel } from "./styles";
 
 class Exchange extends Component {
   state = {
@@ -151,7 +151,6 @@ class Exchange extends Component {
               label="From Amount"
               placeholder="Enter Amount"
               value={from_amount}
-              border={true}
               onChangeText={from_amount => this.setState({ from_amount })}
               editable={!from_value ? false : true}
               keyboardType="numeric"
@@ -238,7 +237,8 @@ class Exchange extends Component {
         />
         <Border />
         <Preview onPress={this.handleReview}>
-          <PreviewLabel>Preview</PreviewLabel>
+          <PreviewLabel>Preview Exchange</PreviewLabel>
+          <Chevron source={require("../../assets/icon/chevron/chevron.png")} />
         </Preview>
         <Border />
       </Container>
