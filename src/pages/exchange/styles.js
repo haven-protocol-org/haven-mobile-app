@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const Scroll = styled.ScrollView`
+  background: ${props => props.theme.body.background};
+`;
+
 export const Container = styled.View`
   flex: 1;
   background: ${props => props.theme.body.background};

@@ -1,6 +1,6 @@
 // Library Imports
 import React, { Component, Fragment } from "react";
-import { TextInput, SegmentedControlIOS, View, Text } from "react-native";
+import { SegmentedControlIOS, View, Text } from "react-native";
 import SegmentedController from "../../components/segment_controller";
 import Input from "../../components/input";
 import Button from "../../components/button";
@@ -11,14 +11,23 @@ import ExchangeSummary from "../../components/_summaries/exchange";
 import InputLink from "../../components/_inputs/input-link";
 import InputText from "../../components/_inputs/input-text";
 import Input_Information from "../../components/_inputs/input_information";
+import priorities from "../../constants/priorities.js";
 
 // Relative Imports
-import { Container, Label, Preview, Chevron, PreviewLabel } from "./styles";
+import {
+  Container,
+  Label,
+  Preview,
+  Chevron,
+  PreviewLabel,
+  Scroll
+} from "./styles";
 
 class Exchange extends Component {
   state = {
     values: ["Basic", "Advanced"],
-    selectedIndex: 0,
+    selectedIndex: 1,
+
     ///
     from_value: "",
     from_ticker: "",
@@ -30,7 +39,8 @@ class Exchange extends Component {
     to_token: "",
     to_balance: "",
     to_amount: "",
-    conversion_rate: "1 XHV : 0.2127 xUSD"
+    conversion_rate: "1 XHV : 0.2127 xUSD",
+    priority: { name: "Medium:", message: "Unlocks ~18 hours", prio: 2 }
   };
 
   changeTabs = selectedIndex => {
@@ -147,122 +157,135 @@ class Exchange extends Component {
     } = this.state;
 
     return (
-      <Container>
-        <SegmentedController
-          values={values}
-          selectedIndex={selectedIndex}
-          onPress={this.changeTabs}
-        />
-        {selectedIndex == 0 ? (
-          <Fragment>
-            <Border />
-            <InputLink
-              label="From Asset"
-              placeholder={"Select Asset"}
-              onPress={this.selectFromToken}
-              chooseToken={this.chooseToken}
-              value={from_value}
-              border={true}
-              error={this.state.from_asset_error}
-            />
-            <InputText
-              label="From Amount"
-              placeholder="Enter Amount"
-              value={from_amount}
-              onChangeText={from_amount => this.setState({ from_amount })}
-              editable={!from_value ? false : true}
-              keyboardType="numeric"
-              returnKeyType="done"
-              error={this.state.from_amount_error}
-            />
-            <Input_Information />
+      <Scroll>
+        <Container>
+          <SegmentedController
+            values={values}
+            selectedIndex={selectedIndex}
+            onPress={this.changeTabs}
+          />
 
-            <InputLink
-              label="To Asset"
-              onPress={this.selectToToken}
-              value={to_value}
-              placeholder="Select Asset"
-              border={true}
-              error={this.state.to_asset_error}
+          {selectedIndex == 0 ? (
+            <Fragment>
+              <Border />
+              <InputLink
+                label="From Asset"
+                placeholder={"Select Asset"}
+                onPress={this.selectFromToken}
+                chooseToken={this.chooseToken}
+                value={from_value}
+                border={true}
+                error={this.state.from_asset_error}
+              />
+              <InputText
+                label="From Amount"
+                placeholder="Enter Amount"
+                value={from_amount}
+                onChangeText={from_amount => this.setState({ from_amount })}
+                editable={!from_value ? false : true}
+                keyboardType="numeric"
+                returnKeyType="done"
+                error={this.state.from_amount_error}
+              />
+              <Input_Information />
+              <InputLink
+                label="To Asset"
+                onPress={this.selectToToken}
+                value={to_value}
+                placeholder="Select Asset"
+                border={true}
+                error={this.state.to_asset_error}
+              />
+              <InputText
+                label="To Amount"
+                placeholder="Enter Amount"
+                value={to_amount}
+                onChangeText={to_amount => this.setState({ to_amount })}
+                editable={!to_value ? false : true}
+                keyboardType="numeric"
+                returnKeyType="done"
+                error={this.state.to_amount_error}
+              />
+            </Fragment>
+          ) : (
+            <Fragment>
+              <Border />
+              <InputLink
+                label="To Asset"
+                onPress={this.selectToToken}
+                value={to_value}
+                placeholder="Select Asset"
+                border={true}
+                error={this.state.to_asset_error}
+              />
+              <InputText
+                label="To Amount"
+                placeholder="Enter Amount"
+                value={to_amount}
+                onChangeText={to_amount => this.setState({ to_amount })}
+                editable={!to_value ? false : true}
+                keyboardType="numeric"
+                returnKeyType="done"
+                error={this.state.to_amount_error}
+              />
+              <Input_Information />
+              <InputLink
+                label="From Asset"
+                placeholder={"Select Asset"}
+                onPress={this.selectFromToken}
+                chooseToken={this.chooseToken}
+                value={from_value}
+                border={true}
+                error={this.state.from_asset_error}
+              />
+              <InputText
+                label="From Amount"
+                placeholder="Enter Amount"
+                value={from_amount}
+                onChangeText={from_amount => this.setState({ from_amount })}
+                editable={!from_value ? false : true}
+                keyboardType="numeric"
+                returnKeyType="done"
+                error={this.state.from_amount_error}
+              />
+              <Input_Information />
+              <InputLink
+                label="Transaction Priority "
+                onPress={this.selectToToken}
+                value={this.state.priority.message}
+                placeholder="Regular"
+                border={true}
+                error={this.state.to_asset_error}
+              />
+              <InputText
+                label="To Address (Optional)"
+                placeholder="Enter Recipient Address"
+                value={to_amount}
+                onChangeText={to_amount => this.setState({ to_amount })}
+                editable={!to_value ? false : true}
+                keyboardType="numeric"
+                returnKeyType="done"
+                error={this.state.to_amount_error}
+              />
+            </Fragment>
+          )}
+          <ExchangeSummary
+            conversion_rate={conversion_rate}
+            from_asset={from_ticker}
+            from_amount={from_amount}
+            to_asset={to_ticker}
+            to_amount={to_amount}
+          />
+          <Border />
+          <Preview onPress={this.handleReview}>
+            <PreviewLabel>Preview Exchange</PreviewLabel>
+            <Chevron
+              source={require("../../assets/icon/chevron/chevron.png")}
             />
-            <InputText
-              label="To Amount"
-              placeholder="Enter Amount"
-              value={to_amount}
-              onChangeText={to_amount => this.setState({ to_amount })}
-              editable={!to_value ? false : true}
-              keyboardType="numeric"
-              returnKeyType="done"
-              error={this.state.to_amount_error}
-            />
-          </Fragment>
-        ) : (
-          <Fragment>
-            <Border />
-            <Input
-              label="From Asset"
-              type="cell"
-              onPress={this.selectFromToken}
-              chooseToken={this.chooseToken}
-              value={from_value}
-              placeholder="Select Asset"
-            />
-            <Input
-              label="From Amount"
-              type="input"
-              placeholder="Enter Amount"
-              value={from_amount}
-              onChange={this.changeInput}
-              onChangeText={from_amount => this.setState({ from_amount })}
-            />
-
-            <Input
-              label="To Asset"
-              type="cell"
-              onPress={this.selectToToken}
-              value={to_value}
-              placeholder="Select Asset"
-            />
-            <Input
-              label="To Amount"
-              type="input"
-              placeholder="Enter Amount"
-              value={to_amount}
-              onChange={this.changeInput}
-              onChangeText={to_amount => this.setState({ to_amount })}
-            />
-            <Input
-              label="To Address"
-              type="input"
-              placeholder="Enter recipient address"
-              value={to_amount}
-              onChange={this.changeInput}
-              onChangeText={to_amount => this.setState({ to_amount })}
-            />
-            <Input
-              label="Priority"
-              type="input"
-              placeholder="Select Priority"
-              value={to_amount}
-              onChange={this.changeInput}
-              onChangeText={to_amount => this.setState({ to_amount })}
-            />
-          </Fragment>
-        )}
-        <ExchangeSummary
-          conversion_rate={conversion_rate}
-          from_asset={from_ticker}
-          from_amount={from_amount}
-          to_asset={to_ticker}
-          to_amount={to_amount}
-        />
-        <Border />
-        <Preview onPress={this.handleReview}>
-          <PreviewLabel>Preview Exchange</PreviewLabel>
-          <Chevron source={require("../../assets/icon/chevron/chevron.png")} />
-        </Preview>
-        <Border />
-      </Container>
+          </Preview>
+          <Border />
+        </Container>
+      </Scroll>
     );
   }
 }
