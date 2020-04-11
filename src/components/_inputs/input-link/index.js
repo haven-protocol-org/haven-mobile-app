@@ -7,7 +7,15 @@ import { Container, Field, Row, Icon } from "./styles";
 import { Value, Label, Error } from "../../../constants/type.js";
 import Border from "../../../components/border";
 
-const InputLink = ({ value, label, onPress, border, error, placeholder }) => {
+const InputLink = ({
+  value,
+  label,
+  onPress,
+  border,
+  error,
+  placeholder,
+  icon
+}) => {
   return (
     <Container onPress={onPress}>
       <Row>
@@ -18,7 +26,11 @@ const InputLink = ({ value, label, onPress, border, error, placeholder }) => {
         <Field>
           <Value>{!value ? placeholder : value}</Value>
         </Field>
-        <Icon source={require("../../../assets/icon/chevron/chevron.png")} />
+        {icon === false ? (
+          <></>
+        ) : (
+          <Icon source={require("../../../assets/icon/chevron/chevron.png")} />
+        )}
       </Row>
       {border ? <Border /> : null}
     </Container>
