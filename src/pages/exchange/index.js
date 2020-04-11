@@ -26,7 +26,7 @@ import {
 class Exchange extends Component {
   state = {
     values: ["Basic", "Advanced"],
-    selectedIndex: 1,
+    selectedIndex: 0,
 
     ///
     from_value: "",
@@ -39,8 +39,16 @@ class Exchange extends Component {
     to_token: "",
     to_balance: "",
     to_amount: "",
-    conversion_rate: "1 XHV : 0.2127 xUSD"
+    to_address: "",
+    conversion_rate: "1 XHV : 0.2127 xUSD",
+    priority: {}
   };
+
+  componentDidMount() {
+    this.setState({
+      priority: priorities[0]
+    });
+  }
 
   changeTabs = selectedIndex => {
     this.setState({
@@ -57,36 +65,55 @@ class Exchange extends Component {
       to_ticker,
       to_value,
       to_token,
-      to_amount
+      to_amount,
+      to_address,
+      selectedIndex,
+      priority
     } = this.state;
 
-    const valid = from_value && from_amount && to_value && to_amount;
+    const basicValid =
+      from_value && from_amount && to_value && to_amount && selectedIndex == 0;
 
-    if (!valid) {
+    const advancedValid =
+      from_value && from_amount && to_value && to_amount && selectedIndex == 1;
+
+    if (!basicValid) {
       this.setState({
         from_asset_error: !from_amount && "Enter from amount",
         from_amount_error: !from_amount && "Enter from asset",
         to_asset_error: !to_amount && "Enter to amount",
-        to_amount_error: !to_amount && "Enter to asset"
+        to_amount_error: !to_amount && "Enter to asset",
+        to_address_error: !to_address && "Enter to address"
       });
       setTimeout(() => {
         this.setState({
           from_asset_error: "",
           from_amount_error: "",
           to_asset_error: "",
-          to_amount_error: ""
+          to_amount_error: "",
+          to_address_error: ""
         });
       }, 2000);
-    } else {
+    } else if (!advancedValid) {
+      this.setState({
+        from_asset_error: !from_amount && "Enter from amount",
+        from_amount_error: !from_amount && "Enter from asset",
+        to_asset_error: !to_amount && "Enter to amount",
+        to_amount_error: !to_amount && "Enter to asset",
+        to_address_error: !to_address && "Enter to address"
+      });
+      setTimeout(() => {
+        this.setState({
+          from_asset_error: "",
+          from_amount_error: "",
+          to_asset_error: "",
+          to_amount_error: "",
+          to_address_error: ""
+        });
+      }, 2000);
+    } else if (basicValid || advancedValid) {
       this.props.navigation.navigate("Review", {
-        from_ticker,
-        from_value,
-        from_token,
-        from_amount,
-        to_ticker,
-        to_value,
-        to_token,
-        to_amount,
+        transaction: this.state,
         type: "Exchange"
       });
     }
@@ -138,10 +165,22 @@ class Exchange extends Component {
     }
   };
 
+  handlePrioritySelect = ({ name, message, priority }) => {
+    this.props.navigation.navigate("Exchange");
+    this.setState({
+      priority: {
+        name: name,
+        message: message,
+        priority: priority
+      }
+    });
+  };
+
   priorityOptions = () => {
     this.props.navigation.navigate("Options", {
       title: "Priority Options",
-      data: priorities
+      data: priorities,
+      onPress: this.handlePrioritySelect
     });
   };
 
@@ -159,6 +198,7 @@ class Exchange extends Component {
       to_token,
       to_balance,
       to_amount,
+      to_address,
       conversion_rate
     } = this.state;
 
@@ -256,22 +296,21 @@ class Exchange extends Component {
               />
               <Input_Information />
               <InputLink
-                label="Transaction Priority "
+                label={`Transaction Priority ${this.state.priority.name}`}
                 onPress={this.priorityOptions}
-                value={""}
+                value={this.state.priority.message}
                 placeholder="Regular"
                 border={true}
-                error={this.state.to_asset_error}
               />
               <InputText
                 label="To Address (Optional)"
                 placeholder="Enter Recipient Address"
-                value={to_amount}
-                onChangeText={to_amount => this.setState({ to_amount })}
+                value={to_address}
+                onChangeText={to_address => this.setState({ to_address })}
                 editable={!to_value ? false : true}
                 keyboardType="numeric"
                 returnKeyType="done"
-                error={this.state.to_amount_error}
+                error={this.state.to_address_error}
               />
             </Fragment>
           )}

@@ -8,8 +8,9 @@ import InputLink from "../../components/_inputs/input-link";
 class Options extends Component {
   renderOptions = () => {
     const { data } = this.props.route.params;
+    const { onPress } = this.props.route.params;
     return data.map(o => {
-      const { message, name } = o;
+      const { message, name, priority } = o;
       return (
         <InputLink
           key={name}
@@ -17,6 +18,7 @@ class Options extends Component {
           value={message}
           border={true}
           icon={false}
+          onPress={() => onPress({ name, message, priority })}
         />
       );
     });
