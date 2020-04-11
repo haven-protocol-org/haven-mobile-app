@@ -11,7 +11,8 @@ import { connect } from "react-redux";
 import Assets from "../pages/assets";
 import Details from "../pages/details";
 import Exchange from "../pages/exchange";
-import Transfer from "../pages/transfer/index.js";
+import Transfer from "../pages/transfer";
+import Options from "../pages/options";
 
 import Settings from "../pages/settings";
 import Tokens from "../pages/tokens";
@@ -26,25 +27,6 @@ import Validate from "../pages/_auth/validate";
 import Restore from "../pages/_auth/restore";
 
 import { dark, light } from "../constants/themes.js";
-
-// const headerOptions = {
-//   headerStyle: {
-//     backgroundColor: "#2B2E32"
-//   },
-//   headerTintColor: "#ffffff",
-//   headerTitleStyle: {
-//     fontWeight: "bold"
-//   },
-//   tabBarOptions{{
-//     activeTintColor: "#ffffff",
-//     inactiveTintColor: "#8A8D90",
-//     activeBackgroundColor: `${props => props.theme.body.background}`,
-//     inactiveBackgroundColor: `${props => props.theme.body.background}`,
-//     style: {
-//       backgroundColor: "#2B2E32"
-//     }
-//   }}
-// };
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -118,6 +100,7 @@ class TabNavigator extends Component {
       return (
         <Stack.Navigator screenOptions={header}>
           <Stack.Screen name="Exchange" component={Exchange} />
+          <Stack.Screen name="Options" component={Options} />
           <Stack.Screen name="Tokens" component={Tokens} />
           <Stack.Screen name="Review" component={Review} />
         </Stack.Navigator>

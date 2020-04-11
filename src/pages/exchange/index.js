@@ -39,8 +39,7 @@ class Exchange extends Component {
     to_token: "",
     to_balance: "",
     to_amount: "",
-    conversion_rate: "1 XHV : 0.2127 xUSD",
-    priority: { name: "Medium:", message: "Unlocks ~18 hours", prio: 2 }
+    conversion_rate: "1 XHV : 0.2127 xUSD"
   };
 
   changeTabs = selectedIndex => {
@@ -137,6 +136,13 @@ class Exchange extends Component {
         to_balance: "5.00"
       });
     }
+  };
+
+  priorityOptions = () => {
+    this.props.navigation.navigate("Options", {
+      title: "Priority Options",
+      data: priorities
+    });
   };
 
   render() {
@@ -251,8 +257,8 @@ class Exchange extends Component {
               <Input_Information />
               <InputLink
                 label="Transaction Priority "
-                onPress={this.selectToToken}
-                value={this.state.priority.message}
+                onPress={this.priorityOptions}
+                value={""}
                 placeholder="Regular"
                 border={true}
                 error={this.state.to_asset_error}
