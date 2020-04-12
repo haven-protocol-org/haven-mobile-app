@@ -1,6 +1,6 @@
 // Library Imports
 import React, { Component } from "react";
-import { ScrollView, Text } from "react-native";
+import { ScrollView, Text, ActivityIndicator } from "react-native";
 import Charts from "../../components/charts/index.js";
 import SectionHeader from "../../components/section-header/index.js";
 import Transaction from "../../components/transactions/index.js";
@@ -26,7 +26,10 @@ class Review extends Component {
   }
 
   handleConfirmation = () => {
-    console.log("CONFIRM & SUBMIT");
+    this.setState({
+      loading: true
+    });
+    this.props.navigation.navigate("Modal");
   };
 
   render() {
@@ -72,7 +75,11 @@ class Review extends Component {
             />
           )}
         </PageWrapper>
-        <Button onPress={this.handleConfirmation} text="Confirm" />
+        <Button
+          onPress={this.handleConfirmation}
+          text="Confirm Exchange"
+          status={this.state.loading}
+        />
       </Container>
     );
   }

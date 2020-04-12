@@ -96,6 +96,14 @@ class TabNavigator extends Component {
       );
     };
 
+    const ModalStack = () => {
+      return (
+        <Stack.Navigator mode="modal">
+          <Stack.Screen name="Explorer" component={Explorer} />
+        </Stack.Navigator>
+      );
+    };
+
     const ExchangeStack = () => {
       return (
         <Stack.Navigator screenOptions={header}>
@@ -103,6 +111,7 @@ class TabNavigator extends Component {
           <Stack.Screen name="Options" component={Options} />
           <Stack.Screen name="Tokens" component={Tokens} />
           <Stack.Screen name="Review" component={Review} />
+          <Stack.Screen name="Modal" component={ModalStack} />
         </Stack.Navigator>
       );
     };
@@ -129,6 +138,25 @@ class TabNavigator extends Component {
         <Stack.Navigator screenOptions={header}>
           <Stack.Screen name="Settings" component={Settings} />
         </Stack.Navigator>
+      );
+    };
+
+    const TabStack = () => {
+      return (
+        <Tab.Navigator
+          initialRouteName={this.props.initialRouteName}
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              return <TabIcon focused={focused} route={route} />;
+            }
+          })}
+          tabBarOptions={footer}
+        >
+          <Tab.Screen name="Assets" component={AssetStack} />
+          <Tab.Screen name="Exchange" component={ExchangeStack} />
+          <Tab.Screen name="Transfer" component={TransferStack} />
+          <Tab.Screen name="Settings" component={SettingsStack} />
+        </Tab.Navigator>
       );
     };
 

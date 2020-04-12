@@ -39,15 +39,10 @@ const ExchangeConfirmation = ({
           {to_amount} {to_asset}
         </Value>
       </Row>
-      {to_address && (
-        <Row>
-          <Key>Recipient Address</Key>
-          <Value>{to_address}</Value>
-        </Row>
-      )}
+
       <Row>
         <Key>Priority</Key>
-        <Value>{priority}</Value>
+        <Value>{priority.message}</Value>
       </Row>
       <Row>
         <Key>Fee ($0.00 USD)</Key>

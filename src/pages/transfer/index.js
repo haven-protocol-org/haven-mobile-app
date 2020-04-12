@@ -2,10 +2,14 @@
 import React, { Component, Fragment } from "react";
 import { TextInput, View, Text } from "react-native";
 import SegmentedController from "../../components/segment_controller";
-import Input from "../../components/input";
+
 import Button from "../../components/button";
 import Border from "../../components/border";
-import Code from "../../components/qr-code";
+
+import InputText from "../../components/_inputs/input-text";
+import InputLink from "../../components/_inputs/input-link";
+import InputMultiline from "../../components/_inputs/input-multiline";
+import Input_Information from "../../components/_inputs/input_information";
 
 // Relative Imports
 import { Container, Label, PreviewLabel, Preview } from "./styles";
@@ -59,7 +63,12 @@ class Transfer extends Component {
       amount,
       fromAsset,
       toAsset,
-      fromAmount
+      fromAmount,
+
+      from_asset,
+      from_amount,
+      recipient,
+      payment_id
     } = this.state;
 
     return (
@@ -72,63 +81,69 @@ class Transfer extends Component {
         {this.state.selectedIndex === 0 ? (
           <Fragment>
             <Border />
-            <Input
+            <InputLink
               label="From Asset"
-              type="cell"
               onPress={this.selectToken}
               chooseToken={this.chooseToken}
-              value={fromAsset}
+              value={from_asset}
               placeholder="Select Asset"
-              onChangeText={fromAsset => this.setState({ fromAsset })}
+              border={true}
             />
 
-            <Input
+            <InputText
               label="Amount"
-              type="input"
               placeholder="Enter Amount"
-              value={fromAmount}
-              onChange={this.changeInput}
-              onChangeText={fromAmount => this.setState({ fromAmount })}
+              value={from_amount}
+              border={true}
+              onChangeText={from_amount => this.setState({ from_amount })}
             />
-            <Input
+            <InputText
               label="Recipient"
-              type="input"
               placeholder="Enter recipient"
-              value={fromAmount}
-              onChange={this.changeInput}
-              onChangeText={fromAmount => this.setState({ fromAmount })}
+              value={recipient}
+              border={true}
+              onChangeText={recipient => this.setState({ recipient })}
             />
 
-            <Input
+            <InputText
               label="Payment ID (Opitional)"
-              type="input"
               border="none"
               placeholder="Enter payment id"
-              value={fromAmount}
-              onChange={this.changeInput}
-              onChangeText={fromAmount => this.setState({ fromAmount })}
+              value={payment_id}
+              onChangeText={payment_id => this.setState({ payment_id })}
             />
-            <Border />
+
             <Preview onPress={this.handleReview}>
-              <PreviewLabel>Preview</PreviewLabel>
+              <PreviewLabel>Preview Transfer</PreviewLabel>
             </Preview>
             <Border />
           </Fragment>
         ) : (
           <Fragment>
             <Border />
-            <Code />
-            <Input
-              label="Haven  Address"
-              type="cell"
-              border="none"
-              onPress={this.selectToken}
+            <InputLink
+              label="Select Address"
               chooseToken={this.chooseToken}
-              value={"hvxyAPCJe.....g51dzd7KV6G"}
-              placeholder="Select Asset"
-              onChangeText={fromAsset => this.setState({ fromAsset })}
+              value={from_asset}
+              placeholder="Main"
+              border={true}
             />
-            <Button text="Copy Address" />
+
+            <InputMultiline
+              label="Haven  Address"
+              value={
+                "xhv75978c59963342e8979459f5b938621214b740fec1a72379cd0b54a78508cb79"
+              }
+              placeholder="Select Asset"
+              border="true"
+              icon={false}
+              editable={false}
+              onChangeText={address => this.setState({ address })}
+            />
+            <Preview onPress={() => alert("Copied")}>
+              <PreviewLabel>Copy Address</PreviewLabel>
+            </Preview>
+            <Border />
           </Fragment>
         )}
       </Container>
