@@ -25,6 +25,7 @@ import Security from "../pages/_auth/security";
 import Seed from "../pages/_auth/seed";
 import Validate from "../pages/_auth/validate";
 import Restore from "../pages/_auth/restore";
+import Wallets from "../pages/_auth/wallets";
 
 import { dark, light } from "../constants/themes.js";
 
@@ -164,6 +165,7 @@ class TabNavigator extends Component {
       <Stack.Navigator screenOptions={header}>
         <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Wallets" component={Wallets} />
         <Stack.Screen name="Restore" component={Restore} />
         <Stack.Screen name="Security" component={Security} />
         <Stack.Screen name="Seed" component={Seed} />

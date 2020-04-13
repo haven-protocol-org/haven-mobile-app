@@ -3,7 +3,7 @@ import React, { Component } from "react";
 
 // Relative Imports
 import { Container } from "./styles";
-import InputLink from "../../components/_inputs/input-link";
+import InputLink from "../../../components/_inputs/input-link";
 
 class Wallets extends Component {
   renderOptions = () => {

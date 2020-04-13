@@ -12,6 +12,8 @@ import Input_Information from "../../../components/_inputs/input_information";
 import Border from "../../../components/border";
 import Next from "../../../components/next";
 
+import wallets from "../../../constants/wallets.js";
+
 class Login extends Component {
   state = {
     wallet: "",
@@ -58,7 +60,7 @@ class Login extends Component {
             label="Selected Vault"
             value={"Haven Wallet"}
             border={true}
-            onPress={() => this.props.navigation.navigate("Login")}
+            onPress={() => this.props.navigation.navigate("Wallets")}
           />
           <InputText
             label="Vault Password"
