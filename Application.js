@@ -19,7 +19,7 @@ class Application extends Component {
     authenticated: true,
     barStyle: "light-content",
     loaded: true,
-    authUser: true
+    authUser: false
   };
 
   componentDidUpdate(prevProps) {
@@ -35,15 +35,6 @@ class Application extends Component {
   }
 
   render() {
-    const {
-      theme,
-      initialRouteName,
-      authenticated,
-      barStyle,
-      loaded,
-      authUser
-    } = this.state;
-
     return (
       <ThemeProvider theme={this.state.currentTheme === "dark" ? dark : light}>
         <StatusBar
@@ -53,12 +44,12 @@ class Application extends Component {
               : "dark-content"
           }
         />
-        {loaded ? (
+        {this.state.loaded ? (
           <NavigationContainer>
             <TabNavigator
-              authenticated={authenticated}
+              authenticated={this.state.authenticated}
               authUser={this.state.authUser === true ? "true" : "false"}
-              initialRouteName={initialRouteName}
+              initialRouteName={this.state.initialRouteName}
             />
           </NavigationContainer>
         ) : (
