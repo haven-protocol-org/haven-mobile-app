@@ -1,6 +1,6 @@
 // Library Imports
 import React, { Component, Fragment } from "react";
-import { StatusBar, View, Text } from "react-native";
+import { StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { ThemeProvider } from "styled-components";
 
