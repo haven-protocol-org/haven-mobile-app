@@ -38,6 +38,9 @@ class Tokens extends Component {
   };
 
   render() {
+    this.props.navigation.setOptions({
+      headerBackTitleVisible: false
+    });
     return (
       <ScrollView>
         <Container>

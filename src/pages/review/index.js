@@ -26,9 +26,17 @@ class Review extends Component {
   }
 
   handleConfirmation = () => {
-    this.setState({
-      loading: true
-    });
+    this.setState(
+      {
+        loading: true
+      },
+      () =>
+        setTimeout(() => {
+          this.setState({
+            loading: false
+          });
+        }, 1000)
+    );
     this.props.navigation.navigate("Modal");
   };
 
