@@ -5,20 +5,21 @@ import React, { Component } from "react";
 import { Container } from "./styles";
 import InputLink from "../../../components/_inputs/input-link";
 
-class Wallets extends Component {
+class Vaults extends Component {
   renderOptions = () => {
     const { data } = this.props.route.params;
     const { onPress } = this.props.route.params;
     return data.map(o => {
-      const { message, name, priority } = o;
+      const { address, name } = o;
+
       return (
         <InputLink
           key={name}
-          label={`Priority ${name}`}
-          value={message}
+          label={"Vault"}
+          value={name}
           border={true}
           icon={false}
-          onPress={() => onPress({ name, message, priority })}
+          onPress={() => onPress({ name, address })}
         />
       );
     });
@@ -32,4 +33,4 @@ class Wallets extends Component {
   }
 }
 
-export default Wallets;
+export default Vaults;

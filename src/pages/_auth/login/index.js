@@ -12,13 +12,17 @@ import Input_Information from "../../../components/_inputs/input_information";
 import Border from "../../../components/border";
 import Next from "../../../components/next";
 
-import wallets from "../../../constants/wallets.js";
+import vaults from "../../../constants/vaults.js";
 
 class Login extends Component {
   state = {
     wallet: "",
     password: "",
-    label: "Finish"
+    label: "Finish",
+    vault: {
+      name: vaults[0].name,
+      address: vaults[0].address
+    }
   };
 
   loginUser = () => {
@@ -33,6 +37,16 @@ class Login extends Component {
 
   handleAuth = () => {
     this.props.authenticateUser(true);
+  };
+
+  selectWallet = ({ name, address }) => {
+    this.props.navigation.navigate("Login");
+    this.setState({
+      vault: {
+        name: name,
+        address: address
+      }
+    });
   };
 
   render() {
@@ -58,9 +72,14 @@ class Login extends Component {
         <Container>
           <InputLink
             label="Selected Vault"
-            value={"Haven Wallet"}
+            value={this.state.vault.name}
             border={true}
-            onPress={() => this.props.navigation.navigate("Wallets")}
+            onPress={() =>
+              this.props.navigation.navigate("Vaults", {
+                data: vaults,
+                onPress: this.selectWallet
+              })
+            }
           />
           <InputText
             label="Vault Password"
