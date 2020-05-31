@@ -5,7 +5,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { ThemeProvider } from "styled-components";
 
 // import TabNavgation from "./src/navigation/tabNavigation.js";
-import TabNavigator from "./src/navigation/tabNavigator.js";
+// import TabNavigator from "./src/navigation/tabNavigator.js";
+import Navigation from "./src/navigation/config";
 import { dark, light } from "./src/constants/themes.js";
 import Splash from "./src/pages/splash/index.js";
 
@@ -19,17 +20,17 @@ class Application extends Component {
     authenticated: true,
     barStyle: "light-content",
     loaded: true,
-    authUser: false
+    authUser: true,
   };
 
   componentDidUpdate(prevProps) {
     if (this.props.authUser !== prevProps.authUser) {
       this.setState({
-        authUser: this.props.authUser
+        authUser: this.props.authUser,
       });
     } else if (this.props.currentTheme !== prevProps.currentTheme) {
       this.setState({
-        currentTheme: this.props.currentTheme
+        currentTheme: this.props.currentTheme,
       });
     }
   }
@@ -46,7 +47,7 @@ class Application extends Component {
         />
         {this.state.loaded ? (
           <NavigationContainer>
-            <TabNavigator
+            <Navigation
               authenticated={this.state.authenticated}
               authUser={this.state.authUser === true ? "true" : "false"}
               initialRouteName={this.state.initialRouteName}
@@ -60,9 +61,9 @@ class Application extends Component {
   }
 }
 
-export const mapStateToProps = state => ({
+export const mapStateToProps = (state) => ({
   authUser: state.authUser,
-  currentTheme: state.currentTheme
+  currentTheme: state.currentTheme,
 });
 
 export default connect(mapStateToProps)(Application);

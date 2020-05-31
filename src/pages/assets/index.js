@@ -16,17 +16,17 @@ class Assets extends Component {
   state = {
     balanceLabel: "Total Balance",
     totalBalance: "12345.67",
-    balanceType: 0
+    balanceType: 0,
   };
 
   renderTokens = () => {
-    return assets.map(asset => {
+    return assets.map((asset) => {
       const { token, ticker, price, change } = asset;
       return (
         <Token
           onPress={() =>
             this.props.navigation.navigate("Details", {
-              ticker: ticker
+              ticker: ticker,
             })
           }
           key={ticker}
