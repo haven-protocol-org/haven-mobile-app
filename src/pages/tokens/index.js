@@ -9,7 +9,7 @@ import Token from "../../components/token";
 
 class Tokens extends Component {
   state = {
-    refreshing: false
+    refreshing: false,
   };
 
   _onRefresh = () => {
@@ -20,7 +20,7 @@ class Tokens extends Component {
   };
 
   renderTokens = () => {
-    return assets.map(asset => {
+    return assets.map((asset) => {
       const { token, ticker, price, change } = asset;
       const { type, onPress } = this.props.route.params;
 
@@ -28,7 +28,7 @@ class Tokens extends Component {
         <Token
           key={ticker}
           token={token}
-          ticker={"x" + ticker}
+          ticker={ticker}
           price={price}
           change={change}
           onPress={() => onPress({ token, ticker, type })}
@@ -39,7 +39,7 @@ class Tokens extends Component {
 
   render() {
     this.props.navigation.setOptions({
-      headerBackTitleVisible: false
+      headerBackTitleVisible: false,
     });
     return (
       <ScrollView>

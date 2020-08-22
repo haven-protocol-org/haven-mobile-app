@@ -5,8 +5,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { ThemeProvider } from "styled-components";
 
 // import TabNavgation from "./src/navigation/tabNavigation.js";
-// import TabNavigator from "./src/navigation/tabNavigator.js";
+import TabNavigator from "./src/navigation/_tabNavigator.js";
 import Navigation from "./src/navigation/config";
+import Nav from "./src/navigation/nav";
 import { dark, light } from "./src/constants/themes.js";
 import Splash from "./src/pages/splash/index.js";
 
@@ -16,7 +17,7 @@ import { connect } from "react-redux";
 class Application extends Component {
   state = {
     currentTheme: "dark",
-    initialRouteName: "Transfer",
+    initialRouteName: "Exchange",
     authenticated: true,
     barStyle: "light-content",
     loaded: true,
@@ -45,14 +46,13 @@ class Application extends Component {
               : "dark-content"
           }
         />
+
         {this.state.loaded ? (
-          <NavigationContainer>
-            <Navigation
-              authenticated={this.state.authenticated}
-              authUser={this.state.authUser === true ? "true" : "false"}
-              initialRouteName={this.state.initialRouteName}
-            />
-          </NavigationContainer>
+          <Navigation
+            authenticated={this.state.authenticated}
+            authUser={this.state.authUser === true ? "true" : "false"}
+            initialRouteName={this.state.initialRouteName}
+          />
         ) : (
           <Splash />
         )}
@@ -67,3 +67,15 @@ export const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(Application);
+
+/* {this.state.loaded ? (
+  <NavigationContainer>
+    <Nav
+      authenticated={this.state.authenticated}
+      authUser={this.state.authUser === true ? "true" : "false"}
+      initialRouteName={this.state.initialRouteName}
+    />
+  </NavigationContainer>
+) : (
+  <Splash />
+)} */

@@ -21,23 +21,26 @@ class Review extends Component {
     const { type } = this.props.route.params;
 
     this.setState({
-      title: `${type} Transaction`
+      title: `${type} Transaction`,
     });
   }
 
   handleConfirmation = () => {
     this.setState(
       {
-        loading: true
+        loading: true,
       },
       () =>
         setTimeout(() => {
           this.setState({
-            loading: false
+            loading: false,
           });
         }, 1000)
     );
-    this.props.navigation.navigate("Modal");
+    // This navigates the user to the correct page
+    this.props.navigation.navigate("Details", {
+      ticker: this.props.route.params.from_ticker,
+    });
   };
 
   render() {
@@ -56,11 +59,11 @@ class Review extends Component {
       priority,
       type,
       to_asset,
-      conversion_rate
+      conversion_rate,
     } = this.props.route.params;
     this.props.navigation.setOptions({
       title: this.state.title,
-      headerBackTitleVisible: false
+      headerBackTitleVisible: false,
     });
     return (
       <Container>

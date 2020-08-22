@@ -31,7 +31,7 @@ class Assets extends Component {
           }
           key={ticker}
           token={token}
-          ticker={"x" + ticker}
+          ticker={ticker}
           price={price}
           change={change}
         />

@@ -7,20 +7,18 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { connect } from "react-redux";
 
-// Primary Pages
+// Relative Imports
 import Assets from "../pages/assets";
 import Details from "../pages/details";
 import Exchange from "../pages/exchange";
 import Transfer from "../pages/transfer";
 import Options from "../pages/options";
 
-// Seconday Pages
 import Settings from "../pages/settings";
 import Tokens from "../pages/tokens";
 import Explorer from "../pages/explorer";
 import Review from "../pages/review";
 
-// Auth Pages
 import Welcome from "../pages/_auth/welcome";
 import Login from "../pages/_auth/login";
 import Security from "../pages/_auth/security";
@@ -35,7 +33,7 @@ import { dark, light } from "../constants/themes.js";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-class Navigation extends Component {
+class TabNavigator extends Component {
   state = {
     headerOptions: {
       headerStyle: {
@@ -147,29 +145,6 @@ class Navigation extends Component {
 
     const TabStack = () => {
       return (
-        <Tab.Navigator>
-          <Tab.Screen name="Assets" component={AssetStack} />
-          <Tab.Screen name="Exchange" component={ExchangeStack} />
-          <Tab.Screen name="Transfer" component={TransferStack} />
-          <Tab.Screen name="Settings" component={SettingsStack} />
-        </Tab.Navigator>
-      );
-    };
-
-    const { authUser } = this.props;
-
-    return authUser === "false" ? (
-      <Stack.Navigator screenOptions={header}>
-        <Stack.Screen name="Welcome" component={Welcome} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Vaults" component={Vaults} />
-        <Stack.Screen name="Restore" component={Restore} />
-        <Stack.Screen name="Security" component={Security} />
-        <Stack.Screen name="Seed" component={Seed} />
-        <Stack.Screen name="Validate" component={Validate} />
-      </Stack.Navigator>
-    ) : (
-      <NavigationContainer>
         <Tab.Navigator
           initialRouteName={this.props.initialRouteName}
           screenOptions={({ route }) => ({
@@ -184,7 +159,35 @@ class Navigation extends Component {
           <Tab.Screen name="Transfer" component={TransferStack} />
           <Tab.Screen name="Settings" component={SettingsStack} />
         </Tab.Navigator>
-      </NavigationContainer>
+      );
+    };
+
+    return this.props.authUser === "false" ? (
+      <Stack.Navigator screenOptions={header}>
+        <Stack.Screen name="Welcome" component={Welcome} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Vaults" component={Vaults} />
+        <Stack.Screen name="Restore" component={Restore} />
+        <Stack.Screen name="Security" component={Security} />
+        <Stack.Screen name="Seed" component={Seed} />
+        <Stack.Screen name="Validate" component={Validate} />
+      </Stack.Navigator>
+    ) : (
+      <Tab.Navigator
+        initialRouteName={this.props.initialRouteName}
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            return <TabIcon focused={focused} route={route} />;
+          },
+        })}
+        tabBarOptions={footer}
+      >
+        <Tab.Screen name="Assets" component={AssetStack} />
+        <Tab.Screen name="Exchange" component={ExchangeStack} />
+        <Tab.Screen name="Transfer" component={TransferStack} />
+        <Tab.Screen name="Settings" component={SettingsStack} />
+        <Tab.Screen name="Modal" component={Modal} />
+      </Tab.Navigator>
     );
   }
 }
@@ -192,4 +195,4 @@ export const mapStateToProps = (state) => ({
   currentTheme: state.currentTheme,
 });
 
-export default connect(mapStateToProps)(Navigation);
+export default connect(mapStateToProps)(TabNavigator);

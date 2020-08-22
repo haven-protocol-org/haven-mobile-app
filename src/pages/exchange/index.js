@@ -20,7 +20,7 @@ import {
   Preview,
   Chevron,
   PreviewLabel,
-  Scroll
+  Scroll,
 } from "./styles";
 
 class Exchange extends Component {
@@ -43,18 +43,18 @@ class Exchange extends Component {
     to_amount: "",
     to_address: "",
     conversion_rate: "1 XHV : 0.2127 xUSD",
-    priority: {}
+    priority: {},
   };
 
   componentDidMount() {
     this.setState({
-      priority: priorities[0]
+      priority: priorities[0],
     });
   }
 
-  changeTabs = selectedIndex => {
+  changeTabs = (selectedIndex) => {
     this.setState({
-      selectedIndex
+      selectedIndex,
     });
   };
 
@@ -73,7 +73,7 @@ class Exchange extends Component {
       to_address,
       conversion_rate,
       selectedIndex,
-      priority
+      priority,
     } = this.state;
 
     const basicValid =
@@ -92,19 +92,20 @@ class Exchange extends Component {
         from_asset_error: !from_amount && "Enter from amount",
         from_amount_error: !from_amount && "Enter from asset",
         to_asset_error: !to_amount && "Enter to amount",
-        to_amount_error: !to_amount && "Enter to asset"
+        to_amount_error: !to_amount && "Enter to asset",
       });
       setTimeout(() => {
         this.setState({
           from_asset_error: "",
           from_amount_error: "",
           to_asset_error: "",
-          to_amount_error: ""
+          to_amount_error: "",
         });
       }, 2000);
     }
     if (basicValid) {
       console.log("from_asset", from_asset);
+      this.props.navigation.navigate("Modal");
       this.props.navigation.navigate("Review", {
         from_ticker,
         from_value,
@@ -121,7 +122,7 @@ class Exchange extends Component {
         from_asset,
         to_asset,
         conversion_rate,
-        type: "Exchange"
+        type: "Exchange",
       });
     }
     if (!advancedValid) {
@@ -130,7 +131,7 @@ class Exchange extends Component {
         from_amount_error: !from_amount && "Enter from asset",
         to_asset_error: !to_amount && "Enter to amount",
         to_amount_error: !to_amount && "Enter to asset",
-        to_address_error: !to_address && "Enter to address"
+        to_address_error: !to_address && "Enter to address",
       });
       setTimeout(() => {
         this.setState({
@@ -138,7 +139,7 @@ class Exchange extends Component {
           from_amount_error: "",
           to_asset_error: "",
           to_amount_error: "",
-          to_address_error: ""
+          to_address_error: "",
         });
       }, 2000);
     }
@@ -158,32 +159,32 @@ class Exchange extends Component {
         conversion_rate,
         from_asset,
         to_asset,
-        type: "Exchange"
+        type: "Exchange",
       });
     }
   };
 
-  changeInput = event => {
+  changeInput = (event) => {
     this.setState({
-      value: value
+      value: value,
     });
   };
 
   selectFromToken = () => {
     this.props.navigation.navigate("Tokens", {
       type: "from",
-      onPress: this.chooseToken
+      onPress: this.chooseToken,
     });
   };
 
   selectToToken = () => {
     this.props.navigation.navigate("Tokens", {
       type: "to",
-      onPress: this.chooseToken
+      onPress: this.chooseToken,
     });
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     const name = event.target.name;
     const value: string = event.target.value;
 
@@ -198,7 +199,7 @@ class Exchange extends Component {
         from_asset: token,
         from_ticker: ticker,
         from_token: token,
-        from_balance: "10.00"
+        from_balance: "10.00",
       });
     } else if (type === "to") {
       this.setState({
@@ -206,7 +207,7 @@ class Exchange extends Component {
         to_ticker: ticker,
         to_asset: token,
         to_token: token,
-        to_balance: "5.00"
+        to_balance: "5.00",
       });
     }
   };
@@ -217,8 +218,8 @@ class Exchange extends Component {
       priority: {
         name: name,
         message: message,
-        priority: priority
-      }
+        priority: priority,
+      },
     });
   };
 
@@ -226,7 +227,7 @@ class Exchange extends Component {
     this.props.navigation.navigate("Options", {
       title: "Priority Options",
       data: priorities,
-      onPress: this.handlePrioritySelect
+      onPress: this.handlePrioritySelect,
     });
   };
 
@@ -247,7 +248,7 @@ class Exchange extends Component {
       to_balance,
       to_amount,
       to_address,
-      conversion_rate
+      conversion_rate,
     } = this.state;
 
     return (
@@ -275,7 +276,7 @@ class Exchange extends Component {
                 label="From Amount"
                 placeholder="Enter Amount"
                 value={from_amount}
-                onChangeText={from_amount => this.setState({ from_amount })}
+                onChangeText={(from_amount) => this.setState({ from_amount })}
                 editable={!from_value ? false : true}
                 keyboardType="numeric"
                 returnKeyType="done"
@@ -294,7 +295,7 @@ class Exchange extends Component {
                 label="To Amount"
                 placeholder="Enter Amount"
                 value={to_amount}
-                onChangeText={to_amount => this.setState({ to_amount })}
+                onChangeText={(to_amount) => this.setState({ to_amount })}
                 editable={!to_value ? false : true}
                 keyboardType="numeric"
                 returnKeyType="done"
@@ -317,7 +318,7 @@ class Exchange extends Component {
                 label="From Amount"
                 placeholder="Enter Amount"
                 value={from_amount}
-                onChangeText={from_amount => this.setState({ from_amount })}
+                onChangeText={(from_amount) => this.setState({ from_amount })}
                 editable={!from_value ? false : true}
                 keyboardType="numeric"
                 returnKeyType="done"
@@ -336,7 +337,7 @@ class Exchange extends Component {
                 label="To Amount"
                 placeholder="Enter Amount"
                 value={to_amount}
-                onChangeText={to_amount => this.setState({ to_amount })}
+                onChangeText={(to_amount) => this.setState({ to_amount })}
                 editable={!to_value ? false : true}
                 keyboardType="numeric"
                 returnKeyType="done"
@@ -355,7 +356,7 @@ class Exchange extends Component {
                 label="To Address (Optional)"
                 placeholder="Enter Recipient Address"
                 value={to_address}
-                onChangeText={to_address => this.setState({ to_address })}
+                onChangeText={(to_address) => this.setState({ to_address })}
                 editable={!to_value ? false : true}
                 keyboardType="numeric"
                 returnKeyType="done"

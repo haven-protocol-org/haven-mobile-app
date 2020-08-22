@@ -16,7 +16,7 @@ class Details extends Component {
     return (
       <ScrollView>
         <Container>
-          <Charts token={"x" + ticker} />
+          <Charts token={ticker} />
           <PageWrapper>
             <BalanceStatistic />
           </PageWrapper>
