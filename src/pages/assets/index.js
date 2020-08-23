@@ -19,6 +19,9 @@ class Assets extends Component {
     balanceType: 0,
   };
 
+  componentDidMount() {
+    this.props.navigation.setOptions({ title: "Assets" });
+  }
   renderTokens = () => {
     return assets.map((asset) => {
       const { token, ticker, price, change } = asset;

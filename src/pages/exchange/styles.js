@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const Scroll = styled.ScrollView`
-  background: ${props => props.theme.body.background};
+  background: ${(props) => props.theme.body.background};
 `;
 
 export const Container = styled.View`
   flex: 1;
-  background: ${props => props.theme.body.background};
+  background: ${(props) => props.theme.body.background};
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -15,7 +15,7 @@ export const Container = styled.View`
 
 export const Label = styled.Text`
   font-size: 20px;
-  color: #fff;
+  color: ${(props) => props.theme.type.primary};
 `;
 
 export const Button = styled.TouchableOpacity`
@@ -27,7 +27,7 @@ export const Button = styled.TouchableOpacity`
 export const Border = styled.View`
   height: 0.5px;
   width: 100%;
-  background: ${props => props.theme.body.border};
+  background: ${(props) => props.theme.body.border};
 `;
 
 export const Preview = styled.TouchableOpacity`
@@ -48,6 +48,6 @@ export const Chevron = styled.Image`
 
 export const PreviewLabel = styled.Text`
   font-size: 16px;
-  color: #fff;
+  color: ${(props) => props.theme.type.primary};
   text-align: left;
 `;

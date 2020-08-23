@@ -23,25 +23,25 @@ class Transfer extends Component {
     value: "",
     fromAsset: "Select From Asset",
     toAsset: "Select To Asset",
-    token: ""
+    token: "",
   };
 
-  changeTabs = selectedIndex => {
+  changeTabs = (selectedIndex) => {
     this.setState({
-      selectedIndex: selectedIndex
+      selectedIndex: selectedIndex,
     });
   };
 
-  changeInput = event => {
+  changeInput = (event) => {
     this.setState({
-      value: value
+      value: value,
     });
   };
 
   selectToken = () => {
     this.props.navigation.navigate("Tokens", {
       itemId: 86,
-      otherParam: "anything you want here"
+      otherParam: "anything you want here",
     });
   };
 
@@ -68,7 +68,7 @@ class Transfer extends Component {
       from_asset,
       from_amount,
       recipient,
-      payment_id
+      payment_id,
     } = this.state;
 
     return (
@@ -95,14 +95,14 @@ class Transfer extends Component {
               placeholder="Enter Amount"
               value={from_amount}
               border={true}
-              onChangeText={from_amount => this.setState({ from_amount })}
+              onChangeText={(from_amount) => this.setState({ from_amount })}
             />
             <InputText
               label="Recipient"
               placeholder="Enter recipient"
               value={recipient}
               border={true}
-              onChangeText={recipient => this.setState({ recipient })}
+              onChangeText={(recipient) => this.setState({ recipient })}
             />
 
             <InputText
@@ -110,10 +110,17 @@ class Transfer extends Component {
               border="none"
               placeholder="Enter payment id"
               value={payment_id}
-              onChangeText={payment_id => this.setState({ payment_id })}
+              onChangeText={(payment_id) => this.setState({ payment_id })}
             />
 
-            <Preview onPress={this.handleReview}>
+            <Preview
+              onPress={() =>
+                this.props.navigation.navigate("Modal", {
+                  screen: "Review",
+                  params: { ticker: "xUSD" },
+                })
+              }
+            >
               <PreviewLabel>Preview Transfer</PreviewLabel>
             </Preview>
             <Border />
@@ -138,9 +145,9 @@ class Transfer extends Component {
               border="true"
               icon={false}
               editable={false}
-              onChangeText={address => this.setState({ address })}
+              onChangeText={(address) => this.setState({ address })}
             />
-            <Preview onPress={() => alert("Copied")}>
+            <Preview onPress={() => {}}>
               <PreviewLabel>Copy Address</PreviewLabel>
             </Preview>
             <Border />

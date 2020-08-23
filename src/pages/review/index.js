@@ -1,6 +1,14 @@
 // Library Imports
 import React, { Component } from "react";
-import { ScrollView, Text, ActivityIndicator } from "react-native";
+
+import {
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+
 import Charts from "../../components/charts/index.js";
 import SectionHeader from "../../components/section-header/index.js";
 import Transaction from "../../components/transactions/index.js";
@@ -12,7 +20,7 @@ import ExchangeConfirmation from "../../components/_summaries/exchange_confirmat
 import Border from "../../components/border/index.js";
 
 // Relative Imports
-import { Container, Overview, Amount } from "./styles";
+import { Container, Overview, Amount, Cancel } from "./styles";
 
 class Review extends Component {
   state = { token: "XHV", title: "" };
@@ -38,9 +46,13 @@ class Review extends Component {
         }, 1000)
     );
     // This navigates the user to the correct page
-    this.props.navigation.navigate("Details", {
-      ticker: this.props.route.params.from_ticker,
+    this.props.navigation.navigate("Assets", {
+      screen: "Details",
+      params: { ticker: this.props.route.params.from_ticker },
     });
+    // this.props.navigation.navigate("Details", {
+    //   ticker: this.props.route.params.from_ticker,
+    // });
   };
 
   render() {
@@ -61,9 +73,16 @@ class Review extends Component {
       to_asset,
       conversion_rate,
     } = this.props.route.params;
+
     this.props.navigation.setOptions({
-      title: this.state.title,
-      headerBackTitleVisible: false,
+      title: `Review ${from_ticker} Exchange`,
+      headerLeft: null,
+      headerShown: true,
+      headerLeft: () => (
+        <TouchableOpacity onPress={() => this.props.navigation.pop()}>
+          <Cancel>Cancel</Cancel>
+        </TouchableOpacity>
+      ),
     });
     return (
       <Container>

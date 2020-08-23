@@ -64,110 +64,93 @@ class Exchange extends Component {
   };
 
   handleReview = () => {
-    this.props.navigation.navigate("Modal");
-    // const {
-    //   from_ticker,
-    //   from_value,
-    //   from_token,
-    //   from_amount,
-    //   to_ticker,
-    //   to_value,
-    //   to_token,
-    //   to_amount,
-    //   from_asset,
-    //   to_asset,
-    //   to_address,
-    //   conversion_rate,
-    //   selectedIndex,
-    //   priority,
-    // } = this.state;
-    //
-    // const basicValid =
-    //   from_asset && from_amount && to_asset && to_asset && selectedIndex === 0;
-    //
-    // const advancedValid =
-    //   priority &&
-    //   from_asset &&
-    //   from_amount &&
-    //   to_asset &&
-    //   to_amount &&
-    //   selectedIndex === 1;
-    //
-    // if (!basicValid) {
-    //   this.setState({
-    //     from_asset_error: !from_amount && "Enter from amount",
-    //     from_amount_error: !from_amount && "Enter from asset",
-    //     to_asset_error: !to_amount && "Enter to amount",
-    //     to_amount_error: !to_amount && "Enter to asset",
-    //   });
-    //   setTimeout(() => {
-    //     this.setState({
-    //       from_asset_error: "",
-    //       from_amount_error: "",
-    //       to_asset_error: "",
-    //       to_amount_error: "",
-    //     });
-    //   }, 2000);
-    // }
-    // if (basicValid) {
-    //   console.log("from_asset", from_asset);
-    //   this.props.navigation.navigate("Modal");
-    // this.props.navigation.navigate("Review", {
-    //   from_ticker,
-    //   from_value,
-    //   from_token,
-    //   from_amount,
-    //   from_asset,
-    //   to_ticker,
-    //   to_value,
-    //   to_token,
-    //   to_amount,
-    //   to_address,
-    //   selectedIndex,
-    //   priority,
-    //   from_asset,
-    //   to_asset,
-    //   conversion_rate,
-    //   type: "Exchange",
-    // });
-    // }
-    // if (!advancedValid) {
-    //   this.setState({
-    //     from_asset_error: !from_amount && "Enter from amount",
-    //     from_amount_error: !from_amount && "Enter from asset",
-    //     to_asset_error: !to_amount && "Enter to amount",
-    //     to_amount_error: !to_amount && "Enter to asset",
-    //     to_address_error: !to_address && "Enter to address",
-    //   });
-    //   setTimeout(() => {
-    //     this.setState({
-    //       from_asset_error: "",
-    //       from_amount_error: "",
-    //       to_asset_error: "",
-    //       to_amount_error: "",
-    //       to_address_error: "",
-    //     });
-    //   }, 2000);
-    // }
-    // if (advancedValid) {
-    //   this.props.navigation.navigate("Review", {
-    //     from_ticker,
-    //     from_value,
-    //     from_token,
-    //     from_amount,
-    //     to_ticker,
-    //     to_value,
-    //     to_token,
-    //     to_amount,
-    //     to_address,
-    //     selectedIndex,
-    //     priority,
-    //     conversion_rate,
-    //     from_asset,
-    //     to_asset,
-    //     type: "Exchange",
-    //   });
-    // }
+    const {
+      from_ticker,
+      from_value,
+      from_token,
+      from_amount,
+      to_ticker,
+      to_value,
+      to_token,
+      to_amount,
+      from_asset,
+      to_asset,
+      to_address,
+      conversion_rate,
+      selectedIndex,
+      priority,
+    } = this.state;
+
+    const basicValid =
+      from_asset && from_amount && to_asset && to_asset && selectedIndex === 0;
+
+    const advancedValid =
+      priority &&
+      from_asset &&
+      from_amount &&
+      to_asset &&
+      to_amount &&
+      selectedIndex === 1;
+
+    if (!basicValid) {
+      this.setState({
+        from_asset_error: !from_amount && "Enter from amount",
+        from_amount_error: !from_amount && "Enter from asset",
+        to_asset_error: !to_amount && "Enter to amount",
+        to_amount_error: !to_amount && "Enter to asset",
+      });
+      setTimeout(() => {
+        this.setState({
+          from_asset_error: "",
+          from_amount_error: "",
+          to_asset_error: "",
+          to_amount_error: "",
+        });
+      }, 2000);
+    }
+    if (basicValid) {
+      this.props.navigation.navigate("Modal", {
+        screen: "Review",
+        params: { ticker: "xUSD", type: "Exchange", ...this.state },
+      });
+    }
+    if (!advancedValid) {
+      this.setState({
+        from_asset_error: !from_amount && "Enter from amount",
+        from_amount_error: !from_amount && "Enter from asset",
+        to_asset_error: !to_amount && "Enter to amount",
+        to_amount_error: !to_amount && "Enter to asset",
+        to_address_error: !to_address && "Enter to address",
+      });
+      setTimeout(() => {
+        this.setState({
+          from_asset_error: "",
+          from_amount_error: "",
+          to_asset_error: "",
+          to_amount_error: "",
+          to_address_error: "",
+        });
+      }, 2000);
+    }
+    if (advancedValid) {
+      this.props.navigation.navigate("Review", {
+        from_ticker,
+        from_value,
+        from_token,
+        from_amount,
+        to_ticker,
+        to_value,
+        to_token,
+        to_amount,
+        to_address,
+        selectedIndex,
+        priority,
+        conversion_rate,
+        from_asset,
+        to_asset,
+        type: "Exchange",
+      });
+    }
   };
 
   changeInput = (event) => {
@@ -386,16 +369,6 @@ class Exchange extends Component {
           </Preview>
 
           <Border />
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("Modal")}
-          >
-            <Text> Modal</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("Base")}
-          >
-            <Text> Base</Text>
-          </TouchableOpacity>
         </Container>
       </Scroll>
     );
