@@ -58,6 +58,10 @@ class Navigation extends Component {
     const { currentTheme } = this.props;
     const header = {
       headerStyle: {
+        shadowColor:
+          currentTheme === "dark"
+            ? `${dark.body.border}`
+            : `${light.body.border}`,
         backgroundColor:
           currentTheme === "dark"
             ? `${dark.body.foreground}`
