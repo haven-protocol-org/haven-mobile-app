@@ -29,7 +29,6 @@ import Validate from "../pages/_auth/validate";
 import Restore from "../pages/_auth/restore";
 import Vaults from "../pages/_auth/vaults";
 import Modal from "../pages/modal";
-import Base from "../pages/modal/base";
 
 import { dark, light } from "../constants/themes.js";
 
@@ -91,6 +90,24 @@ class Navigation extends Component {
       },
     };
 
+    const AssetStack = () => {
+      return (
+        <Stack.Navigator screenOptions={header}>
+          <Stack.Screen name="Assets" component={Assets} />
+          <Stack.Screen name="Details" component={Details} />
+          <Stack.Screen name="Explorer" component={Explorer} />
+        </Stack.Navigator>
+      );
+    };
+
+    const ModalStack = () => {
+      return (
+        <Stack.Navigator mode="modal">
+          <Stack.Screen name="Explorer" component={Explorer} />
+        </Stack.Navigator>
+      );
+    };
+
     const ExchangeStack = () => {
       return (
         <Stack.Navigator screenOptions={header}>
@@ -98,14 +115,22 @@ class Navigation extends Component {
           <Stack.Screen name="Options" component={Options} />
           <Stack.Screen name="Tokens" component={Tokens} />
           <Stack.Screen name="Review" component={Review} />
+          <Stack.Screen name="Modal" component={ModalStack} />
         </Stack.Navigator>
       );
     };
 
-    const AssetStack = () => {
+    const TransferStack = () => {
       return (
         <Stack.Navigator screenOptions={header}>
-          <Stack.Screen name="Assets" component={Assets} />
+          <Stack.Screen name="Transfer" component={Transfer} />
+        </Stack.Navigator>
+      );
+    };
+
+    const DetailStack = () => {
+      return (
+        <Stack.Navigator screenOptions={header}>
           <Stack.Screen name="Details" component={Details} />
           <Stack.Screen name="Explorer" component={Explorer} />
         </Stack.Navigator>
@@ -120,45 +145,45 @@ class Navigation extends Component {
       );
     };
 
-    const AuthStack = () => {
-      return (
-        <Stack.Navigator screenOptions={header}>
-          <Stack.Screen name="Welcome" component={Welcome} />
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Vaults" component={Vaults} />
-          <Stack.Screen name="Restore" component={Restore} />
-          <Stack.Screen name="Security" component={Security} />
-          <Stack.Screen name="Seed" component={Seed} />
-          <Stack.Screen name="Validate" component={Validate} />
-        </Stack.Navigator>
-      );
-    };
-
     const TabStack = () => {
       return (
-        <Tab.Navigator headerMode="none" mode="modal">
+        <Tab.Navigator>
           <Tab.Screen name="Assets" component={AssetStack} />
           <Tab.Screen name="Exchange" component={ExchangeStack} />
-          <Tab.Screen name="Transfer" component={Transfer} />
-          <Stack.Screen name="Settings" component={Settings} />
+          <Tab.Screen name="Transfer" component={TransferStack} />
+          <Tab.Screen name="Settings" component={SettingsStack} />
         </Tab.Navigator>
       );
     };
 
-    const MainStack = () => {
-      return (
-        <Stack.Navigator headerMode="none" mode="modal">
-          <Stack.Screen name="Tabs" component={TabStack} />
-          <Stack.Screen name="Modal" component={Modal} />
-          <Stack.Screen name="Base" component={Base} />
-        </Stack.Navigator>
-      );
-    };
+    const { authUser, initialRouteName } = this.props;
 
-    const auth = false;
-    return (
+    return authUser === "false" ? (
+      <Stack.Navigator screenOptions={header}>
+        <Stack.Screen name="Welcome" component={Welcome} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Vaults" component={Vaults} />
+        <Stack.Screen name="Restore" component={Restore} />
+        <Stack.Screen name="Security" component={Security} />
+        <Stack.Screen name="Seed" component={Seed} />
+        <Stack.Screen name="Validate" component={Validate} />
+      </Stack.Navigator>
+    ) : (
       <NavigationContainer>
-        {auth ? <AuthStack /> : <MainStack />}
+        <Tab.Navigator
+          initialRouteName={initialRouteName}
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              return <TabIcon focused={focused} route={route} />;
+            },
+          })}
+          tabBarOptions={footer}
+        >
+          <Tab.Screen name="Assets" component={AssetStack} />
+          <Tab.Screen name="Exchange" component={ExchangeStack} />
+          <Tab.Screen name="Transfer" component={TransferStack} />
+          <Tab.Screen name="Settings" component={SettingsStack} />
+        </Tab.Navigator>
       </NavigationContainer>
     );
   }

@@ -10,16 +10,19 @@ import {
 // Relative Imports
 import { Container, Label, Haven, Box, View, Brand } from "./styles";
 
-class Modal extends Component {
+class Base extends Component {
+  showModal = () => {
+    this.props.navigation.navigate("Modal");
+  };
   render() {
     return (
       <Container>
         <TouchableOpacity onPress={() => this.props.navigation.pop()}>
-          <Text>Close Modal</Text>
+          <Text>Base Modal</Text>
         </TouchableOpacity>
       </Container>
     );
   }
 }
 
-export default Modal;
+export default Base;
