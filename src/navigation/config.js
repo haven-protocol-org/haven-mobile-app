@@ -33,9 +33,6 @@ import Base from "../pages/modal/base";
 
 import { dark, light } from "../constants/themes.js";
 
-const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
-
 class Navigation extends Component {
   state = {
     headerOptions: {
@@ -91,6 +88,9 @@ class Navigation extends Component {
       },
     };
 
+    const Tab = createBottomTabNavigator();
+    const Stack = createStackNavigator();
+
     const ExchangeStack = () => {
       return (
         <Stack.Navigator screenOptions={header}>
@@ -112,14 +112,6 @@ class Navigation extends Component {
       );
     };
 
-    const SettingsStack = () => {
-      return (
-        <Stack.Navigator screenOptions={header}>
-          <Stack.Screen name="Settings" component={Settings} />
-        </Stack.Navigator>
-      );
-    };
-
     const AuthStack = () => {
       return (
         <Stack.Navigator screenOptions={header}>
@@ -134,13 +126,37 @@ class Navigation extends Component {
       );
     };
 
+    const TransferStack = () => {
+      return (
+        <Stack.Navigator screenOptions={header}>
+          <Stack.Screen name="Transfer" component={Transfer} />
+        </Stack.Navigator>
+      );
+    };
+
+    const SettingsStack = () => {
+      return (
+        <Stack.Navigator screenOptions={header}>
+          <Stack.Screen name="Settings" component={Settings} />
+        </Stack.Navigator>
+      );
+    };
+
     const TabStack = () => {
       return (
-        <Tab.Navigator headerMode="none" mode="modal">
+        <Tab.Navigator
+          initialRouteName={this.props.initialRouteName}
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              return <TabIcon focused={focused} route={route} />;
+            },
+          })}
+          tabBarOptions={footer}
+        >
           <Tab.Screen name="Assets" component={AssetStack} />
           <Tab.Screen name="Exchange" component={ExchangeStack} />
-          <Tab.Screen name="Transfer" component={Transfer} />
-          <Stack.Screen name="Settings" component={Settings} />
+          <Tab.Screen name="Transfer" component={TransferStack} />
+          <Stack.Screen name="Settings" component={SettingsStack} />
         </Tab.Navigator>
       );
     };
@@ -158,7 +174,7 @@ class Navigation extends Component {
     const auth = false;
     return (
       <NavigationContainer>
-        {auth ? <AuthStack /> : <MainStack />}
+        {this.props.authUser ? <MainStack /> : <AuthStack />}
       </NavigationContainer>
     );
   }
