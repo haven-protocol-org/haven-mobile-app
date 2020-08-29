@@ -86,6 +86,10 @@ class Navigation extends Component {
           ? `${dark.type.secondary}`
           : `${light.type.secondary}`,
       style: {
+        borderTopColor:
+          currentTheme === "dark"
+            ? `${dark.body.border}`
+            : `${light.body.border}`,
         backgroundColor:
           currentTheme === "dark"
             ? `${dark.body.foreground}`
