@@ -22,6 +22,7 @@ export const Preview = styled.TouchableOpacity`
   height: 48px;
   width: 100%;
   padding-left: 12px;
+  background: ${(props) => props.theme.body.foreground};
 `;
 
 export const PreviewLabel = styled.Text`

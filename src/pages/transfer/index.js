@@ -111,6 +111,7 @@ class Transfer extends Component {
               value={payment_id}
               onChangeText={(payment_id) => this.setState({ payment_id })}
             />
+            <Border />
             <Input_Information />
             <Preview
               onPress={() =>
@@ -146,6 +147,7 @@ class Transfer extends Component {
               editable={false}
               onChangeText={(address) => this.setState({ address })}
             />
+            <Border />
             <Preview onPress={() => {}}>
               <PreviewLabel>Copy Address</PreviewLabel>
             </Preview>
