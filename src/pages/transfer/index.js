@@ -64,7 +64,6 @@ class Transfer extends Component {
       fromAsset,
       toAsset,
       fromAmount,
-
       from_asset,
       from_amount,
       recipient,
@@ -112,7 +111,7 @@ class Transfer extends Component {
               value={payment_id}
               onChangeText={(payment_id) => this.setState({ payment_id })}
             />
-
+            <Input_Information />
             <Preview
               onPress={() =>
                 this.props.navigation.navigate("Modal", {

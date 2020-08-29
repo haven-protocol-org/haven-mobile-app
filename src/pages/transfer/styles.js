@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.View`
   flex: 1;
-  background: ${props => props.theme.body.foreground};
+  background: ${(props) => props.theme.body.background};
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -12,7 +12,7 @@ export const Container = styled.View`
 export const Border = styled.View`
   height: 0.5px;
   width: 100%;
-  background: ${props => props.theme.body.border};
+  background: ${(props) => props.theme.body.border};
 `;
 
 export const Preview = styled.TouchableOpacity`
