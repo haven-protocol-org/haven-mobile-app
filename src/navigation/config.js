@@ -35,25 +35,6 @@ import Base from "../pages/modal/base";
 import { dark, light } from "../constants/themes.js";
 
 class Navigation extends Component {
-  state = {
-    headerOptions: {
-      headerStyle: {
-        backgroundColor: "#2B2E32",
-      },
-      headerTintColor: "#ffffff",
-      headerTitleStyle: {
-        fontWeight: "bold",
-      },
-    },
-    tabBarOptions: {
-      activeTintColor: "#ffffff",
-      inactiveTintColor: "#8A8D90",
-      style: {
-        backgroundColor: "#2B2E32",
-      },
-    },
-  };
-
   render() {
     const { currentTheme } = this.props;
     const header = {
@@ -145,11 +126,7 @@ class Navigation extends Component {
       return (
         <Stack.Navigator screenOptions={header}>
           <Stack.Screen name="Assets" component={Assets} />
-          <Stack.Screen
-            name="Details"
-            component={Details}
-            options={{ headerBackTitle: "Assets" }}
-          />
+          <Stack.Screen name="Details" component={Details} />
           <Stack.Screen name="Explorer" component={Explorer} />
         </Stack.Navigator>
       );

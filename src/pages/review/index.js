@@ -31,7 +31,7 @@ class Review extends Component {
 
     this.setState({
       title: `${type} Transaction`,
-      route: this.props.route.params.from_ticker,
+      ticker: this.props.route.params.from_ticker,
     });
   }
 
@@ -50,7 +50,7 @@ class Review extends Component {
     // This navigates the user to the correct page
     this.props.navigation.navigate("Assets", {
       screen: "Details",
-      params: { ticker: this.state.route },
+      params: { ...this.state },
     });
   };
 

@@ -5,7 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { ThemeProvider } from "styled-components";
 
 // import TabNavgation from "./src/navigation/tabNavigation.js";
-import TabNavigator from "./src/navigation/_tabNavigator.js";
+// import TabNavigator from "./src/navigation/_tabNavigator.js";
 import Navigation from "./src/navigation/config";
 import Nav from "./src/navigation/nav";
 import { dark, light } from "./src/constants/themes.js";

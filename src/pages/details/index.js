@@ -12,10 +12,11 @@ import { Container, Cancel } from "./styles";
 
 class Details extends Component {
   render() {
-    const { ticker } = this.props.route.params;
+    const { ticker, type } = this.props.route.params;
 
     this.props.navigation.setOptions({
       headerShown: true,
+      headerBackTitleVisible: false,
     });
     return (
       <ScrollView>
