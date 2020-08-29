@@ -5,11 +5,10 @@ export const Container = styled.View`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
 `;
 
 export const Wrapper = styled.TouchableOpacity.attrs({
-  activeOpacity: 0.8
+  activeOpacity: 0.8,
 })`
   width: 100%;
   height: auto;
@@ -17,13 +16,13 @@ export const Wrapper = styled.TouchableOpacity.attrs({
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: ${props => props.theme.styles.radius[1]};
-  background: ${props => props.theme.button.primary};
+  border-radius: ${(props) => props.theme.styles.radius[1]};
+  background: ${(props) => props.theme.button.primary};
 `;
 
 export const Label = styled.Text`
   font-size: 15px;
-  color: #fff;
+  color: ${(props) => props.theme.type.primary};
   width: 100%;
   text-align: center;
 `;

@@ -67,15 +67,3 @@ export const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(Application);
-
-/* {this.state.loaded ? (
-  <NavigationContainer>
-    <Nav
-      authenticated={this.state.authenticated}
-      authUser={this.state.authUser === true ? "true" : "false"}
-      initialRouteName={this.state.initialRouteName}
-    />
-  </NavigationContainer>
-) : (
-  <Splash />
-)} */

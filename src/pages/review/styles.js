@@ -35,3 +35,8 @@ export const Cancel = styled.Text`
   color: ${(props) => props.theme.type.primary};
   padding-left: 12px;
 `;
+
+export const ButtonWrapper = styled.SafeAreaView`
+  width: 100%;
+  height: auto;
+`;

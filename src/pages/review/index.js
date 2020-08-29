@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from "react-native";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import Charts from "../../components/charts/index.js";
 import SectionHeader from "../../components/section-header/index.js";
@@ -21,7 +21,7 @@ import TransferConfirmation from "../../components/_summaries/transfer_confirmat
 import Border from "../../components/border/index.js";
 
 // Relative Imports
-import { Container, Overview, Amount, Cancel } from "./styles";
+import { Container, Overview, Amount, Cancel, ButtonWrapper } from "./styles";
 
 class Review extends Component {
   state = { title: "" };
@@ -113,11 +113,14 @@ class Review extends Component {
             />
           )}
         </PageWrapper>
-        <Button
-          onPress={this.handleConfirmation}
-          text={`Confirm ${type}`}
-          status={this.state.loading}
-        />
+
+        <ButtonWrapper>
+          <Button
+            onPress={this.handleConfirmation}
+            text={`Confirm ${type}`}
+            status={this.state.loading}
+          />
+        </ButtonWrapper>
       </Container>
     );
   }
