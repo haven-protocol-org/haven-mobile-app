@@ -18,12 +18,13 @@ class Transfer extends Component {
   state = {
     values: ["Send", "Receive"],
     selectedIndex: 0,
-    from_asset: "",
-    placeholder: "Enter text",
-    value: "",
-    from_asset: "Select From Asset",
-    from_asset: "Select To Asset",
-    token: "",
+    // Fields
+    type: "Transfer",
+    from_asset: "Select Asset",
+    from_amount: "",
+    from_ticker: "",
+    recipient: "",
+    payment_id: "",
   };
 
   changeTabs = (selectedIndex) => {
@@ -45,7 +46,9 @@ class Transfer extends Component {
   };
 
   reviewTransaction = () => {
-    this.props.navigation.navigate("Review");
+    this.props.navigation.navigate("Review", {
+      params: { ticker: from_ticker, ...this.state },
+    });
   };
 
   chooseToken = ({ ticker, token }) => {
@@ -89,7 +92,6 @@ class Transfer extends Component {
               placeholder="Select Asset"
               border={true}
             />
-
             <InputText
               label="Amount"
               placeholder="Enter Amount"
