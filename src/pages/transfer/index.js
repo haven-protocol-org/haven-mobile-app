@@ -55,6 +55,14 @@ class Transfer extends Component {
     this.props.navigation.navigate("Transfer");
     this.setState({
       from_asset: token,
+      from_ticker: ticker,
+    });
+  };
+
+  handleReview = () => {
+    this.props.navigation.navigate("Modal", {
+      screen: "Review",
+      params: { ticker: this.state.from_ticker, ...this.state },
     });
   };
 
@@ -62,15 +70,10 @@ class Transfer extends Component {
     const {
       values,
       selectedIndex,
-      value,
-      text,
-      amount,
-      fromAsset,
-      toAsset,
-      fromAmount,
       from_asset,
       from_amount,
       recipient,
+      from_ticker,
       payment_id,
     } = this.state;
 
@@ -116,14 +119,7 @@ class Transfer extends Component {
             />
             <Border />
             <Input_Information />
-            <Preview
-              onPress={() =>
-                this.props.navigation.navigate("Modal", {
-                  screen: "Review",
-                  params: { ticker: "xUSD" },
-                })
-              }
-            >
+            <Preview onPress={this.handleReview}>
               <PreviewLabel>Preview Transfer</PreviewLabel>
             </Preview>
             <Border />

@@ -75,7 +75,7 @@ class Review extends Component {
     } = this.props.route.params;
 
     this.props.navigation.setOptions({
-      title: `Review ${from_ticker} Exchange`,
+      title: `Review ${from_ticker} ${type}`,
       headerLeft: null,
       headerShown: true,
       headerLeft: () => (
@@ -88,7 +88,9 @@ class Review extends Component {
       <Container>
         <Overview>
           <Amount>
-            {to_amount} {to_ticker}
+            {type === "Exchange"
+              ? `${to_amount} ${to_ticker}`
+              : `${from_amount} ${from_ticker}`}
           </Amount>
         </Overview>
         <Border />
@@ -107,7 +109,7 @@ class Review extends Component {
         </PageWrapper>
         <Button
           onPress={this.handleConfirmation}
-          text="Confirm Exchange"
+          text={`Confirm ${type}`}
           status={this.state.loading}
         />
       </Container>
