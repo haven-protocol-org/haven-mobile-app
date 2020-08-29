@@ -124,6 +124,7 @@ class Navigation extends Component {
       return (
         <Stack.Navigator screenOptions={header}>
           <Stack.Screen name="Transfer" component={Transfer} />
+          <Stack.Screen name="Tokens" component={Tokens} />
         </Stack.Navigator>
       );
     };

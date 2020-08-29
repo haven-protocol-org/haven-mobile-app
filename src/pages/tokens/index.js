@@ -23,6 +23,8 @@ class Tokens extends Component {
     return assets.map((asset) => {
       const { token, ticker, price, change } = asset;
       const { type, onPress } = this.props.route.params;
+      console.log("*********************");
+      console.log("TOKENS PARAMS", this.props.route.params);
 
       return (
         <Token
@@ -39,7 +41,7 @@ class Tokens extends Component {
 
   render() {
     this.props.navigation.setOptions({
-      headerBackTitleVisible: false,
+      headerBackTitleVisible: true,
     });
     return (
       <ScrollView>

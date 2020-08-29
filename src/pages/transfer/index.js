@@ -18,11 +18,11 @@ class Transfer extends Component {
   state = {
     values: ["Send", "Receive"],
     selectedIndex: 0,
-    fromAmount: "",
+    from_asset: "",
     placeholder: "Enter text",
     value: "",
-    fromAsset: "Select From Asset",
-    toAsset: "Select To Asset",
+    from_asset: "Select From Asset",
+    from_asset: "Select To Asset",
     token: "",
   };
 
@@ -40,8 +40,7 @@ class Transfer extends Component {
 
   selectToken = () => {
     this.props.navigation.navigate("Tokens", {
-      itemId: 86,
-      otherParam: "anything you want here",
+      onPress: this.chooseToken,
     });
   };
 
@@ -49,9 +48,11 @@ class Transfer extends Component {
     this.props.navigation.navigate("Review");
   };
 
-  chooseToken = () => {
-    console.log("#####################");
-    console.log("######### PRESS ###########");
+  chooseToken = ({ ticker, token }) => {
+    this.props.navigation.navigate("Transfer");
+    this.setState({
+      from_asset: token,
+    });
   };
 
   render() {
