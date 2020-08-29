@@ -32,6 +32,7 @@ class Exchange extends Component {
   state = {
     values: ["Basic", "Advanced"],
     selectedIndex: 0,
+    type: "Exchange",
 
     ///
     from_asset: "",
@@ -111,7 +112,7 @@ class Exchange extends Component {
     if (basicValid) {
       this.props.navigation.navigate("Modal", {
         screen: "Review",
-        params: { ticker: "xUSD", type: "Exchange", ...this.state },
+        params: { ticker: from_ticker, ...this.state },
       });
     }
     if (!advancedValid) {
@@ -133,22 +134,9 @@ class Exchange extends Component {
       }, 2000);
     }
     if (advancedValid) {
-      this.props.navigation.navigate("Review", {
-        from_ticker,
-        from_value,
-        from_token,
-        from_amount,
-        to_ticker,
-        to_value,
-        to_token,
-        to_amount,
-        to_address,
-        selectedIndex,
-        priority,
-        conversion_rate,
-        from_asset,
-        to_asset,
-        type: "Exchange",
+      this.props.navigation.navigate("Modal", {
+        screen: "Review",
+        params: { ticker: from_ticker, ...this.state },
       });
     }
   };
