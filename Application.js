@@ -17,7 +17,7 @@ import { connect } from "react-redux";
 class Application extends Component {
   state = {
     currentTheme: "dark",
-    initialRouteName: "Exchange",
+    initialRouteName: "Assets",
     authenticated: true,
     barStyle: "light-content",
     loaded: true,

@@ -13,6 +13,7 @@ import { Container, Cancel } from "./styles";
 class Details extends Component {
   render() {
     const { ticker } = this.props.route.params;
+
     this.props.navigation.setOptions({
       headerShown: true,
     });

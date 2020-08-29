@@ -17,19 +17,21 @@ import { Primary } from "../../constants/type.js";
 import TransactionDetail from "../../components/transaction-details/index.js";
 import Button from "../../components/button/index.js";
 import ExchangeConfirmation from "../../components/_summaries/exchange_confirmation";
+import TransferConfirmation from "../../components/_summaries/transfer_confirmation";
 import Border from "../../components/border/index.js";
 
 // Relative Imports
 import { Container, Overview, Amount, Cancel } from "./styles";
 
 class Review extends Component {
-  state = { token: "XHV", title: "" };
+  state = { title: "" };
 
   componentDidMount() {
     const { type } = this.props.route.params;
 
     this.setState({
       title: `${type} Transaction`,
+      route: this.props.route.params.from_ticker,
     });
   }
 
@@ -48,11 +50,8 @@ class Review extends Component {
     // This navigates the user to the correct page
     this.props.navigation.navigate("Assets", {
       screen: "Details",
-      params: { ticker: this.props.route.params.from_ticker },
+      params: { ticker: this.state.route },
     });
-    // this.props.navigation.navigate("Details", {
-    //   ticker: this.props.route.params.from_ticker,
-    // });
   };
 
   render() {
@@ -71,6 +70,7 @@ class Review extends Component {
       priority,
       type,
       to_asset,
+      recipient,
       conversion_rate,
     } = this.props.route.params;
 
@@ -88,9 +88,8 @@ class Review extends Component {
       <Container>
         <Overview>
           <Amount>
-            {type === "Exchange"
-              ? `${to_amount} ${to_ticker}`
-              : `${from_amount} ${from_ticker}`}
+            {type === "Exchange" && `${to_amount} ${to_ticker}`}
+            {type === "Transfer" && `${from_amount} ${from_ticker}`}
           </Amount>
         </Overview>
         <Border />
@@ -104,6 +103,13 @@ class Review extends Component {
               priority={priority.message}
               conversion_rate={conversion_rate}
               to_address={to_address}
+            />
+          )}
+          {type === "Transfer" && (
+            <TransferConfirmation
+              from_asset={from_asset}
+              from_amount={from_amount}
+              recipient={recipient}
             />
           )}
         </PageWrapper>
