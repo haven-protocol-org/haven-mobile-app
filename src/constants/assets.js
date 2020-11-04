@@ -1,7 +1,7 @@
 module.exports = [
   {
     token: "United States Dollar",
-    ticker: "USD",
+    ticker: "xUSD",
     price: "$1.00",
     change: "~ 0.00",
     symbol: "$",
@@ -9,14 +9,14 @@ module.exports = [
 
   {
     token: "Euro",
-    ticker: "EUR",
+    ticker: "xEUR",
     price: "$1.00",
     change: "~ 0.00",
     symbol: "€",
   },
   {
     token: "Chinese Yuan",
-    ticker: "CNY",
+    ticker: "xCNY",
     price: "$1.00",
     change: "~ 0.00",
     symbol: "¥",
@@ -24,14 +24,14 @@ module.exports = [
 
   {
     token: "Gold",
-    ticker: "GOLD",
+    ticker: "xGOLD",
     price: "$1.00",
     change: "~ 0.00",
     symbol: "$",
   },
   {
     token: "Silver",
-    ticker: "SILV",
+    ticker: "xSILV",
     price: "$1.00",
     change: "~ 0.00",
     symbol: "$",
