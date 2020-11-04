@@ -49,7 +49,6 @@ class Application extends Component {
         <StatusBar
           barStyle={currentTheme === "dark" ? "light-content" : "dark-content"}
         />
-
         {loaded ? (
           <Navigation
             authenticated={authenticated}

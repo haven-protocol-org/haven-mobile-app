@@ -9,26 +9,42 @@ class TabIcon extends Component {
     const { name } = this.props.route;
     const { focused } = this.props;
     if (name === "Assets" && focused) {
-      return <Icon source={require("../../assets/tabs/assets-active.png")} />;
+      return (
+        <Icon source={require("../../assets/tabs/dark/assets-active.png")} />
+      );
     } else if (name === "Assets") {
-      return <Icon source={require("../../assets/tabs/assets-inactive.png")} />;
+      return (
+        <Icon source={require("../../assets/tabs/dark/assets-inactive.png")} />
+      );
     } else if (name === "Exchange" && focused) {
-      return <Icon source={require("../../assets/tabs/exchange-active.png")} />;
+      return (
+        <Icon source={require("../../assets/tabs/dark/exchange-active.png")} />
+      );
     } else if (name === "Exchange") {
       return (
-        <Icon source={require("../../assets/tabs/exchange-inactive.png")} />
+        <Icon
+          source={require("../../assets/tabs/dark/exchange-inactive.png")}
+        />
       );
     } else if (name === "Transfer" && focused) {
-      return <Icon source={require("../../assets/tabs/transfer-active.png")} />;
+      return (
+        <Icon source={require("../../assets/tabs/dark/transfer-active.png")} />
+      );
     } else if (name === "Transfer") {
       return (
-        <Icon source={require("../../assets/tabs/transfer-inactive.png")} />
+        <Icon
+          source={require("../../assets/tabs/dark/transfer-inactive.png")}
+        />
       );
     } else if (name === "Settings" && focused) {
-      return <Icon source={require("../../assets/tabs/settings-active.png")} />;
+      return (
+        <Icon source={require("../../assets/tabs/dark/settings-active.png")} />
+      );
     } else if (name === "Settings") {
       return (
-        <Icon source={require("../../assets/tabs/settings-inactive.png")} />
+        <Icon
+          source={require("../../assets/tabs/dark/settings-inactive.png")}
+        />
       );
     }
   };

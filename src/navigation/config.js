@@ -148,7 +148,9 @@ class Navigation extends Component {
           initialRouteName={this.props.initialRouteName}
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {
-              return <TabIcon focused={focused} route={route} />;
+              return (
+                <TabIcon theme={currentTheme} focused={focused} route={route} />
+              );
             },
           })}
         >
