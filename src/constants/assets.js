@@ -1,5 +1,12 @@
 module.exports = [
   {
+    token: "Haven",
+    ticker: "XHV",
+    price: "$1.00",
+    change: "~ 0.00",
+    symbol: "$",
+  },
+  {
     token: "United States Dollar",
     ticker: "xUSD",
     price: "$1.00",

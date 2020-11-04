@@ -6,7 +6,7 @@ export const Container = styled.View`
   height: auto;
   padding: 12px 16px;
   width: 100%;
-  background: ${props => props.theme.body.foreground};
+  background: ${(props) => props.theme.body.foreground};
 `;
 
 export const Tab = styled.View`
@@ -15,34 +15,34 @@ export const Tab = styled.View`
   overflow: hidden;
   display: flex;
   flex-direction: row;
-  border: ${props => props.theme.input.input_border};
-  border-radius: ${props => props.theme.styles.radius[1]};
+  border: ${(props) => props.theme.input.input_border};
+  border-radius: ${(props) => props.theme.styles.radius[1]};
 `;
 
 export const Selected = styled.Text`
   font-size: 13px;
-  color: ${props => props.theme.type.primary};
+  color: ${(props) => props.theme.type.primary};
 `;
 
 export const Deselected = styled.Text`
   font-size: 13px;
-  color: ${props => props.theme.type.secondary};
+  color: ${(props) => props.theme.type.secondary};
 `;
 
 export const Active = styled.TouchableOpacity`
   height: 100%;
-  width: 50%%;
+  width: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${props => props.theme.button.primary};
+  background: ${(props) => props.theme.button.primary};
 `;
 
 export const Inactive = styled.TouchableOpacity`
   height: 100%;
-  width: 50%%;
+  width: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${props => props.theme.body.background};
+  background: ${(props) => props.theme.body.background};
 `;

@@ -22,8 +22,32 @@ class Assets extends Component {
   componentDidMount() {
     this.props.navigation.setOptions({ title: "Assets" });
   }
-  renderTokens = () => {
-    return assets.map((asset) => {
+
+  renderAvailable = () => {
+    const available = assets.slice(0, 2);
+
+    return available.map((asset) => {
+      const { token, ticker, price, change } = asset;
+      return (
+        <Token
+          onPress={() =>
+            this.props.navigation.navigate("Details", {
+              ticker: ticker,
+            })
+          }
+          key={ticker}
+          token={token}
+          ticker={ticker}
+          price={price}
+          change={change}
+        />
+      );
+    });
+  };
+
+  renderUnavailable = () => {
+    const unavailable = assets.slice(2, 6);
+    return unavailable.map((asset) => {
       const { token, ticker, price, change } = asset;
       return (
         <Token
@@ -56,7 +80,13 @@ class Assets extends Component {
               title="Available Assets"
               subtitle="Assets available within your Vault"
             />
-            {this.renderTokens()}
+            {this.renderAvailable()}
+
+            <SectionHeader
+              title="Coming Soon"
+              subtitle="Assets available soon"
+            />
+            {this.renderUnavailable()}
           </PageWrapper>
         </Container>
       </ScrollView>
