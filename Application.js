@@ -37,21 +37,24 @@ class Application extends Component {
   }
 
   render() {
+    const {
+      currentTheme,
+      authenticated,
+      loaded,
+      authUser,
+      initialRouteName,
+    } = this.state;
     return (
-      <ThemeProvider theme={this.state.currentTheme === "dark" ? dark : light}>
+      <ThemeProvider theme={currentTheme === "dark" ? dark : light}>
         <StatusBar
-          barStyle={
-            this.state.currentTheme === "dark"
-              ? "light-content"
-              : "dark-content"
-          }
+          barStyle={currentTheme === "dark" ? "light-content" : "dark-content"}
         />
 
-        {this.state.loaded ? (
+        {loaded ? (
           <Navigation
-            authenticated={this.state.authenticated}
-            authUser={this.state.authUser === true ? "true" : "false"}
-            initialRouteName={this.state.initialRouteName}
+            authenticated={authenticated}
+            authUser={authUser ? true : false}
+            initialRouteName={initialRouteName}
           />
         ) : (
           <Splash />
