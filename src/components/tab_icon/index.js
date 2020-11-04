@@ -7,7 +7,9 @@ import { Icon } from "./styles";
 class TabIcon extends Component {
   handleIcons = () => {
     const { name } = this.props.route;
+    const { theme } = this.props;
     const { focused } = this.props;
+
     if (name === "Assets" && focused) {
       return (
         <Icon source={require("../../assets/tabs/dark/assets-active.png")} />
