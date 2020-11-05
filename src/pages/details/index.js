@@ -6,11 +6,26 @@ import SectionHeader from "../../components/section-header/index.js";
 import Transaction from "../../components/transactions/index.js";
 import PageWrapper from "../../components/page-wrapper/index.js";
 import BalanceStatistic from "../../components/balance-statistics/index.js";
+import axios from "axios";
 
 // Relative Imports
 import { Container, Cancel } from "./styles";
 
 class Details extends Component {
+  state = {
+    data: {},
+  };
+
+  componentDidMount() {
+    const url = `https://api.coingecko.com/api/v3/coins/haven/market_chart?vs_currency=usd&days=30&interval=hourly`;
+    axios.get(url).then((response) => {
+      console.log("RESPONSE", response);
+      this.setState({
+        data: response,
+      });
+    });
+  }
+
   render() {
     const { ticker, type } = this.props.route.params;
 
@@ -18,10 +33,11 @@ class Details extends Component {
       headerShown: true,
       headerBackTitleVisible: false,
     });
+
     return (
       <ScrollView>
         <Container>
-          <Charts token={ticker} />
+          <Charts token={ticker} data={this.state.data} />
           <PageWrapper>
             <BalanceStatistic />
           </PageWrapper>

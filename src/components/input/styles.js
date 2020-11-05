@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { dark } from "../../constants/themes.js";
 
-const placeholder = `${props => props.theme.type.primary}`;
+const placeholder = `${(props) => props.theme.type.primary}`;
 
 export const Container = styled.View`
   height: auto;
@@ -10,13 +10,13 @@ export const Container = styled.View`
 `;
 
 export const Field = styled.TextInput.attrs({
-  placeholderTextColor: "#999"
+  placeholderTextColor: "#999",
 })`
   width: 100%;
-  font-size: 16px;
-  color: ${props => props.theme.type.primary};
+  font-size: 18px;
+  color: ${(props) => props.theme.type.primary};
   padding: 12px 8px;
-  border: 1px solid ${props => props.theme.body.border};
+  border: 1px solid ${(props) => props.theme.body.border};
   border-radius: 2px;
 `;
 
@@ -36,12 +36,12 @@ export const Toggle = styled.View`
 
 export const Name = styled.Text`
   font-size: 16px;
-  color: ${props => props.theme.type.primary};
+  color: ${(props) => props.theme.type.primary};
 `;
 
 export const Label = styled.Text`
   font-size: 12px;
-  color: ${props => props.theme.type.secondary};
+  color: ${(props) => props.theme.type.secondary};
   letter-spacing: 0;
   line-height: 21px;
   padding-bottom: 4px;
@@ -49,7 +49,7 @@ export const Label = styled.Text`
 
 export const Border = styled.View`
   width: 100%;
-  background: ${props => props.theme.body.border};
+  background: ${(props) => props.theme.body.border};
   height: 1px;
   margin-left: 12px;
 `;
