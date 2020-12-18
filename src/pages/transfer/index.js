@@ -109,14 +109,6 @@ class Transfer extends Component {
               border={true}
               onChangeText={(recipient) => this.setState({ recipient })}
             />
-
-            <InputText
-              label="Payment ID (Opitional)"
-              border="none"
-              placeholder="Enter payment id"
-              value={payment_id}
-              onChangeText={(payment_id) => this.setState({ payment_id })}
-            />
             <Border />
             <Input_Information />
             <Preview onPress={this.handleReview}>
@@ -127,13 +119,6 @@ class Transfer extends Component {
         ) : (
           <Fragment>
             <Border />
-            <InputLink
-              label="Select Address"
-              chooseToken={this.chooseToken}
-              value={from_asset}
-              placeholder="Main"
-              border={true}
-            />
 
             <InputMultiline
               label="Haven  Address"
