@@ -17,11 +17,11 @@ class Details extends Component {
   };
 
   componentDidMount() {
-    const url = `https://api.coingecko.com/api/v3/coins/haven/market_chart?vs_currency=usd&days=30&interval=hourly`;
+    const url = `https://network-api.havenprotocol.org/api/circulationSupply`;
     axios.get(url).then((response) => {
-      console.log("RESPONSE", response);
+      // console.log("DATA", response.data);
       this.setState({
-        data: response,
+        data: response.data,
       });
     });
   }

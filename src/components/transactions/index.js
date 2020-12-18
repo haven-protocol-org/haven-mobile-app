@@ -2,8 +2,15 @@
 import React from "react";
 
 // Relative Imports
-import { Container, State, Status, Column, Row } from "./styles";
-import { Primary, Secondary } from "../../constants/type.js";
+import {
+  Container,
+  State,
+  Status,
+  Column,
+  Row,
+  Primary,
+  Secondary,
+} from "./styles";
 
 const Transaction = ({ onPress }) => {
   return (
@@ -18,7 +25,6 @@ const Transaction = ({ onPress }) => {
           <Secondary right>Value </Secondary>
         </Column>
       </Row>
-
       <Row>
         <Column>
           <Primary>0.01 USD</Primary>

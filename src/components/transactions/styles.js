@@ -3,12 +3,28 @@ import styled from "styled-components";
 export const Container = styled.TouchableOpacity`
   height: auto;
   width: auto;
-  background: ${props => props.theme.body.background};
+  background: ${(props) => props.theme.body.background};
   border-radius: 4px;
-  border: ${props => props.theme.body.border};
+  border: ${(props) => props.theme.body.border};
   padding: 12px 0px 0px 0px;
   margin: 10px;
   overflow: hidden;
+`;
+
+export const Primary = styled.Text`
+  font-weight: 700;
+  font-size: 15px;
+  color: ${(props) => props.theme.type.primary};
+  letter-spacing: 0;
+  line-height: 22.5px;
+`;
+
+export const Secondary = styled.Text`
+  font-size: 12px;
+  color: ${(props) => props.theme.type.secondary};
+  letter-spacing: 0;
+  line-height: 20px;
+  text-align: ${(props) => (props.right ? "right" : "left")};
 `;
 
 export const State = styled.View`

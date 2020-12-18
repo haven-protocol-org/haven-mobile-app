@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.View`
-  height: 200px;
+  height: 240px;
   width: 100%;
-  background: ${props => props.theme.body.foreground};
+  background: ${(props) => props.theme.body.foreground};
   justify-content: center;
-  border: ${props => props.theme.body.border};
   margin-right: 20px;
-  align-items: center;
+  padding-right: 120px;
 `;
