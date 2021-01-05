@@ -19,7 +19,7 @@
     "@react-navigation/stack": "^5.0.0",
     "@react-navigation/web": "~1.0.0-alpha.9",
     "anychart": "^8.9.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "chart.js": "^2.9.4",
     "d3-scale": "^3.2.3",
     "expo": "~36.0.0",
