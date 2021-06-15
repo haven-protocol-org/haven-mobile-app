@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/native";
 import { dark } from "../../constants/themes.js";
 
 const placeholder = `${(props) => props.theme.type.primary}`;

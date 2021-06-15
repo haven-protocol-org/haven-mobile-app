@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { StatusBar, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components/native";
 import { dark, light } from "./src/constants/themes.js";
 import Splash from "./src/pages/splash/index.js";
 import Application from "./Application.js";
