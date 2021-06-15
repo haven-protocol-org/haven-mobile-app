@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/native";
 import { Image } from "react-native";
 
 export const Icon = styled.Image`

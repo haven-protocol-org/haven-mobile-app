@@ -2,7 +2,7 @@
 import React, { Component, Fragment } from "react";
 import { StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components/native";
 
 // import TabNavgation from "./src/navigation/tabNavigation.js";
 // import TabNavigator from "./src/navigation/_tabNavigator.js";

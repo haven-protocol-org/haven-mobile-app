@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Balance, Secondary } from "../../constants/type.js";
 import { LineChart } from "react-native-chart-kit";
 import { Dimensions } from "react-native";
-import { withTheme } from "styled-components";
+import { withTheme } from "styled-components/native";
 import moment from "moment";
 import axios from "axios";
 
